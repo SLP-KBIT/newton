@@ -58,4 +58,7 @@ group :development, :test do
   gem 'rb-fsevent'
 
   gem 'rspec-rails'
+  gem 'turnip'
+  gem 'capybara'
+  gem 'poltergeist'
 end
