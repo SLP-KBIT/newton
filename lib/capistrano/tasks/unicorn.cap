@@ -1,6 +1,6 @@
 namespace :unicorn do
   task :environment do
-    set :unicorn_pid, "#{current_path}/log/unicorn.pid"
+    set :unicorn_pid, "/tmp/newton_unicorn.pid"
     #set :unicorn_config, "#{current_path}/config/unicorn/#{fetch(:rails_env)}.rb"
     set :unicorn_config, "#{current_path}/config/unicorn.rb"
     set :rails_env, "production"
@@ -9,7 +9,7 @@ namespace :unicorn do
   def start_unicorn
     within current_path do
     p fetch(:unicorn_config)
-      execute :bundle, :exec, :unicorn_rails, "--path /App/GameExrc/Trump/Poker/ver3/ -c #{fetch(:unicorn_config)} -E #{fetch(:rails_env)} -D"
+      execute :bundle, :exec, :unicorn_rails, "--path /#{fetch(:application)} -c #{fetch(:unicorn_config)} -E #{fetch(:rails_env)} -D"
     end
   end
 
