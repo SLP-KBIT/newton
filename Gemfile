@@ -47,4 +47,7 @@ gem 'unicorn'
 # colorful, useful rails console
 gem 'pry-rails'
 
-
+# css framework, See https://github.com/seyhunak/twitter-bootstrap-rails
+gem 'twitter-bootstrap-rails' 
+gem 'less-rails'
+ 
