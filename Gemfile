@@ -43,3 +43,8 @@ gem 'unicorn'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# colorful, useful rails console
+gem 'pry-rails'
+
+
