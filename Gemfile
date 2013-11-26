@@ -66,3 +66,8 @@ group :development, :test do
   gem 'ci_reporter'
   gem 'simplecov-rcov'
 end
+
+group :deployment do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+end
