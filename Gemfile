@@ -51,3 +51,11 @@ gem 'pry-rails'
 gem 'twitter-bootstrap-rails' 
 gem 'less-rails'
  
+group :development, :test do
+  gem 'spork', '1.0.0rc3'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
+
+  gem 'rspec-rails'
+end
