@@ -61,4 +61,8 @@ group :development, :test do
   gem 'turnip'
   gem 'capybara'
   gem 'poltergeist'
+
+  # for jenkins
+  gem 'ci_reporter'
+  gem 'simplecov-rcov'
 end
