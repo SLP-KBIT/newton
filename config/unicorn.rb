@@ -7,7 +7,7 @@
 # See also http://unicorn.bogomips.org/examples/unicorn.conf.rb for
 # a more verbose configuration using more features.
 
-listen 23456 # by default Unicorn listens on port 8080
+listen 20000 # by default Unicorn listens on port 8080
 worker_processes 3 # this should be >= nr_cpus
 #pid "/var/www/redmine/log/unicorn.pid"
 pid "/tmp/newton_unicorn.pid"
