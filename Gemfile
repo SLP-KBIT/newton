@@ -51,6 +51,8 @@ gem 'pry-rails'
 # css framework, See https://github.com/seyhunak/twitter-bootstrap-rails
 gem 'twitter-bootstrap-rails' 
 gem 'less-rails'
+
+gem 'annotate', group: :development
  
 group :development, :test do
   gem 'spork', '1.0.0rc3'
