@@ -18,3 +18,6 @@
 
 /coverage/
 /spec/reports/
+
+*~
+.*.swp
