@@ -1,0 +1,10 @@
+
+<table>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= item.id %></td>
+      <td><%= item.name %></td>
+      <td><%= item.created_at %></td>
+    </tr>
+  <% end %>
+</table>
