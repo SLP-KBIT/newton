@@ -7,4 +7,10 @@ describe ItemController do
     it { expect(response).to be_success }
     it { expect(response).to render_template(:index) }
   end
+  describe '#add' do
+    before { get :add }
+    it { expect(assigns[:item]).to be_a_kind_of(Item) }
+    it { expect(response).to be_success }
+    it { expect(response).to render_template(:add) }
+  end
 end

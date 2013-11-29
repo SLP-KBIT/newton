@@ -1,0 +1,29 @@
+<h1>物品詳細表示</h1>
+
+<%= form_for :item do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :attachments %>
+  <%= f.text_field :attachments %>
+
+  <%= f.label :lending_period %>
+  <%= f.text_field :lending_period %>
+
+  <%= f.label :category %>
+  <%= f.text_field :category %>
+
+  <%= f.label :place %>
+  <%= f.text_field :place %>
+
+  <%= f.label :amount %>
+  <%= f.text_field :amount %>
+
+  <%= f.label :trashed %>
+  <%= f.text_field :trashed %>
+
+  <%= f.label :picture_path %>
+  <%= f.text_field :picture_path %>
+
+  <%= f.submit '登録', class: 'btn' %>
+<% end %>
