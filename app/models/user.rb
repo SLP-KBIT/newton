@@ -12,7 +12,7 @@
 
 class User < ActiveRecord::Base
   def category_text
-    return "サークル生" if category == 1
-    return "学内者"     if category == 2
+    return'サークル生' if category == 1
+    return'学内者'     if category == 2
   end
 end

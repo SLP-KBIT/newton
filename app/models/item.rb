@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # == Schema Information
 #
 # Table name: items
@@ -16,10 +17,8 @@
 #
 
 class Item < ActiveRecord::Base
-
   def category_text
-    return "PC"       if category == 1
-    return "デジカメ" if category == 2
+    return 'PC'       if category == 1
+    return 'デジカメ' if category == 2
   end
 end
-
