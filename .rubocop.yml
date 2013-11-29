@@ -1,0 +1,42 @@
+# This is the configuration used to check the rubocop source code.
+
+#inherit_from: config/default.yml
+inherit_from: vendor/bundler/ruby/2.0.0/gems/rubocop-0.15.0/config/default.yml
+inherit_from: rubocop-todo.yml
+
+AllCops:
+  RunRailsCops: true
+
+MethodLength:
+  Max: 22
+
+ClassLength:
+  Max: 140
+
+CyclomaticComplexity:
+  Max: 12
+
+AlignHash:
+  EnforcedHashRocketStyle: table # off
+  EnforcedColonStyle: table
+HashSyntax:
+  EnforcedStyle: ruby19
+LineLength:
+  Max: 100 # by default 79
+
+# keep because not sure
+ParameterLists:
+  Max: 5
+  CountKeywordArgs: true
+
+AsciiComments:
+  Enabled: false
+
+AndOr:
+  Enabled: false
+
+ClassLength:
+  Enabled: false
+
+FavorSprintf:
+  Enabled: false

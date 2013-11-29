@@ -71,6 +71,9 @@ group :development, :test do
 end
 
 group :deployment do
+  gem 'rubocop'
+  gem 'rails_best_practices'
+
   gem 'capistrano'
   gem 'capistrano-rails'
 end
