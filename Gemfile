@@ -49,7 +49,7 @@ gem 'unicorn'
 gem 'pry-rails'
 
 # css framework, See https://github.com/seyhunak/twitter-bootstrap-rails
-gem 'twitter-bootstrap-rails' 
+gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 
 gem 'annotate', group: :development
