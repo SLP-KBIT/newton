@@ -1,6 +1,7 @@
 Sample::Application.routes.draw do
 
-  get '/items' => 'item#index'
+  get '/items'     => 'item#index'
+  get '/items/add' => 'item#add'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
