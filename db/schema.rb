@@ -11,15 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127144632) do
+ActiveRecord::Schema.define(version: 20131129131045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dogs", force: true do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.string   "category"
+  create_table "histories", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.integer  "status"
+    t.integer  "amount"
+    t.text     "failure_detail"
+    t.integer  "detail_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,7 +42,12 @@ ActiveRecord::Schema.define(version: 20131127144632) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.integer  "age"
+    t.string   "account"
+    t.boolean  "admin_flag"
+    t.integer  "category"
+    t.boolean  "lendeble"
+    t.string   "e_mail"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
