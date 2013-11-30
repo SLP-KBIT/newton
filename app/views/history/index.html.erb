@@ -1,0 +1,13 @@
+
+<table>
+  <% @histories.each do |history| %>
+    <tr>
+      <td><%= history.user_id %></td>
+      <td><%= history.item_id %></td>
+      <td><%= history.status %></td>
+      <td><%= history.amount %></td>
+      <td><%= history.failure_detail %></td>
+      <td><%= history.detail_id %></td>
+    </tr>
+  <% end %>
+</table>

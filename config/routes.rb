@@ -2,6 +2,7 @@ Sample::Application.routes.draw do
 
   get '/items'     => 'item#index'
   get '/items/add' => 'item#add'
+  get '/history'   => 'history#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
