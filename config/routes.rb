@@ -1,5 +1,6 @@
 Sample::Application.routes.draw do
 
+  get '/user'     => 'user#index'
   get '/items'     => 'item#index'
   get '/items/add' => 'item#add'
   get '/history'   => 'history#index'

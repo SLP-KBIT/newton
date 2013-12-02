@@ -1,0 +1,14 @@
+
+<table>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.account %></td>
+      <td><%= user.admin_flag %></td>
+      <td><%= user.category %></td>
+      <td><%= user.lendable %></td>
+      <td><%= user.e_mail %></td>
+      <td><%= user.password %></td>
+    </tr>
+  <% end %>
+</table>
