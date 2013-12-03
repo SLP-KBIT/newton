@@ -1,0 +1,26 @@
+<h1>ユーザ詳細表示</h1>
+
+<%= form_for :user do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :account %>
+  <%= f.text_field :account %>
+
+  <%= f.label :admin_flag %>
+  <%= f.check_box :admin_flag %>
+
+  <%= f.label :category %>
+  <%= f.select :category, ["サークル生", "学内者"] %>
+
+  <%= f.label :lendable %>
+  <%= f.checkbox :lendable %>
+
+  <%= f.label :e_mail %>
+  <%= f.text_field :e_mail %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit '登録', class: 'btn' %>
+<% end %>
