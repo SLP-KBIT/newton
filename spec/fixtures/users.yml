@@ -1,0 +1,10 @@
+# <User id: nil, name: nil, account: nil, admin_flag: nil, category: nil, lendable: nil, e_mail: nil, password: nil, created_at: nil, updated_at: nil>
+admin:
+  id: 1
+  name: admin ADMIN
+  account: admin
+  admin_flag: true
+  category: 1
+  lendable: true
+  e_mail: admin@example.com
+  password: hoge
