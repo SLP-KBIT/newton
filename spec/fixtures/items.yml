@@ -1,0 +1,11 @@
+# <Item id: nil, name: nil, attachments: nil, lending_period: nil, category: nil, place: nil, amount: nil, trashed: nil, picture_path: nil, created_at: nil, updated_at: nil>
+sample:
+  id: 1
+  name: サンプル
+  attachments: 付属品
+  lending_period: 1
+  category: 0
+  place: 1909
+  amount: 1
+  trashed: false
+  picture_path: ./img/sample.png

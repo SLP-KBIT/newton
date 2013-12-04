@@ -6,4 +6,8 @@ class ItemController < ApplicationController
   def add
     @item = Item.new
   end
+
+  def show
+    @item = Item.find(params[:id])
+  end
 end
