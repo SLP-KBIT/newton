@@ -4,7 +4,7 @@ set :application, 'newton' # TODO
 set :repo_url, 'git@utrillo1:newton/newton.git' # TODO
 
 #ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
-set :branch, 'auto_deploy'
+set :branch, 'master'
 
 #set :deploy_to, '/var/www/my_app' # TODO
 #set :deploy_to, '/home/ookawa/tmp/newton_test' # TODO
