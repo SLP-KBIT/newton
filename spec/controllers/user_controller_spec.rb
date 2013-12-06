@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe UserController do
@@ -26,4 +27,39 @@ describe UserController do
     it { expect(response).to be_success }
     it { expect(response).to render_template(:edit) }
   end
+  describe '#update' do
+    before do
+      session[:user_id] = User.first.id
+      @user_param = {
+        id: User.first.id,
+        name: 's11t200',
+        account: 'kumanon',
+        admin_flag: true,
+        category: 1,
+        lendable: true,
+        e_mail: 's11t200@stmail.eng.kagawa-u.ac.jp',
+        password: 'hogehoge'
+      }
+    end
+    context '成功時' do
+      before { patch :update, user: @user_param }
+      it 'ユーザ一覧ページへリダイレクトする' do
+        expect(response).to redirect_to user_path
+      end
+      it 'ユーザレコードが更新される' do
+        expect(assigns[:user]).to eq(User.new(@user_param))
+        expect(assigns[:result]).to be_true
+      end
+    end
+    context '失敗時' do
+      before do
+        patch :update, user: @user_param.merge(category: 3)
+      end
+      it { expect(response).to render_template(:edit) }
+      it { expect(response).to be_success }
+      it 'ユーザレコードが更新される' do
+        expect(assigns[:result]).to be_false
+      end
+    end
+  end # #update'
 end
