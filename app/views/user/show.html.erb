@@ -2,26 +2,18 @@
 <table>
   <tr>
     <th>名前</th>
-    <td><%= @user.name %></td>
-  </tr>
-  <tr>
     <th>アカウント名</th>
-    <td><%= @user.account %></td>
-  </tr>
-  <tr>
     <th>管理者フラグ</th>
-    <td><%= @user.admin_flag %></td>
-  </tr>
-  <tr>
     <th>区分</th>
-    <td><%= @user.category %></td>
-  </tr>
-  <tr>
     <th>貸出有効フラグ</th>
-    <td><%= @user.lendable %></td>
+    <th>メールアドレス</th>
   </tr>
   <tr>
-    <th>メールアドレス</th>
+    <td><%= @user.name %></td>
+    <td><%= @user.account %></td>
+    <td><%= @user.admin_flag %></td>
+    <td><%= @user.category %></td>
+    <td><%= @user.lendable %></td>
     <td><%= @user.e_mail %></td>
   </tr>
 </table>

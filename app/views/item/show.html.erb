@@ -2,34 +2,22 @@
 <table>
   <tr>
     <th>物品名</th>
-    <td><%= @item.name %></td>
-  </tr>
-  <tr>
     <th>付属品リスト</th>
-    <td><%= @item.attachments %></td>
-  </tr>
-  <tr>
     <th>最大貸出期間</th>
-    <td><%= @item.lending_period %></td>
-  </tr>
-  <tr>
     <th>カテゴリー</th>
-    <td><%= @item.category %></td>
-  </tr>
-  <tr>
     <th>保管場所</th>
-    <td><%= @item.place %></td>
-  </tr>
-  <tr>
     <th>個数</th>
-    <td><%= @item.amount %></td>
-  </tr>
-  <tr>
     <th>破棄フラグ</th>
-    <td><%= @item.trashed %></td>
+    <td><%= @item.name %></td>
+    <th>画像パス</th>
   </tr>
   <tr>
-    <th>画像パス</th>
+    <td><%= @item.attachments %></td>
+    <td><%= @item.lending_period %></td>
+    <td><%= @item.category %></td>
+    <td><%= @item.place %></td>
+    <td><%= @item.amount %></td>
+    <td><%= @item.trashed %></td>
     <td><%= @item.picture_path %></td>
   </tr>
 </table>
