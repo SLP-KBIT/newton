@@ -20,4 +20,10 @@ describe UserController do
     it { expect(response).to be_success }
     it { expect(response).to render_template(:show) }
   end
+  describe '#edit' do
+    before { get :edit, id: 1 }
+    it { expect(assigns[:user]).to be_a_kind_of(User) }
+    it { expect(response).to be_success }
+    it { expect(response).to render_template(:edit) }
+  end
 end
