@@ -14,4 +14,12 @@ class UserController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+
+  def update
+    @user = User.where(id: params[:user][:id]).first
+    @user.attributes = params.require(:user).permit(:id, :name, :account, :admin_flag, :category, :lendable, :e_mail, :password)
+    @result = @user.save
+    redirect_to user_path and return if @result
+    render 'edit' and return
+  end
 end

@@ -1,9 +1,11 @@
 <h1>ユーザ編集</h1>
 
-<%= form_for :user, @user, url: {id: @user} do |f| %>
+<%= form_for :user, @user, url : { action: :update } do |f| %>
+  <%= f.hidden_field :id %>
+  
   <%= f.label :name %>
   <%= f.text_field :name %>
-
+  
   <%= f.label :account %>
   <%= f.text_field :account %>
 
@@ -22,5 +24,9 @@
   <%= f.label :password %>
   <%= f.password_field :password %>
 
+  
+
   <%= f.submit '登録', class: 'btn' %>
+  
+
 <% end %>
