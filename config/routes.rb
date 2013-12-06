@@ -1,12 +1,12 @@
 Sample::Application.routes.draw do
 
-  get '/user'      => 'user#index'
-  get '/user/add'  => 'user#add'
-  get '/user/:id'  => 'user#show'
-  get '/item'      => 'item#index'
-  get '/item/add'  => 'item#add'
-  get '/item/:id'  => 'item#show'
-  get '/history'   => 'history#index'
+  get '/user'        => 'user#index'
+  get '/user/create' => 'user#add'
+  get '/user/:id'    => 'user#show'
+  get '/item'        => 'item#index'
+  get '/item/create' => 'item#add'
+  get '/item/:id'    => 'item#show'
+  get '/history'     => 'history#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
