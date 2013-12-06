@@ -1,14 +1,11 @@
 namespace :unicorn do
   task :environment do
-    set :unicorn_pid, "/tmp/newton_unicorn.pid"
-    #set :unicorn_config, "#{current_path}/config/unicorn/#{fetch(:rails_env)}.rb"
-    set :unicorn_config, "#{current_path}/config/unicorn.rb"
-    set :rails_env, "production"
+    set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn_pid"
+    set :unicorn_config, "#{current_path}/config/unicorn/#{fetch(:rails_env)}.rb"
   end
 
   def start_unicorn
     within current_path do
-    p fetch(:unicorn_config)
       execute :bundle, :exec, :unicorn_rails, "--path /#{fetch(:application)} -c #{fetch(:unicorn_config)} -E #{fetch(:rails_env)} -D"
     end
   end
@@ -28,7 +25,7 @@ namespace :unicorn do
 
   desc "Start unicorn server"
   task start: :environment do
-    on roles(:app) do 
+    on roles(:app) do
       start_unicorn
     end
   end

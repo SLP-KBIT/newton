@@ -3,18 +3,19 @@ set :application, 'newton' # TODO
 #set :repo_url, 'git@example.com:me/my_repo.git' # TODO
 set :repo_url, 'git@utrillo1:newton/newton.git' # TODO
 
-ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+#ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+set :branch, 'master'
 
 #set :deploy_to, '/var/www/my_app' # TODO
-set :deploy_to, '/home/ookawa/tmp/newton_test' # TODO
+#set :deploy_to, '/home/ookawa/tmp/newton_test' # TODO
 set :scm, :git
 
 # set :format, :pretty
- set :log_level, :debug
+set :log_level, :debug
 # set :pty, true
 
 # set :linked_files, %w{config/database.yml}
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 # set :keep_releases, 5
