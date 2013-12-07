@@ -15,6 +15,37 @@ describe UserController do
     it { expect(response).to be_success }
     it { expect(response).to render_template(:add) }
   end
+  describe '#create' do
+    before do
+      @user_param = {
+        name: 's11t200',
+        account: 'kumanon',
+        admin_flag: true,
+        category: 1,
+        lendable: true,
+        e_mail: 's11t200@stmail.eng.kagawa-u.ac.jp',
+        password: 'hogehoge'
+      }
+    end
+    context '成功時' do
+      before { post :create, user: @user_param }
+      it 'ユーザ一覧ページへリダイレクトする' do
+        expect(response).to redirect_to user_path
+      end
+      it 'ユーザレコードが更新される' do
+        expect(assigns[:user]).to be_a_kind_of(User)
+        expect(assigns[:result]).to be_true
+      end
+    end
+    context '失敗時' do
+      before { post :create, user: @user_param.merge(category: 3) }
+      it { expect(response).to render_template(:add) }
+      it { expect(response).to be_success }
+      it 'ユーザレコードが更新される' do
+        expect(assigns[:result]).to be_false
+      end
+    end
+  end
   describe '#show' do
     before { get :show, id: 1 }
     it { expect(assigns[:user]).to be_a_kind_of(User) }
