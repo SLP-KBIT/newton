@@ -65,9 +65,6 @@ group :development, :test do
   gem 'capybara'
   gem 'poltergeist'
 
-  # for jenkins
-  gem 'ci_reporter'
-  gem 'simplecov-rcov'
 end
 
 group :deployment do
@@ -76,4 +73,10 @@ group :deployment do
 
   gem 'capistrano'
   gem 'capistrano-rails'
+end
+
+group :jenkins do
+  # for jenkins
+  gem 'ci_reporter'
+  gem 'simplecov-rcov'
 end
