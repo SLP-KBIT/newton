@@ -75,7 +75,7 @@ group :deployment do
   gem 'capistrano-rails'
 end
 
-group :jenkins do
+group :test do
   # for jenkins
   gem 'ci_reporter'
   gem 'simplecov-rcov'
