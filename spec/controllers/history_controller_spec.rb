@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe HistoryController do
   fixtures :histories
+  render_views
   describe '#index' do
     before { get :index }
     it { expect(assigns[:histories]).to eq(History.all) }
