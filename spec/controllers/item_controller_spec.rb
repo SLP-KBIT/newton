@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe ItemController do
   fixtures :items
+  render_views
   describe '#index' do
     before { get :index }
     it { expect(assigns[:items]).to eq(Item.all) }

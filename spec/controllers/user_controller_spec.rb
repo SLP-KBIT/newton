@@ -3,6 +3,7 @@ require 'spec_helper'
 
 describe UserController do
   fixtures :users
+  render_views
   describe '#index' do
     before { get :index }
     it { expect(assigns[:users]).to eq(User.all) }
