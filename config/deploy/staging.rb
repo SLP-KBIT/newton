@@ -1,6 +1,7 @@
 set :stage, :staging
 set :deploy_to, '/var/released_app/dev/newton'
 
+set :rails_env, fetch(:stage)
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary
