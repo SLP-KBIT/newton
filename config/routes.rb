@@ -9,6 +9,7 @@ Sample::Application.routes.draw do
 
   get   '/item'             => 'item#index'
   get   '/item/create'      => 'item#add'
+  post  '/item/create'      => 'item#create'
   get   '/item/:id'         => 'item#show'
 
   get   '/history'          => 'history#index'
