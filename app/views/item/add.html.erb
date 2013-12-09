@@ -1,6 +1,6 @@
 <h1>物品詳細表示</h1>
 
-<%= form_for :item do |f| %>
+<%= form_for :item, url: { action: :create } do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -11,7 +11,7 @@
   <%= f.text_field :lending_period %>
 
   <%= f.label :category %>
-  <%= f.text_field :category %>
+  <%= f.select :category, ["その他", "PC", "カメラ"]%>
 
   <%= f.label :place %>
   <%= f.text_field :place %>

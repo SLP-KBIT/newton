@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe ItemController do
@@ -14,6 +15,39 @@ describe ItemController do
     it { expect(assigns[:item]).to be_a_kind_of(Item) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:add) }
+  end
+  describe '#create' do
+    before do
+      @item_param = {
+        name: 'ルンバ',
+        attachments: '充電器',
+        lending_period: 7,
+        category: 0,
+        place: '1909',
+        amount: 1,
+        trashed: false,
+        picture_path: './img/roomba.png'
+      }
+    end
+    context '成功時' do
+      before { post :create, item: @item_param }
+      it '物品一覧ページへリダイレクトする' do
+        expect(response).to redirect_to item_path
+      end
+      it '物品レコードが作成される' do
+        expect(assigns[:item]).to eq(Item.last)
+        expect(assigns[:result]).to be_true
+      end
+      it '物品レコードが1件増える' do
+        expect { post :create, item: @item_param }.to change(Item, :count).by(1)
+      end
+    end
+    context '失敗時' do
+      before { post :create, item: @item_param.merge(category: 3) }
+      it { expect(response).to render_template(:add) }
+      it { expect(response).to be_success }
+      it { expect(assigns[:result]).to be_false }
+    end
   end
   describe '#show' do
     before { get :show, id: 1 }
