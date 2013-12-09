@@ -1,15 +1,18 @@
 Sample::Application.routes.draw do
 
-  get '/user'             => 'user#index'
-  get '/user/:id'         => 'user#show'
-  get '/user/create'      => 'user#add'
-  get '/user/update/:id'  => 'user#edit'
-  patch '/user/update'    => 'user#update'
-  get '/item'             => 'item#index'
-  get '/item/:id'         => 'item#show'
-  get '/item/create'      => 'item#add'
-  get '/history'          => 'history#index'
-  get '/history/:id'      => 'history#show'
+  get   '/user'             => 'user#index'
+  get   '/user/create'      => 'user#add'
+  post  '/user/create'      => 'user#create'
+  patch '/user/update'      => 'user#update'
+  get   '/user/update/:id'  => 'user#edit'
+  get   '/user/:id'         => 'user#show'
+
+  get   '/item'             => 'item#index'
+  get   '/item/create'      => 'item#add'
+  get   '/item/:id'         => 'item#show'
+
+  get   '/history'          => 'history#index'
+  get   '/history/:id'      => 'history#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
