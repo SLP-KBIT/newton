@@ -17,9 +17,7 @@
 #
 
 class Item < ActiveRecord::Base
-  validates(:category,
-    inclusion: { in: [0, 1, 2], message: '選択してください' }
-  )
+  validates :category, inclusion: { in: [0, 1, 2], message: '選択してください' }
 
   def category_text
     return 'その他'   if category == 0
