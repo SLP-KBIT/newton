@@ -32,18 +32,19 @@ describe UserController do
       it 'ユーザ一覧ページへリダイレクトする' do
         expect(response).to redirect_to user_path
       end
-      it 'ユーザレコードが更新される' do
-        expect(assigns[:user]).to be_a_kind_of(User)
+      it 'ユーザレコードが作成される' do
+        expect(assigns[:user]).to eq(User.last)
         expect(assigns[:result]).to be_true
+      end
+      it 'ユーザレコードが1件増える' do
+        expect { post :create, user: @user_param }.to change(User, :count).by(1)
       end
     end
     context '失敗時' do
       before { post :create, user: @user_param.merge(category: 3) }
       it { expect(response).to render_template(:add) }
       it { expect(response).to be_success }
-      it 'ユーザレコードが更新される' do
-        expect(assigns[:result]).to be_false
-      end
+      it { expect(assigns[:result]).to be_false }
     end
   end
   describe '#show' do
