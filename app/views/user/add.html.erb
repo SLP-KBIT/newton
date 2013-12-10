@@ -1,4 +1,4 @@
-<h1>ユーザ作成</h1>
+<h1>ユーザ 新規作成</h1>
 
 <%= form_for :user, url: { action: :create } do |f| %>
   <%= f.label :name %>
@@ -11,7 +11,7 @@
   <%= f.check_box :admin_flag %>
 
   <%= f.label :category %>
-  <%= f.select :category, ["サークル生", "学内者"] %>
+  <%= f.select :category, ['サークル生', '学内者'] %>
 
   <%= f.label :lendable %>
   <%= f.check_box :lendable %>

@@ -1,19 +1,25 @@
+<h1>ユーザ 詳細</h1>
 
-<table>
-  <tr>
-    <th>名前</th>
-    <th>アカウント名</th>
-    <th>管理者フラグ</th>
-    <th>区分</th>
-    <th>貸出有効フラグ</th>
-    <th>メールアドレス</th>
-  </tr>
-  <tr>
-    <td><%= @user.name %></td>
-    <td><%= @user.account %></td>
-    <td><%= @user.admin_flag %></td>
-    <td><%= @user.category %></td>
-    <td><%= @user.lendable %></td>
-    <td><%= @user.e_mail %></td>
-  </tr>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>チェック</th>
+      <th>名前</th>
+      <th>アカウント名</th>
+      <th>区分</th>
+      <th>貸出フラグ</th>
+      <th>ロール</th>
+      <th>メールアドレス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @user.name %></td>
+      <td><%= @user.account %></td>
+      <td><%= @user.category_text %></td>
+      <td><%= @user.lendable_text %></td>
+      <td><%= @user.admin_flag_text %></td>
+      <td><%= @user.e_mail %></td>
+    </tr>
+  </tbody>
 </table>
