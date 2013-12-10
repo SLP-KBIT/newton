@@ -27,6 +27,6 @@ class Item < ActiveRecord::Base
 
   def trashed_text
     return '有' if trashed
-    return '無' unless trashed
+    return '無'
   end
 end

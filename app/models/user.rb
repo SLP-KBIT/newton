@@ -20,11 +20,11 @@ class User < ActiveRecord::Base
 
   def lendable_text
     return '有効' if lendable
-    return '無効' unless lendable
+    return '無効'
   end
 
   def admin_flag_text
-    return '管理者'     if admin_flag
-    return '一般ユーザ' unless admin_flag
+    return '管理者' if admin_flag
+    return '一般ユーザ'
   end
 end
