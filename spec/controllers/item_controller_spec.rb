@@ -19,14 +19,14 @@ describe ItemController do
   describe '#create' do
     before do
       @item_param = {
-        name: 'ルンバ',
-        attachments: '充電器',
+        name:           'ルンバ',
+        attachments:    '充電器',
         lending_period: 7,
-        category: 0,
-        place: '1909',
-        amount: 1,
-        trashed: false,
-        picture_path: './img/roomba.png'
+        category:       0,
+        place:          '1909',
+        amount:         1,
+        trashed:        false,
+        picture_path:   './img/roomba.png'
       }
     end
     context '成功時' do

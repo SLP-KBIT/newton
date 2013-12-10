@@ -1,23 +1,26 @@
+<h1>物品 詳細</h1>
 
-<table>
-  <tr>
-    <th>物品名</th>
-    <th>付属品リスト</th>
-    <th>最大貸出期間</th>
-    <th>カテゴリー</th>
-    <th>保管場所</th>
-    <th>個数</th>
-    <th>破棄フラグ</th>
-    <td><%= @item.name %></td>
-    <th>画像パス</th>
-  </tr>
-  <tr>
-    <td><%= @item.attachments %></td>
-    <td><%= @item.lending_period %></td>
-    <td><%= @item.category %></td>
-    <td><%= @item.place %></td>
-    <td><%= @item.amount %></td>
-    <td><%= @item.trashed %></td>
-    <td><%= @item.picture_path %></td>
-  </tr>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>物品名</th>
+      <th>最大貸出期間</th>
+      <th>カテゴリ</th>
+      <th>場所</th>
+      <th>個数</th>
+      <th>破棄</th>
+      <th>付属品</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @item.name %></td>
+      <td><%= @item.lending_period %>日</td>
+      <td><%= @item.category_text %></td>
+      <td><%= @item.place %></td>
+      <td><%= @item.amount %></td>
+      <td><%= @item.trashed_text %></td>
+      <td><%= @item.attachments %></td>
+    </tr>
+  </tbody>
 </table>

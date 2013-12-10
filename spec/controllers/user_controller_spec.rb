@@ -67,14 +67,14 @@ describe UserController do
     before do
       session[:user_id] = User.first.id
       @user_param = {
-        id: User.first.id,
-        name: 's11t200',
-        account: 'kumanon',
+        id:         User.first.id,
+        name:       's11t200',
+        account:    'kumanon',
         admin_flag: true,
-        category: 1,
-        lendable: true,
-        e_mail: 's11t200@stmail.eng.kagawa-u.ac.jp',
-        password: 'hogehoge'
+        category:   1,
+        lendable:   true,
+        e_mail:     's11t200@stmail.eng.kagawa-u.ac.jp',
+        password:   'hogehoge'
       }
     end
     context '成功時' do
@@ -97,5 +97,5 @@ describe UserController do
         expect(assigns[:result]).to be_false
       end
     end
-  end # #update'
+  end
 end

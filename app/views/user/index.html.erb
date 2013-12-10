@@ -1,14 +1,33 @@
+<h1>ユーザ 一覧</h1>
 
-<table>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.name %></td>
-      <td><%= user.account %></td>
-      <td><%= user.admin_flag %></td>
-      <td><%= user.category %></td>
-      <td><%= user.lendable %></td>
-      <td><%= user.e_mail %></td>
-      <td><%= user.password %></td>
-    </tr>
-  <% end %>
-</table>
+<%= button_to '新規作成', user_create_path, method: :get, class: 'btn' %>
+
+<%= form_tag('/user/update', method: :post) do %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>チェック</th>
+        <th>名前</th>
+        <th>アカウント名</th>
+        <th>区分</th>
+        <th>貸出フラグ</th>
+        <th>ロール</th>
+        <th>メールアドレス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= check_box 'page', 'freezeflag', {}, true, false %></td>
+          <td><%= link_to user.name, action: :show, id: user.id %></td>
+          <td><%= user.account %></td>
+          <td><%= user.category_text %></td>
+          <td><%= user.lendable_text %></td>
+          <td><%= user.admin_flag_text %></td>
+          <td><%= user.e_mail %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= submit_tag '停止', name1: '停止', class: 'btn' %>
+<% end %>

@@ -1,43 +1,36 @@
-<h1>物品管理一覧ページ</h1>
-<!-- <input type="button" value="新規登録" onClick="window.open('../item/add')" style="position: relative; left: 250px; top: 0px;"/> -->
+<h1>物品 一覧</h1>
 
-<%= button_to "新規登録", {:action => "add"}, {:method => :get} %>
+<%= button_to '新規作成', item_create_path, method: :get, class: 'btn' %>
 
-<!-- <form method="post" action="../item/update"> -->
-<p>
-<%= form_tag('/item/update', :method => :post) do %>
-<table border="1">
-  <th>チェック</th>
-  <th>物品名</th>
-  <th>最大貸出期間</th>
-  <th>カテゴリ</th>
-  <th>場所</th>
-  <th>個数</th>
-  <th>破棄</th>
-  <th>付属品</th>
-  <% @items.each do |item| %>
-    <tr align="center" valign="middle">
-      <td><%= check_box 'page', 'freezeflag', {}, true, false %></td>
-      <!-- <td><input type="checkbox" name="check" value="チェック"></td> -->
-      <td><%= link_to item.name, action: :show, id: item.id %></td>
-      <td><%= item.created_at %></td>
-      <td><%= item.category_text %></td>
-      <td><%= item.place %></td>
-      <td><%= item.amount %></td>
-      <td><%= item.trashed %></td>
-      <td><%= item.attachments %></td>
-    </tr>
-  <% end %>
-</table>
-<%= submit_tag "破棄", :name1 => "破棄" %>
-<%= submit_tag "借りる", :name1 => "借りる" %>
+<%= form_tag('/item/update', method: :post) do %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>チェック</th>
+        <th>物品名</th>
+        <th>最大貸出期間</th>
+        <th>カテゴリ</th>
+        <th>場所</th>
+        <th>個数</th>
+        <th>破棄</th>
+        <th>付属品</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= check_box 'page', 'freezeflag', {}, true, false %></td>
+          <td><%= link_to item.name, action: :show, id: item.id %></td>
+          <td><%= item.lending_period %>日</td>
+          <td><%= item.category_text %></td>
+          <td><%= item.place %></td>
+          <td><%= item.amount %></td>
+          <td><%= item.trashed_text %></td>
+          <td><%= item.attachments %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= submit_tag '破棄', name1: '破棄', class: 'btn' %>
+  <%= submit_tag '借りる', name1: '借りる', class: 'btn' %>
 <% end %>
-<!--
-<p><p>
-<input type="submit" value="破棄" style="position: relative; left: 200px; top\
-: 0px;"/>
-<input type="submit" value="借りる" style="position: relative; left: 300px; top: 0px;"/>
--->
-</form>
-<%= button_to "破棄", {:method => :post}, {:action => "add"} %>
-<%= button_to "借りる", {:method => :post}, {:action => "add"} %>

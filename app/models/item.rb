@@ -24,4 +24,9 @@ class Item < ActiveRecord::Base
     return 'PC'       if category == 1
     return 'デジカメ' if category == 2
   end
+
+  def trashed_text
+    return '有' if trashed
+    return '無'
+  end
 end
