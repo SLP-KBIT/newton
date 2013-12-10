@@ -20,8 +20,17 @@ class Item < ActiveRecord::Base
   validates :category, inclusion: { in: [0, 1, 2], message: '選択してください' }
 
   def category_text
-    return 'その他'   if category == 0
-    return 'PC'       if category == 1
-    return 'デジカメ' if category == 2
+    category_texts[category]
+  end
+
+  def trashed_text
+    return '有' if trashed
+    return '無'
+  end
+
+  private
+
+  def category_texts
+    ['その他', 'PC', 'デジカメ']
   end
 end
