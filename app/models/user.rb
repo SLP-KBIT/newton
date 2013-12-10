@@ -16,7 +16,22 @@ class User < ActiveRecord::Base
             )
 
   def category_text
-    return'サークル生' if category == 1
-    return'学内者'     if category == 2
+    category_texts[category]
+  end
+
+  def lendable_text
+    return '有効' if lendable
+    return '無効'
+  end
+
+  def admin_flag_text
+    return '管理者' if admin_flag
+    return '一般ユーザ'
+  end
+
+  private
+
+  def category_texts
+    ['サークル生', '学内者']
   end
 end
