@@ -94,5 +94,5 @@ describe UserController do
         expect(assigns[:result]).to be_false
       end
     end
-  end # #update'
+  end
 end
