@@ -34,7 +34,7 @@ class Item < ActiveRecord::Base
     ['その他', 'PC', 'デジカメ']
   end
 
-  def trashed_text
+  def trashed_texts
     return '有' if trashed
     return '無'
   end
