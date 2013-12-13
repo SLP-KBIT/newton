@@ -1,0 +1,31 @@
+<h1>物品編集</h1>
+
+<%= form_for @item, url: { action: :update } do |f| %>
+
+  <%= f.label :物品名 %>
+  <%= f.text_field :name %>
+
+  <%= f.label :カテゴリー %>
+  <%= f.text_field :category %>
+
+  <%= f.label :付属品 %>
+  <%= f.text_field :attachments %>
+
+  <%= f.label :最大貸出期間 %>
+  <%= f.text_field :lending_period %>
+
+  <%= f.label :個数 %>
+  <%= f.text_field :amount %>
+
+  <%= f.label :場所 %>
+  <%= f.text_field :place %>
+
+  <%= f.label :破棄フラグ %>
+  <%= f.text_field :trashed %>
+
+  <%= f.label :画像パス %>
+  <%= f.text_field :picture_path %>
+  
+  <br>
+  <%= f.submit '更新する', class: 'btn' %>
+<% end %>
