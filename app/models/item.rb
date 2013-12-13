@@ -25,7 +25,7 @@ class Item < ActiveRecord::Base
 
   def trashed_text
     return '有' if trashed
-    return '無'
+    '無'
   end
 
   private
@@ -36,6 +36,6 @@ class Item < ActiveRecord::Base
 
   def trashed_texts
     return '有' if trashed
-    return '無'
+    '無'
   end
 end

@@ -22,6 +22,6 @@ class History < ActiveRecord::Base
   private
 
   def status_texts
-     ['貸出', '返却', '予約', '予約取消', '破棄', '紛失', '故障', '復旧']
+    ['貸出', '返却', '予約', '予約取消', '破棄', '紛失', '故障', '復旧']
   end
 end
