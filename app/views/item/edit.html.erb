@@ -21,8 +21,8 @@
   <%= f.text_field :place %>
 
   <%= f.label :破棄フラグ %>
-  <%= f.text_field :trashed %>
-
+  <label class="checkbox inline"> <%= f.radio_button :trashed, "true"  %> 有効</label>
+  <label class="checkbox inline"> <%= f.radio_button :trashed, "false" %> 無効</label>
   <%= f.label :画像パス %>
   <%= f.text_field :picture_path %>
   
