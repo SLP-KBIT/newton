@@ -93,4 +93,11 @@ describe ItemController do
       end
     end
   end # #update
+
+  describe '#edit' do
+    before { get :edit, id: 1 }
+    it { expect(assigns[:item]).to be_a_kind_of(Item) }
+    it { expect(response).to be_success }
+    it { expect(response).to render_template(:edit) }
+  end
 end

@@ -11,6 +11,7 @@ Sample::Application.routes.draw do
   get   '/item/create'      => 'item#add'
   post  '/item/create'      => 'item#create'
   patch '/item/update'      => 'item#update'
+  get   '/item/update/:id'  => 'item#edit'
   get   '/item/:id'         => 'item#show'
 
   get   '/history'          => 'history#index'
