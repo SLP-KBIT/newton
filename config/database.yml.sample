@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: newton_development
+  database: newton_development_SAMPLE
   pool: 5
   username: newton
   password:
@@ -25,7 +25,7 @@ development:
 staging:
   adapter: postgresql
   encoding: unicode
-  database: newton_staging
+  database: newton_staging_SAMPLE
   pool: 5
   username: newton
   password:
@@ -54,7 +54,7 @@ staging:
 test:
   adapter: postgresql
   encoding: unicode
-  database: newton_test
+  database: newton_test_SAMPLE
   pool: 5
   username: newton
   password:
@@ -62,7 +62,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: newton_production
+  database: newton_production_SAMPLE
   pool: 5
   username: newton
   password:

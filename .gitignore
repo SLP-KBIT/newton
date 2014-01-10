@@ -22,3 +22,6 @@
 *~
 .*.swp
 *#*
+
+# for indivisual db setting
+config/database.yml
