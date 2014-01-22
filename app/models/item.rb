@@ -17,6 +17,8 @@
 #
 
 class Item < ActiveRecord::Base
+  has_many :histories
+
   validates :category, inclusion: { in: [0, 1, 2], message: '選択してください' }
 
   def category_text
