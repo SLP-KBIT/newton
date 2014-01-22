@@ -15,6 +15,10 @@
 #
 
 class History < ActiveRecord::Base
+  #has_many: reservation
+  belongs_to :item
+  belongs_to :user
+
   def status_text
     status_texts[status]
   end

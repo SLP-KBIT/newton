@@ -11,6 +11,9 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :histories
+  has_many :messages
+
   validates :category, inclusion: { in: [0, 1], message: '選択してください' }
 
   def category_text
