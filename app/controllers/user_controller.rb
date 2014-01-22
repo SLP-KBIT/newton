@@ -29,4 +29,16 @@ class UserController < ApplicationController
     redirect_to user_path and return if @result
     render 'edit' and return
   end
+  
+  def mainpage
+    @item_ids = History.where(user_id: params[:id]).order(:created_at).pluck(:item_id).uniq
+    @lending_item_ids = Array.new
+    @item_ids.each do |id| 
+      @history = History.where(item_id: id).order(:created_at).reverse_order.first
+      if @history.status == 0
+        @item_ids.push(@history.item_id)
+      end
+    end
+    @items = Item.where(id: @item_ids)
+  end
 end

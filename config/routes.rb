@@ -5,7 +5,9 @@ Sample::Application.routes.draw do
   post  '/user/create'           => 'user#create'
   patch '/user/update'           => 'user#update'
   get   '/user/update/:id'       => 'user#edit'
+  get   '/user/mainpage/:id'     => 'user#mainpage'
   get   '/user/:id'              => 'user#show'
+  
 
   get   '/item'                  => 'item#index'
   get   '/item/create'           => 'item#add'
