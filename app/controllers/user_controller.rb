@@ -36,9 +36,11 @@ class UserController < ApplicationController
     @item_ids.each do |id| 
       @history = History.where(item_id: id).order(:created_at).reverse_order.first
       if @history.status == 0
-        @item_ids.push(@history.item_id)
+        @lending_item_ids.push(@history.item_id)
       end
     end
-    @items = Item.where(id: @item_ids)
+    @items = Item.where(id: @lending_item_ids)
+    puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    p @items
   end
 end
