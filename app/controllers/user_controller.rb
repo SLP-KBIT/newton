@@ -32,15 +32,15 @@ class UserController < ApplicationController
   
   def mainpage
     @item_ids = History.where(user_id: params[:id]).order(:created_at).pluck(:item_id).uniq
+    @histories = History.where(user_id: params[:id])
     @lending_item_ids = Array.new
+    @lending_data
     @item_ids.each do |id| 
-      @history = History.where(item_id: id).order(:created_at).reverse_order.first
+      @history = @histories.where(item_id: id).order(:created_at).reverse_order.first
       if @history.status == 0
         @lending_item_ids.push(@history.item_id)
       end
     end
     @items = Item.where(id: @lending_item_ids)
-    puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    p @items
   end
 end

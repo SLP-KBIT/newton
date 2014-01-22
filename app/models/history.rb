@@ -19,6 +19,11 @@ class History < ActiveRecord::Base
     status_texts[status]
   end
 
+  def get_return_date
+    @item = Item.where(self.item_id).first
+    self.created_at + (@item.lending_period).days
+  end
+
   private
 
   def status_texts
