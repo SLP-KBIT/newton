@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -29,6 +30,8 @@ History.create(user_id: 1, item_id: 1, status: 0, amount: 1, failure_detail: '�
 History.create(user_id: 1, item_id: 1, status: 1, amount: 1, failure_detail: 'なし')
 History.create(user_id: 2, item_id: 2, status: 0, amount: 1, failure_detail: 'なし')
 History.create(user_id: 2, item_id: 2, status: 1, amount: 1, failure_detail: 'なし')
+History.create(user_id: 1, item_id: 1, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 4.days)
+History.create(user_id: 1, item_id: 2, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 5.days)
 
 # message
 
