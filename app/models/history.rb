@@ -15,7 +15,7 @@
 #
 
 class History < ActiveRecord::Base
-  #has_many: reservation
+  # has_many: reservation
   belongs_to :item
   belongs_to :user
 
@@ -24,8 +24,8 @@ class History < ActiveRecord::Base
   end
 
   def get_return_date
-    @item = Item.where(self.item_id).first
-    self.created_at + (@item.lending_period).days
+    @item = Item.where(id: item_id).first
+    created_at + (@item.lending_period).days
   end
 
   private

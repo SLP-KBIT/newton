@@ -30,22 +30,6 @@ class Item < ActiveRecord::Base
     '無'
   end
 
-  def get_schema
-    return {
-      'id' => self.id,
-      'name' => self.name,
-      'attachments' => self.attachements,
-      'lending_period' => self.lending_period,
-      'category' => self.category,
-      'place' => self.place,
-      'amount' => self.amount,
-      'trashed' => self.trashed,
-      'picture_path' => self.picture_path,
-      'created_at' => self.created_at,
-      'updated_at' => self.updated_at
-    }
-  end
-
   private
 
   def category_texts
