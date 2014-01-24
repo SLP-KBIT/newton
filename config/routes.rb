@@ -16,6 +16,7 @@ Sample::Application.routes.draw do
 
   get   '/history'          => 'history#index'
   get   '/history/:id'      => 'history#show'
+  post  '/history/lend/create' => 'history#lend_create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
