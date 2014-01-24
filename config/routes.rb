@@ -1,22 +1,29 @@
 Sample::Application.routes.draw do
 
-  get   '/user'             => 'user#index'
-  get   '/user/create'      => 'user#add'
-  post  '/user/create'      => 'user#create'
-  patch '/user/update'      => 'user#update'
-  get   '/user/update/:id'  => 'user#edit'
-  get   '/user/:id'         => 'user#show'
+  get   '/user'                  => 'user#index'
+  get   '/user/create'           => 'user#add'
+  post  '/user/create'           => 'user#create'
+  patch '/user/update'           => 'user#update'
+  get   '/user/update/:id'       => 'user#edit'
+  get   '/user/mainpage/:id'     => 'user#mainpage'
+  get   '/user/:id'              => 'user#show'
+  
 
-  get   '/item'             => 'item#index'
-  get   '/item/create'      => 'item#add'
-  post  '/item/create'      => 'item#create'
-  patch '/item/update'      => 'item#update'
-  get   '/item/update/:id'  => 'item#edit'
-  get   '/item/:id'         => 'item#show'
+  get   '/item'                  => 'item#index'
+  get   '/item/create'           => 'item#add'
+  post  '/item/create'           => 'item#create'
+  patch '/item/update'           => 'item#update'
+  get   '/item/update/:id'       => 'item#edit'
+  get   '/item/:id'              => 'item#show'
 
-  get   '/history'          => 'history#index'
-  get   '/history/:id'      => 'history#show'
-  post  '/history/lend/create' => 'history#lend_create'
+  get   '/history'               => 'history#index'
+  get   '/history/:id'           => 'history#show'
+  get  '/history/lend/add'      => 'history#lend_add'
+  post  '/history/lend/create'   => 'history#lend_create'
+  post  '/history/return/add'    => 'history#return_add'
+  post  '/history/return/create' => 'history#return_create'
+  get   '/history/returned'      => 'history#reserve'
+  post  '/history/returned'      => 'history#reserved'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

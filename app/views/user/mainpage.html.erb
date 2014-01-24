@@ -1,0 +1,28 @@
+<h1>借り物リスト</h1>
+
+
+<%#= form_tag('/history/return_add', method: :post) do %>
+<%= form_tag('/user/mainpage', method: :get) do %>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>一括返却</th>
+        <th>物品名</th>
+        <th>個数</th>
+        <th>期限</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @histories.each do |history| %>
+        <tr>
+          <td><%= check_box 'page', 'returnflag', {}, true, false %></td>
+          <td><%= link_to history.item.name, action: :show, id: history.item.id %></td>
+          <td><%= history.item.amount %></td>
+          <td><%= history.get_return_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= submit_tag '返却', name1: '返却', class: 'btn' %>
+<% end %>

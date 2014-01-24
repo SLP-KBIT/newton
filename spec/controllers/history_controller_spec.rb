@@ -16,6 +16,15 @@ describe HistoryController do
     it { expect(response).to be_success }
     it { expect(response).to render_template(:show) }
   end
+
+  describe '#lend_add' do
+    before { get :lend_add  }
+    it { expect(assigns[:history]).to be_a_kind_of(History) }
+    it { expect(response).to be_success }
+    it { expect(response).to render_template(:lend_add) }
+
+  end
+
   describe '#lend_create' do
     before do
       @history_param = {
@@ -44,5 +53,4 @@ describe HistoryController do
       it { expect(response).to be_success }
       it { expect(assigns[:result]).to be_false }    
     end
-  end
 end

@@ -15,8 +15,17 @@
 #
 
 class History < ActiveRecord::Base
+  # has_many: reservation
+  belongs_to :item
+  belongs_to :user
+
   def status_text
     status_texts[status]
+  end
+
+  def get_return_date
+    @item = Item.where(id: item_id).first
+    created_at + (@item.lending_period).days
   end
 
   private
