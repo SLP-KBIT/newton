@@ -22,4 +22,12 @@ class HistoryController < ApplicationController
       @array2.push(@array1)
     end
   end
+
+  def return_add
+    @return_histories = []
+    params[:page].each_value do |value|
+      @return_histories.push(value) if value.to_i > 0
+    end
+    @histories = History.where(id: @return_histories)
+  end
 end

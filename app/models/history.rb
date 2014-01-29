@@ -28,6 +28,10 @@ class History < ActiveRecord::Base
     created_at + (@item.lending_period).days
   end
 
+  def get_status_info
+    [['返却', 1], ['破棄', 4], ['紛失', 5], ['故障', 6]]
+  end
+
   private
 
   def status_texts
