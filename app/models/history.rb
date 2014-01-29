@@ -15,7 +15,7 @@
 #
 
 class History < ActiveRecord::Base
-  # has_many: reservation
+  has_one :reservation
   belongs_to :item
   belongs_to :user
 
