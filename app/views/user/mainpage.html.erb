@@ -1,8 +1,7 @@
 <h1>借り物リスト</h1>
 
 
-<%#= form_tag('/history/return_add', method: :post) do %>
-<%= form_tag('/user/mainpage', method: :get) do %>
+<%= form_tag(history_return_add_path, method: :post) do %>
 
   <table class="table table-bordered">
     <thead>
@@ -14,9 +13,9 @@
       </tr>
     </thead>
     <tbody>
-      <% @histories.each do |history| %>
+      <% @histories.each_with_index do |history, i| %>
         <tr>
-          <td><%= check_box 'page', 'returnflag', {}, true, false %></td>
+          <td><%= check_box 'page', i, {}, history.id %></td>
           <td><%= link_to history.item.name, action: :show, id: history.item.id %></td>
           <td><%= history.item.amount %></td>
           <td><%= history.get_return_date %></td>

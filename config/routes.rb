@@ -18,7 +18,7 @@ Sample::Application.routes.draw do
 
   get   '/history'               => 'history#index'
   get   '/history/:id'           => 'history#show'
-  get  '/history/lend/add'      => 'history#lend_add'
+  get   '/history/lend/add'      => 'history#lend_add'
   post  '/history/lend/create'   => 'history#lend_create'
   post  '/history/return/add'    => 'history#return_add'
   post  '/history/return/create' => 'history#return_create'
