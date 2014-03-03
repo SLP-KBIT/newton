@@ -66,4 +66,16 @@ describe HistoryController do
       # it { expect(response).to be_success }
     end
   end
+  describe '#return_add' do
+    before { post :return_add, page:{"0"=>"5","1"=>"6"}  }    
+    it { expect(assigns[:histories]).to eq(History.where(id: [5, 6])) }
+    it { expect(response).to be_success }
+    it { expect(response).to render_template(:return_add) }
+  end
+  describe '#return_confirm' do
+    before { post :return_confirm, state:{"5"=>"1", "6"=>"5"}  }    
+    it { expect(assigns[:histories]).to eq(History.where(id: [5, 6])) }
+    it { expect(response).to be_success }
+    it { expect(response).to render_template(:return_confirm) }
+  end
 end

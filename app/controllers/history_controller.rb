@@ -24,36 +24,37 @@ class HistoryController < ApplicationController
   end
 
   def lend_create
-    STDERR.puts params.inspect
-#-----------------------------------
-#    params.each do |key,value|
-#      if /^[0-9]/ =~ key.to_s
-##        @history = HIstory.new()
-##        @history = History.new(user_id: 1, item_id: key, status: 0, amount: value[:amount], detail_id: 0)
-#        @history = History.new(user_id: 1, item_id: key, status: 0, amount: value[:amount], failure_detail: "hoge", detail_id: 0)
-#        @result = @history.save
-#      end
-#    end
-#-----------------------------------
-#    @item = params[:item].select do |key,value|
-#      key.include? "item_"
-#    end
+#    STDERR.puts params.inspect
+
     @item = params[:item]
     @item.each do|key, value|
-      puts "#{key}, #{value}\n"
       item = Item.where(id: key.to_i).first
-      # @result = item.histories.create(user_id: 1, status: 0, amount: value.to_i, failure_detail: "hoge", detail_id: 0)
       @history = History.new(user_id: 1, item_id: key.to_i, status: 0, amount: value.to_i, failure_detail: "hoge", detail_id: 0)
       @result = @history.save
       redirect_to action: :lend_add and return if @result.blank?      
     end      
 
-#    @history = History.new(params.require(:history).permit(:item_id, :status, :amount, :failure_detail, :detail_id))
-    p @result
     redirect_to :controller => 'user', :action => 'mainpage', :id => 1 and return if @result
     redirect_to action: :lend_add
     
-    #redirect_to :action => 'mainpage', :id => 1
+  end
+
+  def return_add
+    @return_histories = []
+    params[:page].each_value do |value|
+      @return_histories.push(value) if value.to_i > 0
+    end
+    @histories = History.where(id: @return_histories)
+  end
+
+  def return_confirm
+    @history_ids = []
+    params[:state].each_key do |key|
+      @history_ids.push(key)
+    end
+    @histories = History.where(id: @history_ids)
+    @status = params[:state]
+    @report = params[:report]
   end
 
 end

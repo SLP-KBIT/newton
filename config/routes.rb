@@ -18,9 +18,11 @@ Sample::Application.routes.draw do
 
   get   '/history'               => 'history#index'
   get   '/history/:id'           => 'history#show'
-  get  '/history/lend/add'      => 'history#lend_add'
+  post  '/history/lend/add'      => 'history#lend_add'
+  post  '/history/lend/confirm'  => 'history#lend_confirm'
   post  '/history/lend/create'   => 'history#lend_create'
   post  '/history/return/add'    => 'history#return_add'
+  post  '/history/return/confirm'=> 'history#return_confirm'
   post  '/history/return/create' => 'history#return_create'
   get   '/history/returned'      => 'history#reserve'
   post  '/history/returned'      => 'history#reserved'
