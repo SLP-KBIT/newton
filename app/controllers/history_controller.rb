@@ -30,4 +30,14 @@ class HistoryController < ApplicationController
     end
     @histories = History.where(id: @return_histories)
   end
+
+  def return_confirm
+    @history_ids = []
+    params[:state].each_key do |key|
+      @history_ids.push(key)
+    end
+    @histories = History.where(id: @history_ids)
+    @status = params[:state]
+    @report = params[:report]
+  end
 end
