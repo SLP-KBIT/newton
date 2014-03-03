@@ -2,7 +2,7 @@
 
 <%= button_to '新規作成', item_create_path, method: :get, class: 'btn' %>
 
-<%= form_tag('/item/update', method: :post) do %>
+<%= form_tag(item_update_path, method: :patch) do %>
   <table class="table table-bordered">
     <thead>
       <tr>

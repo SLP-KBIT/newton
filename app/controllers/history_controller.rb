@@ -24,10 +24,35 @@ class HistoryController < ApplicationController
   end
 
   def lend_create
-    @history = History.new(params.require(:history).permit(:item_id, :status, :amount, :created_at, :failure_detail, :detail_id))
-    @result = @history.save
+    STDERR.puts params.inspect
+#-----------------------------------
+#    params.each do |key,value|
+#      if /^[0-9]/ =~ key.to_s
+##        @history = HIstory.new()
+##        @history = History.new(user_id: 1, item_id: key, status: 0, amount: value[:amount], detail_id: 0)
+#        @history = History.new(user_id: 1, item_id: key, status: 0, amount: value[:amount], failure_detail: "hoge", detail_id: 0)
+#        @result = @history.save
+#      end
+#    end
+#-----------------------------------
+#    @item = params[:item].select do |key,value|
+#      key.include? "item_"
+#    end
+    @item = params[:item]
+    @item.each do|key, value|
+      puts "#{key}, #{value}\n"
+      item = Item.where(id: key.to_i).first
+      # @result = item.histories.create(user_id: 1, status: 0, amount: value.to_i, failure_detail: "hoge", detail_id: 0)
+      @history = History.new(user_id: 1, item_id: key.to_i, status: 0, amount: value.to_i, failure_detail: "hoge", detail_id: 0)
+      @result = @history.save
+      redirect_to action: :lend_add and return if @result.blank?      
+    end      
+
+#    @history = History.new(params.require(:history).permit(:item_id, :status, :amount, :failure_detail, :detail_id))
+    p @result
     redirect_to :controller => 'user', :action => 'mainpage', :id => 1 and return if @result
-    #render 'lend_add' and return
+    redirect_to action: :lend_add
+    
     #redirect_to :action => 'mainpage', :id => 1
   end
 

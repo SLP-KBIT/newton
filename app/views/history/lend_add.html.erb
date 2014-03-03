@@ -6,7 +6,7 @@
 個数を確認のうえ、「借りる」ボタンを押してください
 </p>
 
-<%= form_tag('/history/lend/add', method: :get) do %>
+<%= form_tag('/history/lend/create', method: :post) do %>
   <table class="table table-bordered">
     <thead>
       <th>物品名</th>
@@ -20,7 +20,7 @@
       <% @items.each_with_index do |item, i| %>
         <tr>
           <td><%= item.name  %></td>
-          <td><%= select :item, :amount, @array2[i] %></td>
+          <td><%= select :item, "#{item.id}", @array2[i] %></td>
           <td><%= item.lending_period %></td>
           <td><%= item.category %></td>
           <td><%= item.place %></td>
