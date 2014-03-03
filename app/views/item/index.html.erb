@@ -2,7 +2,7 @@
 
 <%= button_to '新規作成', item_create_path, method: :get, class: 'btn' %>
 
-<%= form_tag('/item/update', method: :post) do %>
+<%= form_tag('/item/update', method: :patch) do %>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -19,7 +19,7 @@
     <tbody>
       <% @items.each do |item| %>
         <tr>
-          <td><%= check_box 'page', 'freezeflag', {}, true, false %></td>
+          <td><%= check_box 'page', item.id, {}, item.id %></td>
           <td><%= link_to item.name, action: :show, id: item.id %></td>
           <td><%= item.lending_period %>日</td>
           <td><%= item.category_text %></td>
