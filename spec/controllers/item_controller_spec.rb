@@ -7,6 +7,7 @@ describe ItemController do
   describe '#index' do
     before { get :index }
     it { expect(assigns[:items]).to eq(Item.all) }
+    # it { expect(assigns[:items]).to eq(Item.where(trashed: false)) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:index) }
   end

@@ -2,7 +2,7 @@
 
 <%= button_to '新規作成', item_create_path, method: :get, class: 'btn' %>
 
-<%= form_tag('/item/update', method: :post) do %>
+<%= form_tag('/history/lend/add', method: :post) do %>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -31,6 +31,6 @@
       <% end %>
     </tbody>
   </table>
-  <%= submit_tag '破棄', name1: '破棄', class: 'btn' %>
+  <!-- <%= submit_tag '破棄', name1: '破棄', class: 'btn' %> -->
   <%= submit_tag '借りる', name1: '借りる', class: 'btn' %>
 <% end %>
