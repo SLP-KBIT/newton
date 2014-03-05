@@ -16,8 +16,8 @@ describe HistoryController do
     it { expect(response).to render_template(:show) }
   end
   describe '#lend_add' do
-    before { get :lend_add  }
-    it { expect(assigns[:history]).to be_a_kind_of(History) }
+    before { get :lend_add, page:{"2"=>"true","3"=>"true"}  }
+    it { expect(assigns[:items]).to eq(Item.where(id: [2, 3])) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:lend_add) }
   end

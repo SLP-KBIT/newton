@@ -8,13 +8,16 @@ class HistoryController < ApplicationController
   end
 
   def lend_add
-    @items = Item.all
-    @history = History.new
+    @item_ids = []
+    params[:page].each_key do |key|
+      @item_ids.push(key)
+    end
+    @items = Item.where(id: @item_ids)
     @array2 = []
     @items.each do |item|
-      @array1 = Array.new
+      @array1 = []
       (1..item.amount).each do |i|
-        @array = Array.new
+        @array = []
         @array.push(i)
         @array.push(i)
         @array1.push(@array)
@@ -39,5 +42,8 @@ class HistoryController < ApplicationController
     @histories = History.where(id: @history_ids)
     @status = params[:state]
     @report = params[:report]
+  end
+
+  def lend_confirm
   end
 end
