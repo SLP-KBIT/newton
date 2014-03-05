@@ -1,5 +1,6 @@
 <h1>ユーザ 詳細</h1>
 
+<%= button_to '更新', { :action => 'edit', :id => @user.id }, method: :get, class: 'btn btn-primary' %>
 <table class="table table-bordered">
   <thead>
     <tr>
