@@ -1,0 +1,24 @@
+<h1>メッセージ 一覧</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>件名</th>
+      <th>内容</th>
+      <th>送信者</th>
+      <th>既読フラグ</th>
+      <th>宛先</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.subject %></td>
+        <td><%= message.contents %></td>
+        <td><%= message.from %></td>
+        <td><%= message.read_flag %></td>
+        <td><%= message.user_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
