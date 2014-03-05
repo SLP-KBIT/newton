@@ -21,6 +21,12 @@ describe HistoryController do
     it { expect(response).to be_success }
     it { expect(response).to render_template(:lend_add) }
   end
+  describe '#lend_confirm' do
+    before { get :lend_confirm, item:{"2"=>"1","3"=>"2"}  }
+    it { expect(assigns[:items]).to eq(Item.where(id: [2, 3])) }
+    it { expect(response).to be_success }
+    it { expect(response).to render_template(:lend_confirm) }
+  end
   describe '#return_add' do
     before { post :return_add, page:{"0"=>"5","1"=>"6"}  }    
     it { expect(assigns[:histories]).to eq(History.where(id: [5, 6])) }

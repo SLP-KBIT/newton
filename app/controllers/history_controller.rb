@@ -28,6 +28,15 @@ class HistoryController < ApplicationController
     end
   end
 
+  def lend_confirm
+    @item_ids = []
+    params[:item].each_key do |key|
+      @item_ids.push(key)
+    end
+    @items = Item.where(id: @item_ids)
+    @item = params[:item]
+  end
+
   def return_add
     @return_histories = []
     params[:page].each_value do |value|
@@ -44,8 +53,5 @@ class HistoryController < ApplicationController
     @histories = History.where(id: @history_ids)
     @status = params[:state]
     @report = params[:report]
-  end
-
-  def lend_confirm
   end
 end
