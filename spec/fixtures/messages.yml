@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  subject        :string
+#  contents       :text
+#  from           :string
+#  read_flag      :boolean
+#  user_id        :integer
+#
+
+# <Message subject: nil, contents: nil, from: nil, read_flag: nil, user_id: nil>
+sample:
+  subject: 'メンテナンスのお知らせ' 
+  contents: '4月1日2時からメンテナンスを始めます'
+  from: 'システム'
+  read_flag: true
+  user_id: 4
