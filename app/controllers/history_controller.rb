@@ -17,15 +17,24 @@ class HistoryController < ApplicationController
     @history = History.new
     @array2 = []
     @items.each do |item|
-      @array1 = Array.new
+      @array1 = []
       (1..item.amount).each do |i|
-        @array = Array.new
+        @array = []
         @array.push(i)
         @array.push(i)
         @array1.push(@array)
       end
       @array2.push(@array1)
     end
+  end
+
+  def lend_confirm
+    @item_ids = []
+    params[:item].each_key do |key|
+      @item_ids.push(key)
+    end
+    @items = Item.where(id: @item_ids)
+    @item = params[:item]
   end
 
   def lend_create
