@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: histories
+#
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  item_id        :integer
+#  status         :integer
+#  amount         :integer
+#  failure_detail :text
+#  detail_id      :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
 # <History id: nil, user_id: nil, item_id: nil, status: nil, amount: nil, failure_detail: nil, detail_id: nil, created_at: nil, updated_at: nil>
 sample:
   id: 1

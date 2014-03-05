@@ -98,4 +98,9 @@ describe UserController do
       end
     end
   end
+  describe '#mainpage' do
+    before { get :mainpage, id: 1 }
+    it { expect(response).to be_success }
+    it { expect(response).to render_template(:mainpage) }
+  end
 end
