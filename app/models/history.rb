@@ -19,6 +19,12 @@ class History < ActiveRecord::Base
   belongs_to :item
   belongs_to :user
 
+  validates :item_id, inclusion: { in: [1, 2, 3], message: 'アイテムIDが間違えています' }
+
+  validates :item_id, :status, :amount, :failure_detail, presence: true
+  # validates :item_id, presence: { message: '入力してください', on: :lend_add }
+  # validates :item_id, presence: { message: '入力してください', on: :lend_create }
+
   def status_text
     status_texts[status]
   end
