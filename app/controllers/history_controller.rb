@@ -33,15 +33,15 @@ class HistoryController < ApplicationController
 
     @item = params[:item]
     @item.each do|key, value|
-      item = Item.where(id: key.to_i).first
-      @history = History.new(user_id: 1, item_id: key.to_i, status: 0, amount: value.to_i, failure_detail: "hoge", detail_id: 0)
+#      item = Item.where(id: key.to_i).first
+      @history = History.new(user_id: 1, item_id: key.to_i, status: 0, amount: value.to_i, failure_detail: 'hoge', detail_id: 0)
       @result = @history.save
-      redirect_to action: :lend_add and return if @result.blank?      
-    end      
+      redirect_to action: :lend_add and return if @result.blank?
+    end
 
-    redirect_to :controller => 'user', :action => 'mainpage', :id => 1 and return if @result
+    redirect_to controller: 'user', action:  'mainpage', id: 1 and return if @result
+#    redirect_to :controller => 'user', :action => 'mainpage', :id => 1 and return if @result
     redirect_to action: :lend_add
-    
   end
 
   def return_add
@@ -61,5 +61,4 @@ class HistoryController < ApplicationController
     @status = params[:state]
     @report = params[:report]
   end
-
 end
