@@ -21,7 +21,7 @@ class ItemController < ApplicationController
   end
 
   def update
-    if params[:commit] == "借りる"
+    if params[:commit] == '借りる'
       redirect_to history_lend_add_path(:page => params[:page]) and return
     end
     @item = Item.where(id: params[:item][:id]).first
