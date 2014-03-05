@@ -34,7 +34,10 @@ History.create(id: 5, user_id: 1, item_id: 1, status: 0, amount: 1, failure_deta
 History.create(id: 6, user_id: 1, item_id: 2, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 5.days)
 
 # message
+Message.destroy_all
 
+Message.create(id: 1, contents: 'ほげほげ', from: "管理者", read_flag: true, user_id: 1)
+Message.create(id: 2, contents: 'aa', from: "システム", read_flag: false, user_id: 1)
 
 # reservation
 
