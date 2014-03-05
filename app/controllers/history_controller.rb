@@ -14,7 +14,6 @@ class HistoryController < ApplicationController
       @item_ids.push(value) if value.to_i > 0
     end
     @items = Item.where(id: @item_ids)
-    @history = History.new
     @array2 = []
     @items.each do |item|
       @array1 = []
@@ -30,8 +29,10 @@ class HistoryController < ApplicationController
 
   def lend_confirm
     @item_ids = []
-    params[:item].each_key do |key|
+    @history_amounts = []
+    params[:item].each do |key, value|
       @item_ids.push(key)
+      @history_amounts.push(value)
     end
     @items = Item.where(id: @item_ids)
     @item = params[:item]
