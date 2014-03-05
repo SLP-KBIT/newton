@@ -2,6 +2,7 @@
 class ItemController < ApplicationController
   def index
     @items = Item.all
+    # @items = Item.where(trashed: false)
   end
 
   def add
