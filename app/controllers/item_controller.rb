@@ -21,9 +21,7 @@ class ItemController < ApplicationController
   end
 
   def update
-    if params[:commit] == '借りる'
-      redirect_to history_lend_add_path(:page => params[:page]) and return
-    end
+    redirect_to history_lend_add_path, page: :params[:page] and return if params[:commit] == '借りる'
     @item = Item.where(id: params[:item][:id]).first
     @item.attributes = params.require(:item).permit(:name, :attachments, :lending_period, :category, :place, :amount, :trashed, :picture_path)
     @result = @item.save
