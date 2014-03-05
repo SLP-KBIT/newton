@@ -8,11 +8,13 @@ class HistoryController < ApplicationController
   end
 
   def lend_add
+    @items = Item.all
     @item_ids = []
-    params[:page].each_key do |key|
-      @item_ids.push(key)
+    params[:page].each_value do |value|
+      @item_ids.push(value) if value.to_i > 0
     end
     @items = Item.where(id: @item_ids)
+    @history = History.new
     @array2 = []
     @items.each do |item|
       @array1 = []

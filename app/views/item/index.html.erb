@@ -2,7 +2,7 @@
 
 <%= button_to '新規作成', item_create_path, method: :get, class: 'btn' %>
 
-<%= form_tag('/history/lend/add', method: :post) do %>
+<%= form_tag(history_lend_add_path, method: :post) do %>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -19,7 +19,7 @@
     <tbody>
       <% @items.each do |item| %>
         <tr>
-          <td><%= check_box 'page', "#{item.id}", {}, true, false %></td>
+          <td><%= check_box 'page', item.id, {}, item.id %></td>
           <td><%= link_to item.name, action: :show, id: item.id %></td>
           <td><%= item.lending_period %>日</td>
           <td><%= item.category_text %></td>
@@ -31,6 +31,6 @@
       <% end %>
     </tbody>
   </table>
-  <%= submit_tag '破棄', name1: '破棄', class: 'btn' %>
+  <!-- <%= submit_tag '破棄', name1: '破棄', class: 'btn' %> -->
   <%= submit_tag '借りる', name1: '借りる', class: 'btn' %>
 <% end %>
