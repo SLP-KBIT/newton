@@ -50,14 +50,12 @@ describe ItemController do
       it { expect(assigns[:result]).to be_false }
     end
   end
-
   describe '#show' do
     before { get :show, id: 1 }
     it { expect(assigns[:item]).to be_a_kind_of(Item) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:show) }
   end
-
   describe '#update' do
     before do
       session[:item_id] = Item.first.id

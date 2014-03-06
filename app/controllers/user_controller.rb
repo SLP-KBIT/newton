@@ -22,7 +22,7 @@ class UserController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def enable
+  def exchange
     params[:page].each do |key, value|
       @user = User.where(id: key).first
       @lendable_state = @user.lendable
