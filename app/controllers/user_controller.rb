@@ -22,6 +22,21 @@ class UserController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def enable
+    params[:page].each do |key, value|
+      @user = User.where(id: key).first
+      @lendable_state = @user.lendable
+      if @lendable_state == true
+        @user.attributes = { lendable: 'false' }
+      elsif  @lendable_state == false
+        @user.attributes = { lendable: 'true' }
+      end
+      @result = @user.save
+    end
+    redirect_to user_path and return if @result
+    render 'edit' and return
+  end
+
   def update
     @user = User.where(id: params[:user][:id]).first
     @user.attributes = params.require(:user).permit(:id, :name, :account, :admin_flag, :category, :lendable, :e_mail, :password)

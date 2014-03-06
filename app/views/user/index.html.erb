@@ -2,7 +2,7 @@
 
 <%= button_to '新規作成', user_create_path, method: :get, class: 'btn' %>
 
-<%= form_tag('/user/update', method: :post) do %>
+<%= form_tag('user/enable', method: :get) do %>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -18,7 +18,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= check_box 'page', 'freezeflag', {}, true, false %></td>
+          <td><%= check_box 'page', user.id, {}, true, false %></td>
           <td><%= link_to user.name, action: :show, id: user.id %></td>
           <td><%= user.account %></td>
           <td><%= user.category_text %></td>
@@ -29,5 +29,5 @@
       <% end %>
     </tbody>
   </table>
-  <%= submit_tag '停止', name1: '停止', class: 'btn' %>
+  <%= submit_tag '貸出切替', name1: '停止', class: 'btn' %>
 <% end %>
