@@ -34,7 +34,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
 gem 'unicorn'
@@ -53,7 +53,7 @@ gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 
 gem 'annotate', group: :development
- 
+
 group :development, :test do
   gem 'spork', '1.0.0rc3'
   gem 'guard-spork'

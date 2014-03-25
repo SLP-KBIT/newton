@@ -18,10 +18,10 @@ Item.create(id: 3, name: 'roomba1', attachments: '充電器', lending_period: 1,
 # user
 User.destroy_all
 
-User.create(id: 1, name: '高松太郎', account: 'takamatsu', admin_flag: true, category: 0, lendable: true, e_mail: 's00t000', password: 'hogehoge')
-User.create(id: 2, name: '香川太郎', account: 'kagawa', admin_flag: true, category: 1, lendable: true, e_mail: 's00t001', password: 'foofooa')
-User.create(id: 3, name: '香川花子', account: 'kagahana', admin_flag: true, category: 0, lendable: true, e_mail: 's00t002', password: 'barbar')
-User.create(id: 4, name: '高松花子', account: 'takahana', admin_flag: true, category: 0, lendable: true, e_mail: 's00t003', password: 'takamatsu')
+User.create(id: 1, name: '高松太郎', account: 'takamatsu', admin_flag: true, category: 0, lendable: true, e_mail: 's00t000', password: 'password', password_confirmation: 'password')
+User.create(id: 2, name: '香川太郎', account: 'kagawa', admin_flag: true, category: 1, lendable: true, e_mail: 's00t001', password: 'password', password_confirmation: 'password')
+User.create(id: 3, name: '香川花子', account: 'kagahana', admin_flag: true, category: 0, lendable: true, e_mail: 's00t002', password: 'password', password_confirmation: 'password')
+User.create(id: 4, name: '高松花子', account: 'takahana', admin_flag: true, category: 0, lendable: true, e_mail: 's00t003', password: 'password', password_confirmation: 'password')
 
 # history
 History.destroy_all
