@@ -23,4 +23,4 @@ admin:
   category: 1
   lendable: true
   e_mail: admin@example.com
-  password: hoge
+  password_digest: $2a$10$5V/4.3tHU/f.QK3tAIZFfu3jlAGRyDp1ru0hbXnlkCEYxTrMGL2aO
