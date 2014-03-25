@@ -63,6 +63,39 @@ describe UserController do
     it { expect(response).to be_success }
     it { expect(response).to render_template(:edit) }
   end
+  describe '#exchange' do
+    before do
+      session[:user_id] = User.first.id
+      @user_param = {
+        id:         User.first.id,
+        name:       's11t200',
+        account:    'kumanon',
+        admin_flag: true,
+        category:   1,
+        lendable:   true,
+        e_mail:     's11t200@stmail.eng.kagawa-u.ac.jp',
+        password:   'hogehoge'
+      }
+    end
+    context '成功時' do
+      before { get :exchange, page: {"2"=>"true","3"=>"true"} }
+      it 'ユーザ一覧ページへリダイレクトする' do
+        expect(response).to redirect_to user_path
+      end
+      it 'ユーザレコードが更新される' do
+        expect(assigns[:user]).to eq(User.new(@page))
+        expect(assigns[:result]).to be_true
+      end
+    end
+    context '失敗時' do
+      before { get :exchange, page: {"2"=>"false","3"=>"false"} }
+      it { expect(response).to render_template(:edit) }
+      it { expect(response).to be_success }
+      it 'ユーザレコードが更新される' do
+        expect(assigns[:result]).to be_false
+      end
+    end
+  end
   describe '#update' do
     before do
       session[:user_id] = User.first.id

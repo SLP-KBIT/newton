@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class UserController < ApplicationController
   def index
     @users = User.all
@@ -20,6 +21,23 @@ class UserController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def exchange
+    if params[:page].nil? != true
+      params[:page].each do |key, value|
+        @user = User.where(id: key).first
+        @lendable_state = @user.lendable
+        if @lendable_state == true
+          @user.attributes = { lendable: 'false' }
+        elsif  @lendable_state == false
+          @user.attributes = { lendable: 'true' }
+        end
+        @result = @user.save
+      end
+      redirect_to user_path, notice: 'ユーザの貸出フラグを変更しました' and return
+    end
+    redirect_to user_path, alert: 'チェックボックスで切り替えるユーザを選択してください' and return
   end
 
   def update
