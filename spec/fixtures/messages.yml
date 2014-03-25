@@ -2,11 +2,14 @@
 #
 # Table name: messages
 #
-#  subject        :string
-#  contents       :text
-#  from           :string
-#  read_flag      :boolean
-#  user_id        :integer
+#  id         :integer          not null, primary key
+#  subject    :string(255)
+#  contents   :text
+#  from       :string(255)
+#  read_flag  :boolean
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 # <Message subject: nil, contents: nil, from: nil, read_flag: nil, user_id: nil>
