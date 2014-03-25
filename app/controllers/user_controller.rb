@@ -33,7 +33,7 @@ class UserController < ApplicationController
         elsif  @lendable_state == false
           @user.attributes = { lendable: 'true' }
         end
-          @result = @user.save
+        @result = @user.save
       end
       redirect_to user_path, notice: 'ユーザの貸出フラグを変更しました' and return
     end
