@@ -13,7 +13,7 @@
   <%= f.check_box :admin_flag %>
 
   <%= f.label :category %>
-  <%= f.select :category, ['サークル生', '学内者'] %>
+  <%= f.select :category, {'サークル生' => '0', '学内者' => '1'} %>
 
   <%= f.label :lendable %>
   <%= f.check_box :lendable %>
