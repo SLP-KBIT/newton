@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :login_check, unless: :login_controller?
+  before_action :permittion_check, if: :user_controller?, only: [:index, :add, :create, :show, :exchange]
   before_action :current_user
 
   def current_user
@@ -21,6 +22,10 @@ class ApplicationController < ActionController::Base
     redirect_to login_path  if current_user.nil?
   end
 
+  def permittion_check
+    render file: "#{Rails.root}/public/404.html", status: 404 unless permitted_user?
+  end
+
   private
 
   def find_user_from_session
@@ -29,5 +34,9 @@ class ApplicationController < ActionController::Base
 
   def login_controller?
     controller_name == 'login'
+  end
+
+  def user_controller?
+    controller_name == 'user'
   end
 end
