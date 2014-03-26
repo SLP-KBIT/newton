@@ -1,0 +1,24 @@
+<h1>ログイン画面</h1>
+
+<%= form_for(:user, html: { class: 'form-horizontal' } ) do |f| %>
+
+<div class='control-group'>
+  <%= f.label :アカウント, { class: 'control-label' } %>
+  <div class='controls'>
+    <%= f.text_field :account %>
+  </div>
+</div>
+<div class='control-group'>
+  <%= f.label :パスワード, { class: 'control-label' } %>
+  <div class='controls'>
+    <%= f.password_field :password %>
+  </div>
+</div>
+
+<div class='actions'>
+  <div class='controls'>
+    <%= f.submit :ログイン, class: :btn %>
+  </div>
+</div>
+
+<% end %>
