@@ -49,10 +49,14 @@
           <a class="brand" href="#">Newton</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "メインページ", {:controller => "user", :action => "mainpage", :id => "1"}  %></li>
-              <li><%= link_to "ユーザ", user_path %></li>
-              <li><%= link_to "物品", item_path %></li>
-              <li><%= link_to "履歴", history_path %></li>
+              <% if current_user %>
+                <li><%= link_to "メインページ", {:controller => "user", :action => "mainpage", :id => "1"}  %></li>
+                <li><%= link_to "物品", item_path %></li>
+              <% end %>
+              <% if current_user && permitted_user? %>
+                <li><%= link_to "ユーザ", user_path %></li>
+                <li><%= link_to "履歴", history_path %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -68,7 +72,7 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2013</p>
+        <p>&copy; Student Laboratory for Programming 2013</p>
       </footer>
 
     </div> <!-- /container -->
