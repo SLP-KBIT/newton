@@ -3,7 +3,6 @@ class LoginController < ApplicationController
     user = User.where(account: params[:user][:account]).first
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      # redirect_to root_path
       redirect_to controller: 'user', action: 'mainpage', id: user.id
     else
       flash.now.alert = 'もう一度入力してください。'
@@ -13,7 +12,12 @@ class LoginController < ApplicationController
 
   def new
     session[:user_id] = nil
-    session[:player_id] = nil
     @current_user = nil
+  end
+
+  def destroy
+    session[:user_id] = nil
+    @current_user = nil
+    redirect_to login_path
   end
 end
