@@ -28,4 +28,13 @@ describe LoginController do
     it { expect(response).to be_success }
     it { expect(response).to render_template('new') }
   end
+
+  describe '#destroy' do
+    before { get :destroy }
+    context 'ログイン情報をクリアする' do
+      it { expect(session[:user_id]).to be_nil }
+      it { expect(assigns[:current_user]).to be_nil }
+      it { expect(response).to redirect_to(login_path) }
+    end
+  end
 end

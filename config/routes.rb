@@ -4,6 +4,7 @@ Sample::Application.routes.draw do
 
   get   '/login'                 => 'login#new'
   post  '/login'                 => 'login#login'
+  get  '/destroy'                => 'login#destroy'
 
   get   '/user'                  => 'user#index'
   get   '/user/create'           => 'user#add'

@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
 
   validates :category, inclusion: { in: [0, 1], message: '選択してください' }
 
+  scope :id_is, -> (id) { where(id: id) }
+
   def category_text
     category_texts[category]
   end
