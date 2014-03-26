@@ -20,8 +20,8 @@ User.destroy_all
 
 User.create(id: 1, name: '高松太郎', account: 'takamatsu', admin_flag: true, category: 0, lendable: true, e_mail: 's00t000', password: 'password', password_confirmation: 'password')
 User.create(id: 2, name: '香川太郎', account: 'kagawa', admin_flag: true, category: 1, lendable: true, e_mail: 's00t001', password: 'password', password_confirmation: 'password')
-User.create(id: 3, name: '香川花子', account: 'kagahana', admin_flag: true, category: 0, lendable: true, e_mail: 's00t002', password: 'password', password_confirmation: 'password')
-User.create(id: 4, name: '高松花子', account: 'takahana', admin_flag: true, category: 0, lendable: true, e_mail: 's00t003', password: 'password', password_confirmation: 'password')
+User.create(id: 3, name: '香川花子', account: 'kagahana', admin_flag: false, category: 0, lendable: true, e_mail: 's00t002', password: 'password', password_confirmation: 'password')
+User.create(id: 4, name: '高松花子', account: 'takahana', admin_flag: false, category: 0, lendable: true, e_mail: 's00t003', password: 'password', password_confirmation: 'password')
 
 # history
 History.destroy_all
@@ -40,6 +40,3 @@ Message.create(id: 1, contents: 'ほげほげ', from: "管理者", read_flag: tr
 Message.create(id: 2, contents: 'aa', from: "システム", read_flag: false, user_id: 1)
 
 # reservation
-
-
-
