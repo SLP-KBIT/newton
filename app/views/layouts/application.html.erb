@@ -57,6 +57,9 @@
                 <li><%= link_to "ユーザ", user_path %></li>
                 <li><%= link_to "履歴", history_path %></li>
               <% end %>
+              <% if current_user %>
+                <li><%= link_to "ログアウト" , {:controller => "login", :action => "destroy"} %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
