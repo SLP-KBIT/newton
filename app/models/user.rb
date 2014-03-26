@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 # == Schema Information
 #
@@ -22,6 +23,8 @@ class User < ActiveRecord::Base
   has_many :messages
 
   validates :category, inclusion: { in: [0, 1], message: '選択してください' }
+
+  scope :id_is, -> (id) { where(id: id) }
 
   def category_text
     category_texts[category]
