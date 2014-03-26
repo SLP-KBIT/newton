@@ -1,5 +1,7 @@
 Sample::Application.routes.draw do
 
+  root to:                          'login#new'
+
   get   '/login'                 => 'login#new'
   post  '/login'                 => 'login#login'
 
