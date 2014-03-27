@@ -1,31 +1,68 @@
 <h1>物品編集</h1>
 
-<%= form_for @item, url: { action: :update } do |f| %>
+<%= form_for @item, html: { class: 'form-horizontal' }, url: { action: :update } do |f| %>
   <%= f.hidden_field :id %>
-  <%= f.label :物品名 %>
-  <%= f.text_field :name %>
 
-  <%= f.label :カテゴリー %>
-  <%= f.text_field :category %>
+  <div class='control-group'>
+    <%= f.label :物品名 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :name %>
+    </div>
+  </div>
 
-  <%= f.label :付属品 %>
-  <%= f.text_field :attachments %>
+  <div class='control-group'>
+    <%= f.label :カテゴリー , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :category %>
+    </div>
+  </div>
 
-  <%= f.label :最大貸出期間 %>
-  <%= f.text_field :lending_period %>
+  <div class='control-group'>
+    <%= f.label :付属品 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :attachments %>
+    </div>
+  </div>
 
-  <%= f.label :個数 %>
-  <%= f.text_field :amount %>
+  <div class='control-group'>
+    <%= f.label :最大貸出期間 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :lending_period %>
+    </div>
+  </div>
 
-  <%= f.label :場所 %>
-  <%= f.text_field :place %>
+  <div class='control-group'>
+    <%= f.label :個数 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :amount %>
+    </div>
+  </div>
 
-  <%= f.label :破棄フラグ %>
-  <label class="checkbox inline"> <%= f.radio_button :trashed, "true"  %> 有効</label>
-  <label class="checkbox inline"> <%= f.radio_button :trashed, "false" %> 無効</label>
-  <%= f.label :画像パス %>
-  <%= f.text_field :picture_path %>
-  
-  <br>
-  <%= f.submit '更新する', class: 'btn' %>
+  <div class='control-group'>
+    <%= f.label :場所 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :place %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :破棄フラグ , {class: 'control-label'} %>
+    <div class='controls'>
+      <label class="checkbox inline"> <%= f.radio_button :trashed, "true"  %> 有効</label>
+      <label class="checkbox inline"> <%= f.radio_button :trashed, "false" %> 無効</label>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :画像パス , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :picture_path %>
+    </div>
+  </div>
+
+  <div class='actions'>
+    <div class='controls'>
+      <%= f.submit '更新', class: 'btn' %>
+    </div>
+  </div>
 <% end %>
