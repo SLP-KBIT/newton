@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :login_check, unless: :login_controller?
   before_action :permittion_check, if: :user_controller?, only: [:index, :add, :create, :show, :exchange]
+  before_action :permittion_check, if: :item_controller?, only: [:add, :create, :edit, :update]
   before_action :current_user
 
   def current_user
@@ -38,5 +39,9 @@ class ApplicationController < ActionController::Base
 
   def user_controller?
     controller_name == 'user'
+  end
+
+  def item_controller?
+    controller_name == 'item'
   end
 end
