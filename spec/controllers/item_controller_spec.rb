@@ -5,20 +5,27 @@ describe ItemController do
   fixtures :items
   render_views
   describe '#index' do
-    before { get :index }
+    before do
+      session[:user_id] = User.first.id
+      get :index
+    end
     it { expect(assigns[:items]).to eq(Item.all) }
     # it { expect(assigns[:items]).to eq(Item.where(trashed: false)) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:index) }
   end
   describe '#add' do
-    before { get :add }
+    before do
+      session[:user_id] = User.where(admin_flag: true).first.id
+      get :add
+    end
     it { expect(assigns[:item]).to be_a_kind_of(Item) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:add) }
   end
   describe '#create' do
     before do
+      session[:user_id] = User.where(admin_flag: true).first.id
       @item_param = {
         name:           'ルンバ',
         attachments:    '充電器',
@@ -51,13 +58,17 @@ describe ItemController do
     end
   end
   describe '#show' do
-    before { get :show, id: 1 }
+    before do
+      session[:user_id] = User.first.id
+      get :show, id: 1
+    end
     it { expect(assigns[:item]).to be_a_kind_of(Item) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:show) }
   end
   describe '#update' do
     before do
+      session[:user_id] = User.where(admin_flag: true).first.id
       session[:item_id] = Item.first.id
       @item_param = {
         id:             Item.first.id,
@@ -94,7 +105,10 @@ describe ItemController do
   end # #update
 
   describe '#edit' do
-    before { get :edit, id: 1 }
+    before do
+      session['user_id'] = User.where(admin_flag: true).first.id
+      get :edit, id: 1
+    end
     it { expect(assigns[:item]).to be_a_kind_of(Item) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:edit) }

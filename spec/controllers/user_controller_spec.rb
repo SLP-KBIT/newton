@@ -5,13 +5,19 @@ describe UserController do
   fixtures :users
   render_views
   describe '#index' do
-    before { get :index }
+    before do
+      session[:user_id] = User.where(admin_flag: true).first.id
+      get :index
+    end
     it { expect(assigns[:users]).to eq(User.all) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:index) }
   end
   describe '#add' do
-    before { get :add }
+    before do
+      session[:user_id] = User.where(admin_flag: true).first.id
+      get :add
+    end
     it { expect(assigns[:user]).to be_a_kind_of(User) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:add) }
@@ -29,6 +35,7 @@ describe UserController do
         password_confirmation: 'hogehoge'
       }
     end
+    before { session[:user_id] = User.where(admin_flag: true).first.id }
     context '成功時' do
       let(:category) { 1 }
       it 'ユーザ一覧ページへリダイレクトする' do
@@ -53,13 +60,19 @@ describe UserController do
     end
   end
   describe '#show' do
-    before { get :show, id: 1 }
+    before do
+      session[:user_id] = User.where(admin_flag: true).first.id
+      get :show, id: 1
+    end
     it { expect(assigns[:user]).to be_a_kind_of(User) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:show) }
   end
   describe '#edit' do
-    before { get :edit, id: 1 }
+    before do
+      session[:user_id] = User.first.id
+      get :edit, id: User.first.id
+    end
     it { expect(assigns[:user]).to be_a_kind_of(User) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:edit) }
@@ -134,7 +147,10 @@ describe UserController do
     end
   end
   describe '#mainpage' do
-    before { get :mainpage, id: 1 }
+    before do
+      session[:user_id] = User.where(admin_flag: true).first.id
+      get :mainpage, id: 1
+    end
     it { expect(response).to be_success }
     it { expect(response).to render_template(:mainpage) }
   end

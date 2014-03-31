@@ -1,6 +1,8 @@
 <h1>物品 一覧</h1>
 
-<%= button_to '新規作成', item_create_path, method: :get, class: 'btn' %>
+<% if permitted_user? %>
+  <%= button_to '新規作成', item_create_path, method: :get, class: 'btn' %>
+<% end %>
 
 <%= form_tag(history_lend_add_path, method: :post) do %>
   <table class="table table-bordered">
