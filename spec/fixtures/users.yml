@@ -24,3 +24,23 @@ admin:
   lendable: true
   e_mail: admin@example.com
   password_digest: $2a$10$5V/4.3tHU/f.QK3tAIZFfu3jlAGRyDp1ru0hbXnlkCEYxTrMGL2aO
+
+user1:
+  id: 2
+  name: user1 USER1
+  account: user1
+  admin_flag: true
+  category: 1
+  lendable: true
+  e_mail: user1@example.com
+  password_digest: $2a$10$5V/4.3tHU/f.QK3tAIZFfu3jlAGRyDp1ru0hbXnlkCEYxTrMGL2aO
+
+user2:
+  id: 3
+  name: user2 USER2
+  account: user2
+  admin_flag: true
+  category: 1
+  lendable: true
+  e_mail: user2@example.com
+  password_digest: $2a$10$5V/4.3tHU/f.QK3tAIZFfu3jlAGRyDp1ru0hbXnlkCEYxTrMGL2aO
