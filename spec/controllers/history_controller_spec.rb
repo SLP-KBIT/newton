@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe HistoryController do
-  fixtures :histories
+  fixtures :histories, :items, :users
   render_views
 
   describe '#index' do
@@ -42,19 +42,16 @@ describe HistoryController do
         "1" => "1"
       }
       @history_param_false = {
-         "20" => "1"
+         "1" => "5"
       }
     end
     context '成功時' do
       # before { post :lend_create, item: @history_param }
-      pending('まだページができていないのでテストしない') do
         it '借り物リストへリダイレクトする' do
           # post :lend_create, history: @history_param
           post :lend_create, item: @history_param
-          expect(response).to redirect_to action: 'mainpage', id: 1
+        expect(response).to redirect_to controller: 'user', action: 'mainpage', id: 1
         end
-      end
-      pending('エラーの解消法を検討中のためテストしない') do
       it '貸出レコードが作成される' do
         post :lend_create, item: @history_param
         expect(assigns[:history]).to eq(History.last)
@@ -64,21 +61,18 @@ describe HistoryController do
         post :lend_create, item: @history_param
         expect { post :lend_create, item: @history_param }.to change(History, :count).by(1)
       end
-      end
     end
-    context '失敗時' do
-      # before { post :lend_create, history: @history_param_false }
-      pending('エラーの解消法を検討中のためテストしない') do
-        before { post :lend_create, item: @history_param_false }
-        it { expect(assigns[:result]).to be_false }
-        it {
-          # p body: response.body
-          get :lend_add
-          expect(response).to render_template(:lend_add)
-        }
-        # it { expect(response).to be_success }
-      end
-    end
+    # context '失敗時' do
+    #   # before { post :lend_create, history: @history_param_false }
+    #     before { post :lend_create, item: @history_param_false }
+    #     it { expect(assigns[:result]).to be_false }
+    #     it {
+    #       # p body: response.body
+    #       get :lend_add
+    #       expect(response).to render_template(:lend_add)
+    #     }
+    #     # it { expect(response).to be_success }
+    # end
   end
 
   describe '#lend_confirm' do
