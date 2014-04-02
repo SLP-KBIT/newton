@@ -19,11 +19,18 @@ class History < ActiveRecord::Base
   belongs_to :item
   belongs_to :user
 
-  validates :item_id, inclusion: { in: Item.pluck(:id), message: 'アイテムIDが間違えています' }
-
-  validates :item_id, :status, :amount, :failure_detail, presence: true
+  # validates_presence_of :item, :item_id, message: '不正な物品です'
+  # validates_presence_of :user, :user_id, message: '不正なユーザです'
+  # validates :item_id, inclusion: { in: Item.pluck(:id), message: 'アイテムIDが間違えています' }
+  # validates :amount, inclusion: { in: item_amount, message: '個数の指定に誤りがあります' }
+  validates :item_id, :status, :amount, presence: true
   # validates :item_id, presence: { message: '入力してください', on: :lend_add }
   # validates :item_id, presence: { message: '入力してください', on: :lend_create }
+
+  def item_amount
+    amount = Item.where(id: item_id).first.amount
+    [1..amount]
+  end
 
   def status_text
     status_texts[status]
