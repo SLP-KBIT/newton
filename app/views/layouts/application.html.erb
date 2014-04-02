@@ -56,6 +56,7 @@
               <% if current_user && permitted_user? %>
                 <li><%= link_to "ユーザ", user_path %></li>
                 <li><%= link_to "履歴", history_path %></li>
+                <li><%= link_to "メッセージ", message_path %></li>
               <% end %>
               <% if current_user %>
                 <li><%= link_to "ログアウト" , {:controller => "login", :action => "destroy"} %></li>
