@@ -1,26 +1,67 @@
 <h1>ユーザ 新規作成</h1>
 
-<%= form_for :user, url: { action: :create } do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<%= form_for :user, html: { class: 'form-horizontal' }, url: { action: :create } do |f| %>
 
-  <%= f.label :account %>
-  <%= f.text_field :account %>
+  <div class='control-group'>
+    <%= f.label :名前 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :name %>
+    </div>
+  </div>
 
-  <%= f.label :admin_flag %>
-  <%= f.check_box :admin_flag %>
+  <div class='control-group'>
+    <%= f.label :アカウント名 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :account %>
+    </div>
+  </div>
 
-  <%= f.label :category %>
-  <%= f.select :category, ['サークル生', '学内者'] %>
+  <div class='control-group'>
+    <%= f.label :管理者 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.check_box :admin_flag %>
+    </div>
+  </div>
 
-  <%= f.label :lendable %>
-  <%= f.check_box :lendable %>
+  <div class='control-group'>
+    <%= f.label :区分 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.select :category, ['サークル生', '学内者'] %>
+    </div>
+  </div>
 
-  <%= f.label :e_mail %>
-  <%= f.text_field :e_mail %>
+  <div class='control-group'>
+    <%= f.label :貸出有効 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.check_box :lendable %>
+    </div>
+  </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <div class='control-group'>
+    <%= f.label :メール , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :e_mail %>
+    </div>
+  </div>
 
-  <%= f.submit '登録', class: 'btn' %>
+  <div class='control-group'>
+    <%= f.label :パスワード , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.password_field :password %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :パスワード再入力 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.password_field :password_confirmation %>
+    </div>
+  </div>
+
+  <div class='actions'>
+    <div class='controls'>
+      <%= f.submit '登録', class: 'btn' %>
+    </div>
+  </div>
+
 <% end %>

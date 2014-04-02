@@ -1,29 +1,66 @@
 <h1>物品 新規作成</h1>
 
-<%= form_for :item, url: { action: :create } do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<%= form_for :item, html: { class: 'form-horizontal' }, url: { action: :create } do |f| %>
+  <div class='control-group'>
+    <%= f.label :物品名 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :name %>
+    </div>
+  </div>
 
-  <%= f.label :attachments %>
-  <%= f.text_field :attachments %>
+  <div class='control-group'>
+    <%= f.label :カテゴリー , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.select :category, ['その他', 'PC', 'カメラ']%>
+    </div>
+  </div>
 
-  <%= f.label :lending_period %>
-  <%= f.text_field :lending_period %>
+  <div class='control-group'>
+    <%= f.label :付属品 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :attachments %>
+    </div>
+  </div>
 
-  <%= f.label :category %>
-  <%= f.select :category, ['その他', 'PC', 'カメラ']%>
+  <div class='control-group'>
+    <%= f.label :最大貸出期間 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :lending_period %>
+    </div>
+  </div>
 
-  <%= f.label :place %>
-  <%= f.text_field :place %>
+  <div class='control-group'>
+    <%= f.label :個数 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :amount %>
+    </div>
+  </div>
 
-  <%= f.label :amount %>
-  <%= f.text_field :amount %>
+  <div class='control-group'>
+    <%= f.label :場所 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :place %>
+    </div>
+  </div>
 
-  <%= f.label :trashed %>
-  <%= f.text_field :trashed %>
+  <div class='control-group'>
+    <%= f.label :破棄フラグ , {class: 'control-label'} %>
+    <div class='controls'>
+      <label class="checkbox inline"> <%= f.radio_button :trashed, "true"  %> 有効</label>
+      <label class="checkbox inline"> <%= f.radio_button :trashed, "false" %> 無効</label>
+    </div>
+  </div>
 
-  <%= f.label :picture_path %>
-  <%= f.text_field :picture_path %>
+  <div class='control-group'>
+    <%= f.label :画像パス , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :picture_path %>
+    </div>
+  </div>
 
-  <%= f.submit '登録', class: 'btn' %>
+  <div class='actions'>
+    <div class='controls'>
+      <%= f.submit '登録', class: 'btn' %>
+    </div>
+  </div>
 <% end %>

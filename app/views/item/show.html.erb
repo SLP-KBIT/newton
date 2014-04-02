@@ -1,6 +1,8 @@
 <h1>物品 詳細</h1>
 
-<%= button_to '更新', { :action => 'edit', :id => @item.id }, method: :get, class: 'btn btn-primary' %>
+<% if permitted_user? %>
+  <%= button_to '更新', { :action => 'edit', :id => @item.id }, method: :get, class: 'btn btn-primary' %>
+<% end %>
 <table class="table table-bordered">
   <thead>
     <tr>
