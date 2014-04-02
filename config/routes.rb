@@ -29,6 +29,10 @@ Sample::Application.routes.draw do
   post  '/history/returned'      => 'history#reserved'
 
   get   '/message'               => 'message#index'
+  get   '/message/add'           => 'message#add'
+  get   '/message/:id'           => 'message#show'
+  post  '/message/create'        => 'message#create'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
