@@ -32,6 +32,8 @@ History.create(id: 3, user_id: 2, item_id: 2, status: 0, amount: 1, failure_deta
 History.create(id: 4, user_id: 2, item_id: 2, status: 1, amount: 1, failure_detail: 'なし', created_at: Time.now - 7.days)
 History.create(id: 5, user_id: 1, item_id: 1, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 4.days)
 History.create(id: 6, user_id: 1, item_id: 2, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 5.days)
+History.create(id: 7, user_id: 1, item_id: 3, status: 2, amount: 1, failure_detail: 'なし', created_at: Time.now)
+History.create(id: 8, user_id: 2, item_id: 2, status: 2, amount: 1, failure_detail: 'なし', created_at: Time.now)
 
 # message
 Message.destroy_all
@@ -40,3 +42,8 @@ Message.create(id: 1, contents: 'ほげほげ', from: "管理者", read_flag: tr
 Message.create(id: 2, contents: 'aa', from: "システム", read_flag: false, user_id: 1)
 
 # reservation
+Reservation.destroy_all
+
+Reservation.create(id: 1, history_id: 7, start_date: Time.now + 10.days)
+Reservation.create(id: 2, history_id: 8, start_date: Time.now + 10.days)
+
