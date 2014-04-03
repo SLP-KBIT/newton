@@ -2,7 +2,7 @@
 <stylesheet>
 </stylesheet>
 
-<%= form_for :message, url: { action: :add } do |f| %>
+<%= form_for :message, url: { action: :create } do |f| %>
   <%= f.label :宛先 %>
   <%= f.text_field :name %>
 
