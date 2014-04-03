@@ -1,0 +1,9 @@
+# == Schema Information
+#
+# Table name: reservation 
+#
+# start_date :Timestamp
+
+sample:
+  start_date: 2014-04-02 09:21:24
+  history_id: 1

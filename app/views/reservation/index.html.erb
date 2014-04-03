@@ -1,0 +1,23 @@
+<h1>予約 一覧</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>物品名</th>
+      <th>借りたい日(予約日)</th>
+      <th>予約者</th>
+      <th>予約受付日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @histories = History.where(status: 2) %>
+    <% @histories.each do |history| %>
+      <tr>
+        <td><%= history.item.name %></td>
+        <td><%= history.reservation.start_date %></td>
+        <td><%= history.user.name %></td>
+        <td><%= history.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

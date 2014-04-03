@@ -39,6 +39,8 @@ Sample::Application.routes.draw do
   post  '/message/create'        => 'message#create'
 
 
+  get   '/reservation'           => 'reservation#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

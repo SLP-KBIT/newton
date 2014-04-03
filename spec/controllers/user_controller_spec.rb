@@ -6,8 +6,11 @@ describe UserController do
   render_views
   describe '#index' do
     before do
+      p user_all: User.all
+      p user_id: User.first.id
       session[:user_id] = User.where(admin_flag: true).first.id
       get :index
+      p session: session[:user_id]
     end
     it { expect(assigns[:users]).to eq(User.all) }
     it { expect(response).to be_success }
