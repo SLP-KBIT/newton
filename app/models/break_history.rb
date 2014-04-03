@@ -1,0 +1,2 @@
+class BreakHistory < History
+end

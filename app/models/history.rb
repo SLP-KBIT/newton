@@ -23,7 +23,7 @@ class History < ActiveRecord::Base
   # validates_presence_of :user, :user_id, message: '不正なユーザです'
   # validates :item_id, inclusion: { in: Item.pluck(:id), message: 'アイテムIDが間違えています' }
   # validates :amount, inclusion: { in: item_amount, message: '個数の指定に誤りがあります' }
-  validates :item_id, :status, :amount, presence: true
+  validates :item_id, :amount, presence: true
   # validates :item_id, presence: { message: '入力してください', on: :lend_add }
   # validates :item_id, presence: { message: '入力してください', on: :lend_create }
 
@@ -33,11 +33,11 @@ class History < ActiveRecord::Base
   end
 
   def status_text
-    status_texts[status]
+    status_texts[type]
   end
 
   def self.status_text(status)
-    status_texts[status]
+    status_texts[type]
   end
 
   def get_return_date
@@ -52,10 +52,12 @@ class History < ActiveRecord::Base
   private
 
   def status_texts
-    ['貸出', '返却', '予約', '予約取消', '破棄', '紛失', '故障', '復旧']
+    # ['貸出', '返却', '予約', '予約取消', '破棄', '紛失', '故障', '復旧']
+    [['貸出', 'LendHistory'], ['返却', 'ReturnHistory'], ['予約', 'ReserveHistory']]
   end
 
   def self.status_texts
-    ['貸出', '返却', '予約', '予約取消', '破棄', '紛失', '故障', '復旧']
+    # ['貸出', '返却', '予約', '予約取消', '破棄', '紛失', '故障', '復旧']
+    [['貸出', 'LendHistory'], ['返却', 'ReturnHistory'], ['予約', 'ReserveHistory']]
   end
 end

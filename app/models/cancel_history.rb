@@ -1,0 +1,2 @@
+class CancelHistory < History
+end

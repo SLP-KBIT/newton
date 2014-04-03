@@ -1,0 +1,2 @@
+class ReturnHistory < History
+end

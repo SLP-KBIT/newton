@@ -1,0 +1,2 @@
+class DestoryHistory < History
+end

@@ -11,20 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325063322) do
+ActiveRecord::Schema.define(version: 20140403094117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "break_histories", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cancel_histories", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "destory_histories", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "histories", force: true do |t|
     t.integer  "user_id"
     t.integer  "item_id"
-    t.integer  "status"
     t.integer  "amount"
     t.text     "failure_detail"
-    t.integer  "detail_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
+    t.datetime "start_date"
   end
 
   create_table "items", force: true do |t|
@@ -36,6 +51,16 @@ ActiveRecord::Schema.define(version: 20140325063322) do
     t.integer  "amount"
     t.boolean  "trashed"
     t.text     "picture_path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lend_histories", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lose_histories", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,6 +80,21 @@ ActiveRecord::Schema.define(version: 20140325063322) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "history_id"
+  end
+
+  create_table "reserve_histories", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "restore_histories", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "return_histories", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
