@@ -55,7 +55,7 @@ class UserController < ApplicationController
     @history_ids = []
     @item_ids.each do |id|
       @history = @histories.where(item_id: id).order(:created_at).reverse_order.first
-      if @history.status == 0
+      if @history.type == 'LendHistory'
         @history_ids.push(@history.id)
         @lending_item_ids.push(@history.item_id)
       end

@@ -1,2 +1,0 @@
-class DestoryHistory < History
-end

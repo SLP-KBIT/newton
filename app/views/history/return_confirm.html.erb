@@ -19,7 +19,7 @@
 	<td><%= history.item.name %></td>
 	<td><%= history.item.amount %></td>
 	<td><%= history.item.place %></td>
-	<td><%= History.status_text(@status[history.id.to_s].to_i) %></td>
+	<td><%= History.type_text(@type[history.id.to_s]) %></td>
       </tr>
     </tbody>
   </table>

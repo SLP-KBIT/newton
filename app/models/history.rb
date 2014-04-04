@@ -32,32 +32,30 @@ class History < ActiveRecord::Base
     [1..amount]
   end
 
-  def status_text
-    status_texts[type]
+  def type_text
+    type_texts[type]
   end
 
-  def self.status_text(status)
-    status_texts[type]
+  def self.type_text(type)
+    type_texts[type]
   end
 
-  def get_return_date
+  def return_date
     @item = Item.where(id: item_id).first
     created_at + (@item.lending_period).days
   end
 
-  def get_status_info
-    [['返却', 1], ['破棄', 4], ['紛失', 5], ['故障', 6]]
+  def type_info
+    [['貸出', 'LendHistory'], ['返却', 'ReturnHistory'], ['予約', 'ReserveHistory'], ['予約取消', 'CancelHistory'], ['破棄', 'DestroyHistory'], ['紛失', 'LoseHistory'], ['故障', 'BreakHistory'], ['復旧', 'RestoreHistory']]
   end
 
   private
 
-  def status_texts
-    # ['貸出', '返却', '予約', '予約取消', '破棄', '紛失', '故障', '復旧']
-    [['貸出', 'LendHistory'], ['返却', 'ReturnHistory'], ['予約', 'ReserveHistory']]
+  def type_texts
+    {'LendHistory' => '貸出', 'ReturnHistory' => '返却', 'ReserveHistory' => '予約', 'CancelHistory' => '予約取消', 'DestroyHistory' => '破棄', 'LoseHistory' => '紛失', 'BreakHistory' => '故障', 'RestoreHistory' => '復旧'}
   end
 
-  def self.status_texts
-    # ['貸出', '返却', '予約', '予約取消', '破棄', '紛失', '故障', '復旧']
-    [['貸出', 'LendHistory'], ['返却', 'ReturnHistory'], ['予約', 'ReserveHistory']]
+  def self.type_texts
+    {'LendHistory' => '貸出', 'ReturnHistory' => '返却', 'ReserveHistory' => '予約', 'CancelHistory' => '予約取消', 'DestroyHistory' => '破棄', 'LoseHistory' => '紛失', 'BreakHistory' => '故障', 'RestoreHistory' => '復旧'}
   end
 end
