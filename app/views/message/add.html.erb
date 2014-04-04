@@ -1,10 +1,9 @@
 <h1>メッセージの作成</h1>
-<stylesheet>
-</stylesheet>
 
-<%= form_for :message, url: { action: :add } do |f| %>
-  <%= f.label :宛先 %>
-  <%= f.text_field :name %>
+<%= form_for :message, url: { action: :create } do |f| %>
+
+  <%= f.submit '送信', class: 'btn' %>
+  <br>
 
   <%= f.label :件名 %>
   <%= f.text_field :subject %>
@@ -12,6 +11,31 @@
   <%= f.label :内容 %>
   <%= f.text_area :comtent, :size => "100x10" %>
 
-  <br>
-  <%= f.submit '送信', class: 'btn' %>
+  <%= f.label :宛先 %>
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>チェック</th>
+        <th>名前</th>
+        <th>アカウント名</th>
+        <th>区分</th>
+        <th>貸出フラグ</th>
+        <th>ロール</th>
+        <th>メールアドレス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= check_box 'page', user.id, {}, true, false %></td>
+          <td><%= user.name %></td>
+          <td><%= user.account %></td>
+          <td><%= user.category_text %></td>
+          <td><%= user.lendable_text %></td>
+          <td><%= user.admin_flag_text %></td>
+          <td><%= user.e_mail %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
