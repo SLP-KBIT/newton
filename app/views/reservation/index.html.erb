@@ -10,13 +10,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @histories = History.where(status: 2) %>
-    <% @histories.each do |history| %>
+    <% @reservehistories.each do |reservehistory| %>
       <tr>
-        <td><%= history.item.name %></td>
-        <td><%= history.reservation.start_date %></td>
-        <td><%= history.user.name %></td>
-        <td><%= history.created_at %></td>
+        <td><%= reservehistory.item.name %></td>
+        <td><%= reservehistory.start_date %></td>
+        <td><%= reservehistory.user.name %></td>
+        <td><%= reservehistory.created_at %></td>
       </tr>
     <% end %>
   </tbody>
