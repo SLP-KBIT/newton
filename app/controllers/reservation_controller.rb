@@ -1,5 +1,5 @@
 class ReservationController < ApplicationController
   def index
-    @reservation = Reservation.all
+    @reservehistories = ReserveHistory.all
   end
 end

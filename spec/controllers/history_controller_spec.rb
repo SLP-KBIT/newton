@@ -98,7 +98,7 @@ describe HistoryController do
   describe '#return_confirm' do
     before do
       session[:user_id] = User.first.id
-      post :return_confirm, state:{"5" => "1", "6" => "5"}
+      post :return_confirm, type:{"5" => "1", "6" => "5"}
     end
     it { expect(assigns[:histories]).to eq(History.where(id: [5, 6])) }
     it { expect(response).to be_success }

@@ -26,14 +26,24 @@ User.create(id: 4, name: '高松花子', account: 'takahana', admin_flag: false,
 # history
 History.destroy_all
 
-History.create(id: 1, user_id: 1, item_id: 1, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 10.days)
-History.create(id: 2,user_id: 1, item_id: 1, status: 1, amount: 1, failure_detail: 'なし', created_at: Time.now - 9.days)
-History.create(id: 3, user_id: 2, item_id: 2, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 8.days)
-History.create(id: 4, user_id: 2, item_id: 2, status: 1, amount: 1, failure_detail: 'なし', created_at: Time.now - 7.days)
-History.create(id: 5, user_id: 1, item_id: 1, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 4.days)
-History.create(id: 6, user_id: 1, item_id: 2, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 5.days)
-History.create(id: 7, user_id: 1, item_id: 3, status: 2, amount: 1, failure_detail: 'なし', created_at: Time.now)
-History.create(id: 8, user_id: 2, item_id: 2, status: 2, amount: 1, failure_detail: 'なし', created_at: Time.now)
+# History.create(id: 1, user_id: 1, item_id: 1, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 10.days)
+# History.create(id: 2,user_id: 1, item_id: 1, status: 1, amount: 1, failure_detail: 'なし', created_at: Time.now - 9.days)
+# History.create(id: 3, user_id: 2, item_id: 2, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 8.days)
+# History.create(id: 4, user_id: 2, item_id: 2, status: 1, amount: 1, failure_detail: 'なし', created_at: Time.now - 7.days)
+# History.create(id: 5, user_id: 1, item_id: 1, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 4.days)
+# History.create(id: 6, user_id: 1, item_id: 2, status: 0, amount: 1, failure_detail: 'なし', created_at: Time.now - 5.days)
+# History.create(id: 7, user_id: 1, item_id: 3, status: 2, amount: 1, failure_detail: 'なし', created_at: Time.now)
+# History.create(id: 8, user_id: 2, item_id: 2, status: 2, amount: 1, failure_detail: 'なし', created_at: Time.now)
+
+History.create(id: 1, user_id: 1, item_id: 1, type: 'LendHistory', amount: 1, failure_detail: 'なし', created_at: Time.now - 10.days)
+History.create(id: 2, user_id: 1, item_id: 1, type: 'ReturnHistory', amount: 1, failure_detail: 'なし', created_at: Time.now - 9.days)
+History.create(id: 3, user_id: 2, item_id: 2, type: 'LendHistory', amount: 1, failure_detail: 'なし', created_at: Time.now - 8.days)
+History.create(id: 4, user_id: 2, item_id: 2, type: 'ReturnHistory', amount: 1, failure_detail: 'なし', created_at: Time.now - 7.days)
+History.create(id: 5, user_id: 1, item_id: 1, type: 'LendHistory', amount: 1, failure_detail: 'なし', created_at: Time.now - 4.days)
+History.create(id: 6, user_id: 1, item_id: 2, type: 'LendHistory', amount: 1, failure_detail: 'なし', created_at: Time.now - 5.days)
+History.create(id: 7, user_id: 1, item_id: 3, type: 'ReserveHistory', amount: 1, failure_detail: 'なし', created_at: Time.now, start_date: Time.now + 10.days)
+History.create(id: 8, user_id: 2, item_id: 2, type: 'ReserveHistory', amount: 1, failure_detail: 'なし', created_at: Time.now, start_date: Time.now + 10.days)
+
 
 # message
 Message.destroy_all
@@ -43,7 +53,4 @@ Message.create(id: 2, contents: 'aa', from: "システム", read_flag: false, us
 
 # reservation
 Reservation.destroy_all
-
-Reservation.create(id: 1, history_id: 7, start_date: Time.now + 10.days)
-Reservation.create(id: 2, history_id: 8, start_date: Time.now + 10.days)
 

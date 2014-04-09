@@ -1,0 +1,2 @@
+class DestroyHistory < History
+end

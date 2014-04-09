@@ -8,7 +8,6 @@
       <th>状態</th>
       <th>個数</th>
       <th>不具合内容</th>
-      <th>詳細ID</th>
     </tr>
   </thead>
   <tbody>
@@ -16,10 +15,9 @@
       <tr>
         <td><%= history.user_id %></td>
         <td><%= history.item_id %></td>
-        <td><%= history.status_text %></td>
+        <td><%= history.type_text %></td>
         <td><%= history.amount %></td>
         <td><%= history.failure_detail %></td>
-        <td><%= history.detail_id %></td>
       </tr>
     <% end %>
   </tbody>

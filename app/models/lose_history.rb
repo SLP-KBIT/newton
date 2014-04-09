@@ -1,0 +1,2 @@
+class LoseHistory < History
+end

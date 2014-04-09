@@ -1,0 +1,2 @@
+class ReserveHistory < History
+end

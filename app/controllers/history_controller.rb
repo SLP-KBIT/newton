@@ -43,8 +43,7 @@ class HistoryController < ApplicationController
     @item = params[:item]
     @item.each do|key, value|
       item = Item.where(id: key).first
-      @history = item.histories.create(user_id: current_user.id, status: 0, amount: value.to_i)
-      # @history = History.new(user_id: 1, item_id: key.to_i, status: 0, amount: value.to_i)
+      @history = item.histories.create(user_id: current_user.id, type: 'LendHistory', amount: value.to_i)
       @result = @history.save
       redirect_to action: :lend_add and return if @result.blank?
     end
@@ -64,11 +63,11 @@ class HistoryController < ApplicationController
 
   def return_confirm
     @history_ids = []
-    params[:state].each_key do |key|
+    params[:type].each_key do |key|
       @history_ids.push(key)
     end
     @histories = History.where(id: @history_ids)
-    @status = params[:state]
+    @type = params[:type]
     @report = params[:report]
   end
 end

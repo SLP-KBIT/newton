@@ -19,7 +19,7 @@
 	<td><%= history.item.name %></td>
 	<td><%= history.item.amount %></td>
 	<td><%= history.item.place %></td>
-	<td><%= select :state, "#{history.id}", history.get_status_info %></td>
+	<td><%= select :type, "#{history.id}", history.type_info %></td>
       </tr>
     </tbody>
   </table>
