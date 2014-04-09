@@ -52,10 +52,10 @@ class History < ActiveRecord::Base
   private
 
   def type_texts
-    {'LendHistory' => '貸出', 'ReturnHistory' => '返却', 'ReserveHistory' => '予約', 'CancelHistory' => '予約取消', 'DestroyHistory' => '破棄', 'LoseHistory' => '紛失', 'BreakHistory' => '故障', 'RestoreHistory' => '復旧'}
+    { 'LendHistory' => '貸出', 'ReturnHistory' => '返却', 'ReserveHistory' => '予約', 'CancelHistory' => '予約取消', 'DestroyHistory' => '破棄', 'LoseHistory' => '紛失', 'BreakHistory' => '故障', 'RestoreHistory' => '復旧' }
   end
 
   def self.type_texts
-    {'LendHistory' => '貸出', 'ReturnHistory' => '返却', 'ReserveHistory' => '予約', 'CancelHistory' => '予約取消', 'DestroyHistory' => '破棄', 'LoseHistory' => '紛失', 'BreakHistory' => '故障', 'RestoreHistory' => '復旧'}
+    { 'LendHistory' => '貸出', 'ReturnHistory' => '返却', 'ReserveHistory' => '予約', 'CancelHistory' => '予約取消', 'DestroyHistory' => '破棄', 'LoseHistory' => '紛失', 'BreakHistory' => '故障', 'RestoreHistory' => '復旧' }
   end
 end
