@@ -12,7 +12,7 @@
   <tbody>
     <% @reservehistories.each do |reservehistory| %>
       <tr>
-        <td><%= reservehistory.item.name %></td>
+        <td><%= link_to reservehistory.item.name, action: :show, id: reservehistory.id %></td>
         <td><%= reservehistory.start_date %></td>
         <td><%= reservehistory.user.name %></td>
         <td><%= reservehistory.created_at %></td>
