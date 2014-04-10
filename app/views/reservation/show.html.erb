@@ -1,0 +1,25 @@
+<h1>予約 詳細</h1>
+
+<% if permitted_user? %>
+  <%#= button_to '更新', { :action => 'edit', :id => @reservehistory.id }, method: :get, class: 'btn btn-primary' %>
+<% end %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>物品</th>
+      <th>個数</th>
+      <th>借りたい日(予約日)</th>
+      <th>予約者</th>
+      <th>予約受付日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @reservehistory.item.name %></td>
+      <td><%= @reservehistory.amount %></td>
+      <td><%= @reservehistory.start_date %></td>
+      <td><%= @reservehistory.user.name %></td>
+      <td><%= @reservehistory.created_at %></td>
+    </tr>
+  </tbody>
+</table>

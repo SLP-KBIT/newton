@@ -52,6 +52,7 @@
               <% if current_user %>
                 <li><%= link_to "メインページ", {:controller => "user", :action => "mainpage", :id => "1"}  %></li>
                 <li><%= link_to "物品", item_path %></li>
+                <li><%= link_to "予約", reservation_path %></li>
               <% end %>
               <% if current_user && permitted_user? %>
                 <li><%= link_to "ユーザ", user_path %></li>
