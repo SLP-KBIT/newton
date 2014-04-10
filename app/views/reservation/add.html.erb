@@ -20,7 +20,7 @@
         <tr>
           <td><%= item.name  %></td>
           <td><%= select :item, item.id, @array2[i] %></td>
-          <td><%= date_field :history, :start_date %></td>
+          <td><%= date_field :history, "start_date#{item.id}" %></td>
           <td><%= item.lending_period %></td>
           <td><%= item.category_text %></td>
           <td><%= item.place %></td>
