@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class HistoryController < ApplicationController
   def index
     @histories = History.all
@@ -13,6 +14,11 @@ class HistoryController < ApplicationController
     params[:page].each_value do |value|
       @item_ids.push(value) if value.to_i > 0
     end
+    redirect_to item_path, alert: '物品を選択してください' and return if @item_ids.empty?
+    if params[:reserve]
+      redirect_to reservation_add_path(params[:page]) and return
+    end
+
     @items = Item.where(id: @item_ids)
     @array2 = []
     @items.each do |item|
