@@ -21,4 +21,14 @@ describe ReservationController do
     it { expect(response).to be_success }
     it { expect(response).to render_template(:show) }
   end
+  describe '#add' do
+    before do
+      session[:user_id] = User.first.id
+      get :add, {"2" => "2", "3" => "3"}
+    end
+    it { expect(assigns[:items]).to eq(Item.where(id: [2, 3])) }
+    it { expect(response).to be_success }
+    it { expect(response).to render_template(:add) }
+  end
+
 end
