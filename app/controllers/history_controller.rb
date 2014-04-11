@@ -16,7 +16,7 @@ class HistoryController < ApplicationController
     end
     redirect_to item_path, alert: '物品を選択してください' and return if @item_ids.empty?
     if params[:reserve]
-      redirect_to reservation_add_path(params[:page]) and return
+      redirect_to reservation_create_path(params[:page]) and return
     end
 
     @items = Item.where(id: @item_ids)
