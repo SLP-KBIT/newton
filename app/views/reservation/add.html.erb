@@ -4,7 +4,7 @@
 個数と借りたい日を指定してください。
 </p>
 
-<%#= form_tag('', method: :post) do %>
+<%= form_tag(reservation_create_path, method: :post) do %>
 <table class="table table-bordered">
     <thead>
       <th>物品名</th>
@@ -20,7 +20,7 @@
         <tr>
           <td><%= item.name  %></td>
           <td><%= select :item, item.id, @array2[i] %></td>
-          <td><%= date_field :history, "start_date#{item.id}" %></td>
+          <td><%= date_field :start_date, item.id %></td>
           <td><%= item.lending_period %></td>
           <td><%= item.category_text %></td>
           <td><%= item.place %></td>
@@ -29,5 +29,5 @@
       <% end %>
     </tbody>
   </table>
-  <%#= submit_tag '予約', name: 'reserve', class: 'btn' %>
-<%# end %>
+  <%= submit_tag '予約', name: 'reserve', class: 'btn' %>
+<% end %>

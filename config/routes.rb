@@ -39,7 +39,8 @@ Sample::Application.routes.draw do
   post  '/message/create'        => 'message#create'
 
   get   '/reservation'           => 'reservation#index'
-  get   '/reservation/add'       => 'reservation#add'
+  get   '/reservation/create'    => 'reservation#add'
+  post  '/reservation/create'    => 'reservation#create'
   get   '/reservation/:id'       => 'reservation#show'
 
   # The priority is based upon order of creation: first created -> highest priority.

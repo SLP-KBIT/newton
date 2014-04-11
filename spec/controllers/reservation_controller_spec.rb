@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe ReservationController do
@@ -30,5 +31,43 @@ describe ReservationController do
     it { expect(response).to be_success }
     it { expect(response).to render_template(:add) }
   end
-
+  describe '#create' do
+    before do
+      session[:user_id] = User.first.id
+      @history_param = {
+        item:{"1" => "1"},
+        start_date:{"1" => "2015-05-21"}
+      }
+      @history_param_false = {
+        item:{"1" => "1"},
+        start_date:{"1" => "2013-05-21"}
+      }
+    end
+    context '成功時' do
+      # before { post :lend_create, item: @history_param }
+        it '予約一覧ページへリダイレクトする' do
+          post :create, @history_param
+        expect(response).to redirect_to reservation_path
+        end
+      it '予約レコードが作成される' do
+        post :create, @history_param
+        expect(assigns[:history]).to eq(History.last)
+        expect(assigns[:result]).to be_true
+      end
+      it '予約レコードが一件増える' do
+        post :create, @history_param
+        expect { post :create, @history_param }.to change(History, :count).by(1)
+      end
+    end
+    context '失敗時' do
+        before { post :create, @history_param_false }
+        it { expect(assigns[:result]).to be_false }
+        it {
+          # p body: response.body
+          get :add
+          expect(response).to render_template(:add)
+        }
+        it { expect(response).to be_success }
+    end
+  end
 end
