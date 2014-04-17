@@ -87,8 +87,8 @@ class HistoryController < ApplicationController
         failure_detail: params[:report][history_id.to_s],
         amount: lend_history.amount
       )
-      result = @history.save
-      redirect_to controller: 'user', action:  'mainpage', id: current_user.id and return if result.blank?
+      @result = @history.save
+      redirect_to controller: 'user', action:  'mainpage', id: current_user.id and return if @result.blank?
     end
     redirect_to controller: 'user', action:  'mainpage', id: current_user.id and return
   end
