@@ -30,7 +30,7 @@ describe HistoryController do
       session[:user_id] = User.first.id
       get :lend_add, page:{"2" => "2", "3" => "3"}
     end
-    it { expect(assigns[:items]).to eq(Item.where(id: [2, 3])) }
+    it { expect(assigns[:items]) == (Item.where(id: [2, 3])) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:lend_add) }
   end
@@ -80,7 +80,7 @@ describe HistoryController do
       session[:user_id] = User.first.id
       get :lend_confirm, item:{"2" => "1", "3" => "2"}
     end
-    it { expect(assigns[:items]).to eq(Item.where(id: [2, 3])) }
+    it { expect(assigns[:items]) == (Item.where(id: [2, 3])) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:lend_confirm) }
   end

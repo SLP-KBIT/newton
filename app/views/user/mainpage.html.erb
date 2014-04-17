@@ -17,7 +17,7 @@
         <tr>
           <td><%= check_box 'page', i, {}, history.id %></td>
           <td><%= link_to history.item.name, action: :show, id: history.item.id %></td>
-          <td><%= history.item.amount %></td>
+          <td><%= history.amount %></td>
           <td><%= history.return_date %></td>
         </tr>
       <% end %>
