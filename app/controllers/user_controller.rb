@@ -50,7 +50,7 @@ class UserController < ApplicationController
 
   def mainpage
     @item_ids = History.where(user_id: params[:id]).order(:created_at).pluck(:item_id).uniq
-    @histories = History.where(user_id: params[:id]).where("type = ? or type = ?", "LendHistory", "ReturnHistory")
+    @histories = History.where(user_id: params[:id]).where('type = ? or type = ?', 'LendHistory', 'ReturnHistory')
     @lending_item_ids = []
     @history_ids = []
     @item_ids.each do |id|
