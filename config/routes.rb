@@ -12,7 +12,7 @@ Sample::Application.routes.draw do
   patch '/user/update'           => 'user#update'
   get   '/user/exchange'         => 'user#exchange'
   get   '/user/update/:id'       => 'user#edit'
-  get   '/user/mainpage/:id'     => 'user#mainpage'
+  get   '/user/mainpage/:id'     => 'user#mainpage', as: 'user/mainpage'
   get   '/user/:id'              => 'user#show'
 
   get   '/item'                  => 'item#index'
