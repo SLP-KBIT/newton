@@ -4,7 +4,7 @@
   <div class='control-group'>
     <%= f.label :物品名 , {class: 'control-label'} %>
     <div class='controls'>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, placeholder: '例） widor01' %>
     </div>
   </div>
 
@@ -18,28 +18,28 @@
   <div class='control-group'>
     <%= f.label :付属品 , {class: 'control-label'} %>
     <div class='controls'>
-      <%= f.text_field :attachments %>
+      <%= f.text_field :attachments, placeholder: '例） LANケーブル,充電器' %>
     </div>
   </div>
 
   <div class='control-group'>
-    <%= f.label :最大貸出期間 , {class: 'control-label'} %>
+    <%= f.label :'最大貸出期間(日)' , {class: 'control-label'} %>
     <div class='controls'>
-      <%= f.text_field :lending_period %>
+      <%= f.text_field :lending_period, placeholder: '例） 10' %>
     </div>
   </div>
 
   <div class='control-group'>
     <%= f.label :個数 , {class: 'control-label'} %>
     <div class='controls'>
-      <%= f.text_field :amount %>
+      <%= f.text_field :amount, placeholder: '例） 1' %>
     </div>
   </div>
 
   <div class='control-group'>
     <%= f.label :場所 , {class: 'control-label'} %>
     <div class='controls'>
-      <%= f.text_field :place %>
+      <%= f.text_field :place, placeholder: '例） 1909 前の棚' %>
     </div>
   </div>
 
