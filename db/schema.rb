@@ -26,11 +26,6 @@ ActiveRecord::Schema.define(version: 20140404041529) do
     t.datetime "updated_at"
   end
 
-  create_table "destory_histories", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "destroy_histories", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"

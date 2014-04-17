@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def permitted_user?
-    user = User.where(id: current_user).first
+    user = User.where(id: current_user.id).first
     user.admin_flag
   end
   helper_method :permitted_user?
