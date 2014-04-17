@@ -6,10 +6,10 @@
   <br>
 
   <%= f.label :件名 %>
-  <%= f.text_field :subject %>
+  <%= f.text_field :subject, placeholder: '例） メンテナンスのお知らせ' %>
 
   <%= f.label :内容 %>
-  <%= f.text_area :comtent, :size => "100x10" %>
+  <%= f.text_area :comtent, :size => "100x10", placeholder: '例） 4月1日2時からメンテナンスを始めます' %>
 
   <%= f.label :宛先 %>
     <table class="table table-bordered">
