@@ -81,12 +81,7 @@ class HistoryController < ApplicationController
     params[:type].each_key do |history_id|
       lend_history = History.where(id: history_id).first
       item = Item.where(id: lend_history.item_id).first
-      @history = item.histories.create(
-        user_id: current_user.id,
-        type: params[:type][history_id.to_s],
-        failure_detail: params[:report][history_id.to_s],
-        amount: lend_history.amount
-      )
+      @history = item.histories.create(user_id: current_user.id, type: params[:type][history_id.to_s], failure_detail: params[:report][history_id.to_s], amount: lend_history.amount)
       @result = @history.save
       redirect_to controller: 'user', action:  'mainpage', id: current_user.id and return if @result.blank?
     end
