@@ -10,9 +10,9 @@
 #  place          :text
 #  amount         :integer
 #  trashed        :boolean
-#  picture_path   :text
 #  created_at     :datetime
 #  updated_at     :datetime
+#  image          :string(255)
 #
 
 require 'spec_helper'

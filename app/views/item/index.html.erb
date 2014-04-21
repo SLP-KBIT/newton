@@ -16,6 +16,7 @@
         <th>個数</th>
         <th>破棄</th>
         <th>付属品</th>
+        <th>画像</th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +30,11 @@
           <td><%= item.amount %></td>
           <td><%= item.trashed_text %></td>
           <td><%= item.attachments %></td>
+          <td>
+            <% if item.image_exist? %>
+              <%= link_to '開く', item.image.url, target: [:_blank] %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

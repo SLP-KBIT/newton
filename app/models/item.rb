@@ -11,15 +11,15 @@
 #  place          :text
 #  amount         :integer
 #  trashed        :boolean
-#  picture_path   :text
 #  created_at     :datetime
 #  updated_at     :datetime
+#  image          :string(255)
 #
 
 class Item < ActiveRecord::Base
   has_many :histories
-
   validates :category, inclusion: { in: [0, 1, 2], message: '選択してください' }
+  mount_uploader :image, ImageUploader
 
   def category_text
     category_texts[category]
@@ -28,6 +28,11 @@ class Item < ActiveRecord::Base
   def trashed_text
     return '有' if trashed
     '無'
+  end
+
+  def image_exist?
+    return false if self.image.path.nil?
+    File.exist? self.image.path
   end
 
   private
