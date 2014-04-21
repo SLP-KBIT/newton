@@ -10,9 +10,9 @@
 # item
 Item.destroy_all
 
-Item.create(name: 'widor01', attachments: 'LANケーブル,充電器', lending_period: 10, category: 1, place: '1909前の棚', amount: 1, trashed: false, picture_path: './img/widor01.png')
-Item.create(name: 'widor02', attachments: 'LANケーブル,充電器', lending_period: 10, category: 1, place: '1909前の棚', amount: 1, trashed: false, picture_path: './img/widor02.png')
-Item.create(name: 'roomba1', attachments: '充電器', lending_period: 1, category: 0, place: '1909前の棚', amount: 3, trashed: false, picture_path: './img/roomba1.png')
+Item.create(name: 'widor01', attachments: 'LANケーブル,充電器', lending_period: 10, category: 1, place: '1909前の棚', amount: 1, trashed: false)
+Item.create(name: 'widor02', attachments: 'LANケーブル,充電器', lending_period: 10, category: 1, place: '1909前の棚', amount: 1, trashed: false)
+Item.create(name: 'roomba1', attachments: '充電器', lending_period: 1, category: 0, place: '1909前の棚', amount: 3, trashed: false)
 
 
 # user

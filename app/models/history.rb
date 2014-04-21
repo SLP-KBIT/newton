@@ -6,12 +6,12 @@
 #  id             :integer          not null, primary key
 #  user_id        :integer
 #  item_id        :integer
-#  status         :integer
 #  amount         :integer
 #  failure_detail :text
-#  detail_id      :integer
 #  created_at     :datetime
 #  updated_at     :datetime
+#  type           :string(255)
+#  start_date     :datetime
 #
 
 class History < ActiveRecord::Base

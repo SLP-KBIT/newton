@@ -25,3 +25,5 @@
 
 # for indivisual db setting
 config/database.yml
+
+public/images
