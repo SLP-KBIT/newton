@@ -34,7 +34,6 @@ describe ItemController do
         place:          '1909',
         amount:         1,
         trashed:        false,
-        picture_path:   './img/roomba.png'
       }
     end
     context '成功時' do
@@ -79,7 +78,6 @@ describe ItemController do
         place:          '1909',
         amount:         1,
         trashed:        false,
-        picture_path:   './img/roomba.png'
       }
     end
     context '成功時' do

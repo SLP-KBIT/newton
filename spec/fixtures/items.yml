@@ -25,7 +25,6 @@ sample:
   place: 1909
   amount: 1
   trashed: false
-  picture_path: ./img/sample.png
 sample2:
   id: 2
   name: サンプル
@@ -35,7 +34,6 @@ sample2:
   place: 1909
   amount: 1
   trashed: false
-  picture_path: ./img/sample2.png
 sample3:
   id: 3
   name: サンプル
@@ -45,4 +43,3 @@ sample3:
   place: 1909
   amount: 1
   trashed: false
-  picture_path: ./img/sample3.png
