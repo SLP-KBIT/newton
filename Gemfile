@@ -52,6 +52,8 @@ gem 'pry-rails'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 
+gem 'carrierwave'
+
 gem 'annotate', group: :development
 
 group :development, :test do
@@ -64,7 +66,6 @@ group :development, :test do
   gem 'turnip'
   gem 'capybara'
   gem 'poltergeist'
-
 end
 
 group :deployment do
