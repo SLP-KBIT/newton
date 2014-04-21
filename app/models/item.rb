@@ -31,8 +31,8 @@ class Item < ActiveRecord::Base
   end
 
   def image_exist?
-    return false if self.image.path.nil?
-    File.exist? self.image.path
+    return false if image.path.nil?
+    File.exist? image.path
   end
 
   private
