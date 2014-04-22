@@ -21,7 +21,7 @@
           <td><%= item.name  %></td>
           <td><%= @item[item.id.to_s] %></td>
           <td><%= item.lending_period %></td>
-          <td><%= item.category %></td>
+          <td><%= item.category_text %></td>
           <td><%= item.place %></td>
           <td><%= item.attachments %></td>
 	  <%= hidden_field_tag "item[#{item.id.to_s}]", @item[item.id.to_s] %>
