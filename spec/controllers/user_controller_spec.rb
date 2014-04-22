@@ -97,7 +97,7 @@ describe UserController do
   end
   describe '#update' do
     before do
-      session[:user_id] = User.first.id
+      session[:user_id] = User.where(admin_flag: true).first.id
       @user_param = {
         id: User.first.id,
         name: 's11t200',

@@ -20,6 +20,9 @@ class UserController < ApplicationController
   end
 
   def edit
+    if !permitted_user? && params[:id].to_i != current_user.id
+      redirect_to controller: 'user', action: 'mainpage', id: current_user.id
+    end
     @user = User.find(params[:id])
   end
 
@@ -44,8 +47,12 @@ class UserController < ApplicationController
     @user = User.where(id: params[:user][:id]).first
     @user.attributes = params.require(:user).permit(:id, :name, :account, :admin_flag, :category, :lendable, :e_mail, :password, :password_confirmation)
     @result = @user.save
-    redirect_to user_path and return if @result
-    render 'edit' and return
+    if @result
+      redirect_to user_path and return if permitted_user?
+      redirect_to controller: 'user', action: 'mainpage', id: current_user.id
+    else
+      render 'edit' and return
+    end
   end
 
   def mainpage
