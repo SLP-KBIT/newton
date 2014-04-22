@@ -134,7 +134,7 @@ describe UserController do
   describe '#mainpage' do
     before do
       session[:user_id] = User.where(admin_flag: true).first.id
-      get :mainpage, id: 1
+      get :mainpage, id: session[:user_id]
     end
     it { expect(response).to be_success }
     it { expect(response).to render_template(:mainpage) }
