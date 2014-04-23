@@ -7,7 +7,7 @@
       <th>物品</th>
       <th>状態</th>
       <th>個数</th>
-      <th>不具合内容</th>
+      <th>詳細</th>
       <th>実行日時</th>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
         <td><%= history.item.name %></td>
         <td><%= history.type_text %></td>
         <td><%= history.amount %></td>
-        <td><%= history.failure_detail %></td>
+        <td><%= history.detail %></td>
         <td><%= history.created_at %></td>
       </tr>
     <% end %>

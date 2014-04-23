@@ -7,17 +7,17 @@
 </p>
 
 <%= form_tag('/history/lend/confirm', method: :post) do %>
-<table class="table table-bordered">
-    <thead>
-      <th>物品名</th>
-      <th>個数</th>
-      <th>最大貸出期間</th>
-      <th>カテゴリ</th>
-      <th>保管場所</th>
-      <th>付属品</th>
-    </thead>
-    <tbody>
-      <% @items.each_with_index do |item, i| %>
+  <% @items.each_with_index do |item, i| %>
+    <table class="table table-bordered">
+      <thead>
+        <th>物品名</th>
+        <th>個数</th>
+        <th>最大貸出期間</th>
+        <th>カテゴリ</th>
+        <th>保管場所</th>
+        <th>付属品</th>
+      </thead>
+      <tbody>
         <tr>
           <td><%= item.name  %></td>
           <td><%= select :item, item.id, @array2[i] %></td>
@@ -25,9 +25,13 @@
           <td><%= item.category_text %></td>
           <td><%= item.place %></td>
           <td><%= item.attachments %></td>
-	</tr>
-      <% end %>
-    </tbody>
-  </table>
+        </tr>
+      </tbody>
+    </table>
+    <h5> ◯ 貸出理由 <br>
+      <%= text_area :reason, "#{item.id}", :size => "60×10", placeholder: '例） 活動で利用するため' %>
+      <br><br>
+    </h5>
+  <% end %>
   <%= submit_tag '確認', name1: '確認', class: 'btn' %>
 <% end %>
