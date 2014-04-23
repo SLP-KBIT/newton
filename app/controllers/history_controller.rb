@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class HistoryController < ApplicationController
   def index
-    @histories = History.all
+    @histories = History.all.order('created_at DESC')
   end
 
   def show
@@ -43,6 +43,7 @@ class HistoryController < ApplicationController
     end
     @items = Item.where(id: @item_ids).where('amount > 0')
     @item = params[:item]
+    @reason = params[:reason]
   end
 
   def lend_create
@@ -50,7 +51,8 @@ class HistoryController < ApplicationController
     @item = params[:item]
     @item.each do|key, value|
       item = Item.where(id: key).first
-      @history = item.histories.create(user_id: current_user.id, type: 'LendHistory', amount: value.to_i)
+      detail = params[:reason][item.id.to_s]
+      @history = item.histories.create(user_id: current_user.id, type: 'LendHistory', amount: value.to_i, detail: detail)
       @result = @history.save
       item.amount -= value.to_i
       item.save
@@ -86,9 +88,9 @@ class HistoryController < ApplicationController
     params[:type].each_key do |history_id|
       lend_history = History.where(id: history_id).first
       item = Item.where(id: lend_history.item_id).first
-      @history = item.histories.create(user_id: current_user.id, type: params[:type][history_id.to_s], failure_detail: params[:report][history_id.to_s], amount: lend_history.amount)
+      @history = item.histories.create(user_id: current_user.id, type: params[:type][history_id.to_s], detail: params[:report][history_id.to_s], amount: lend_history.amount)
       @result = @history.save
-      item.amount += lend_history.amount
+      item.amount += lend_history.amount if @history.type == 'ReturnHistory'
       item.save
       redirect_to controller: 'user', action:  'mainpage', id: current_user.id and return if @result.blank?
     end
