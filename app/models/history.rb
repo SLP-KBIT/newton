@@ -46,7 +46,7 @@ class History < ActiveRecord::Base
   end
 
   def type_info
-    [['返却', 'ReturnHistory'], ['破棄', 'DestroyHistory'], ['紛失', 'LoseHistory'], ['故障', 'BreakHistory']]
+    [['返却', 'ReturnHistory'], ['紛失', 'LoseHistory'], ['故障', 'BreakHistory']]
   end
 
   private
