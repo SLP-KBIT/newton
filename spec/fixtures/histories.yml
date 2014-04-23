@@ -2,25 +2,25 @@
 #
 # Table name: histories
 #
-#  id             :integer          not null, primary key
-#  user_id        :integer
-#  item_id        :integer
-#  amount         :integer
-#  failure_detail :text
-#  created_at     :datetime
-#  updated_at     :datetime
-#  type           :string(255)
-#  start_date     :datetime
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  item_id    :integer
+#  amount     :integer
+#  detail     :text
+#  created_at :datetime
+#  updated_at :datetime
+#  type       :string(255)
+#  start_date :datetime
 #
 
-# <History id: nil, user_id: nil, item_id: nil, status: nil, amount: nil, failure_detail: nil, detail_id: nil, created_at: nil, updated_at: nil>
+# <History id: nil, user_id: nil, item_id: nil, status: nil, amount: nil, detail: nil, detail_id: nil, created_at: nil, updated_at: nil>
 sample:
   id: 1
   user_id: 1
   item_id: 1
   type: LendHistory
   amount: 1
-  failure_detail: nil
+  detail: nil
   start_date: 2014-04-04 04:23:16
 reservehistory1:
   id: 2
@@ -28,5 +28,5 @@ reservehistory1:
   item_id: 1
   type: ReserveHistory
   amount: 1
-  failure_detail: nil
+  detail: nil
   start_date: 2014-05-10 04:23:16

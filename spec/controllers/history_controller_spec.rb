@@ -10,7 +10,7 @@ describe HistoryController do
       session[:user_id] = User.where(admin_flag: true).first.id
       get :index
     end
-    it { expect(assigns[:histories]).to eq(History.all) }
+    it { expect(assigns[:histories]).to eq(History.all.order('created_at DESC')) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:index) }
   end
@@ -49,17 +49,17 @@ describe HistoryController do
       # before { post :lend_create, item: @history_param }
       it '借り物リストへリダイレクトする' do
         # post :lend_create, history: @history_param
-        post :lend_create, item: @history_param
+        post :lend_create, item: @history_param, reason: { "1" => "" }
         expect(response).to redirect_to controller: 'user', action: 'mainpage', id: session[:user_id]
       end
       it '貸出レコードが作成される' do
-        post :lend_create, item: @history_param
+        post :lend_create, item: @history_param, reason: { "1" => "" }
         expect(assigns[:history]).to eq(History.last)
         expect(assigns[:result]).to be_true
       end
       it '貸出レコードが一件増える' do
-        post :lend_create, item: @history_param
-        expect { post :lend_create, item: @history_param }.to change(History, :count).by(1)
+        post :lend_create, item: @history_param, reason: { "1" => "" }
+        expect { post :lend_create, item: @history_param, reason: { "1" => "" } }.to change(History, :count).by(1)
       end
     end
     # context '失敗時' do
@@ -78,7 +78,7 @@ describe HistoryController do
   describe '#lend_confirm' do
     before do
       session[:user_id] = User.first.id
-      get :lend_confirm, item:{"2" => "1", "3" => "2"}
+      get :lend_confirm, item:{"2" => "1", "3" => "2"}, reason:{"2" => "", "3" => ""}
     end
     it { expect(assigns[:items]) == (Item.where(id: [2, 3])) }
     it { expect(response).to be_success }
