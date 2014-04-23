@@ -88,7 +88,7 @@ class HistoryController < ApplicationController
       item = Item.where(id: lend_history.item_id).first
       @history = item.histories.create(user_id: current_user.id, type: params[:type][history_id.to_s], failure_detail: params[:report][history_id.to_s], amount: lend_history.amount)
       @result = @history.save
-      item.amount += lend_history.amount
+      item.amount += lend_history.amount if @history.type == 'ReturnHistory'
       item.save
       redirect_to controller: 'user', action:  'mainpage', id: current_user.id and return if @result.blank?
     end
