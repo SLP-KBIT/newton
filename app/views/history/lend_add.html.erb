@@ -20,7 +20,11 @@
       <tbody>
         <tr>
           <td><%= item.name  %></td>
+	  <% if @array2[i].length == 1 %>
+          <td>1</td>
+	  <% else %>
           <td><%= select :item, item.id, @array2[i] %></td>
+	  <% end %>
           <td><%= item.lending_period %>日</td>
           <td><%= item.category_text %></td>
           <td><%= item.place %></td>
