@@ -1,8 +1,12 @@
 <h1>物品 一覧</h1>
 
 <% if permitted_user? %>
-  <%= button_to '新規作成', item_create_path, method: :get, class: 'btn' %>
+  <%= link_to item_create_path, method: :get, class: 'btn btn-primary' do %>
+    <i class="icon-plus icon-white"></i> 新規作成
+  <% end %>
 <% end %>
+<br>
+<br>
 
 <%= form_tag(history_lend_add_path, method: :post) do %>
   <table class="table table-bordered">
@@ -45,6 +49,13 @@
     </tbody>
   </table>
   <!-- <%= submit_tag '破棄', name1: '破棄', class: 'btn' %> -->
-  <%= submit_tag '借りる', name: 'lend', class: 'btn' %>
-  <%= submit_tag '予約', name: 'reserve', class: 'btn' %>
+
+  <%= button_tag type: "submit", name: 'lend', class: "btn btn-success" do %>
+    <i class="icon-share"></i> 借りる
+  <% end %>
+
+  <%= button_tag type: "submit", name: 'reserve', class: "btn btn-warning" do %>
+    <i class="icon-list"></i> 予約
+  <% end %>
+
 <% end %>

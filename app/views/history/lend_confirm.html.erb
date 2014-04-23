@@ -34,6 +34,10 @@
       <br><br>
     </h5>
   <% end %>
-  <%= submit_tag '借りる', name: 'confirm', class: 'btn' %>
-  <%= submit_tag '戻る', name: 'return', class: 'btn' %>
+  <%= button_tag type: "submit", name: 'lend', class: "btn btn-success" do %>
+    <i class="icon-list"></i> 借りる
+  <% end %>
+  <%= button_tag name: 'return', class: 'btn' do %>
+    <i class="icon-arrow-left"></i> 戻る
+  <% end %>
 <% end %>

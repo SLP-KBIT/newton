@@ -38,7 +38,9 @@
       <br><br>
     </h5>
   <% end %>
-  <%= submit_tag '確認', name: 'confirm', class: 'btn' %>
-  <%= submit_tag '戻る', name: 'return', class: 'btn' %>
+  <%= submit_tag '確認', name: 'confirm', class: 'btn btn-success' %>
+  <%= button_tag name: 'return', class: 'btn' do %>
+    <i class="icon-arrow-left"></i> 戻る
+  <% end %>
 <% end %>
 

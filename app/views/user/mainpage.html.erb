@@ -23,5 +23,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= submit_tag '返却', name1: '返却', class: 'btn' %>
+  <%= button_tag type: "submit", name: 'reserve', class: "btn btn-primary" do %>
+    <i class="icon-inbox"></i> 返却
+  <% end %>
 <% end %>

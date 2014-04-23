@@ -48,13 +48,15 @@
     <div class='controls'>
       <%= f.file_field :image, style: 'display: none;' %>
       <input type='text' id='selected_file' readonly='readonly'></input>
-      <a class='btn btn-default' onclick="$('#item_image').click();">ファイル選択</a>
+      <a class='btn btn-info' onclick="$('#item_image').click();"><i class="icon-folder-open"></i>ファイル選択</a>
     </div>
   </div>
 
   <div class='actions'>
     <div class='controls'>
-      <%= f.submit '登録', class: 'btn' %>
+      <%= button_tag type: "f.submit" , class: 'btn btn-primary' do %>
+          <i class="icon-ok-sign"></i> 登録
+      <% end %>
     </div>
   </div>
 <% end %>

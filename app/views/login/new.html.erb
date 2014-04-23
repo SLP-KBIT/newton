@@ -26,7 +26,8 @@
           </div>
           <div class='actions'>
             <div class='controls'>
-              <%= f.submit :ログイン, class: :btn %>
+              <%#= f.submit :ログイン, class: :btn %>
+              <%= button_tag type: "f.submit" , class: "btn btn-primary" do %>ログイン<% end %>
             </div>
           </div>
         <% end %>
