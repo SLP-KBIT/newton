@@ -2,7 +2,9 @@
 
 <%= form_for :message, url: { action: :create } do |f| %>
 
-  <%= f.submit '送信', class: 'btn' %>
+  <%= button_tag type: "f.submit", class: "btn btn-primary" do %>
+    <i class="icon-envelope"></i> 送信
+  <% end %>
   <br>
 
   <%= f.label :件名 %>
