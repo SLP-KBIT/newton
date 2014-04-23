@@ -58,7 +58,7 @@ class UserController < ApplicationController
   def mainpage
     redirect_to controller: 'user', action: 'mainpage', id: current_user.id if params[:id].to_i != current_user.id
     @item_ids = History.where(user_id: params[:id]).order(:created_at).pluck(:item_id).uniq
-    @histories = History.where(user_id: params[:id]).where('type = ? or type = ?', 'LendHistory', 'ReturnHistory')
+    @histories = History.where(user_id: params[:id]).where.not('type = ?', 'ReserveHistory')
     @lending_item_ids = []
     @history_ids = []
     @item_ids.each do |id|
