@@ -61,7 +61,6 @@ class HistoryController < ApplicationController
       pages['page'] = page
       redirect_to history_lend_add_path(pages) and return
     end
-
     @item.each do|key, value|
       item = Item.where(id: key).first
       detail = params[:reason][item.id.to_s]
@@ -88,9 +87,7 @@ class HistoryController < ApplicationController
   end
 
   def return_confirm
-    if params[:return]
-      redirect_to user_mainpage_path(current_user) and return
-    end
+    redirect_to user_mainpage_path(current_user) and return if params[:return]
     history_ids = []
     params[:type].each_key do |key|
       history_ids.push(key)
