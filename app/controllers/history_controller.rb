@@ -18,7 +18,6 @@ class HistoryController < ApplicationController
     if params[:reserve]
       redirect_to reservation_create_path(params[:page]) and return
     end
-
     @items = Item.where(id: @item_ids).where('amount > 0')
     redirect_to item_path, alert: '貸出可能な物品を選択してください' and return if @items.empty?
     @array2 = []
@@ -35,6 +34,10 @@ class HistoryController < ApplicationController
   end
 
   def lend_confirm
+    if params[:return]
+      redirect_to item_path and return
+      # redirect_to :back and return
+    end
     @item_ids = []
     @history_amounts = []
     params[:item].each do |key, value|
@@ -49,6 +52,16 @@ class HistoryController < ApplicationController
   def lend_create
     # STDERR.puts params.inspect
     @item = params[:item]
+    if params[:return]
+      page = {}
+      pages = {}
+      @item.keys.each do |item_id|
+        page[item_id] = item_id
+      end
+      pages['page'] = page
+      redirect_to history_lend_add_path(pages) and return
+    end
+
     @item.each do|key, value|
       item = Item.where(id: key).first
       detail = params[:reason][item.id.to_s]

@@ -21,7 +21,8 @@
         <tr>
           <td><%= item.name  %></td>
 	  <% if @array2[i].length == 1 %>
-          <td>1</td>
+          <td><%= select :item, item.id, @array2[i], {}, {:selected => 1, :readonly => true} %>
+	  </td>
 	  <% else %>
           <td><%= select :item, item.id, @array2[i] %></td>
 	  <% end %>
@@ -37,5 +38,9 @@
       <br><br>
     </h5>
   <% end %>
-  <%= submit_tag '確認', name1: '確認', class: 'btn btn-success' %>
+  <%= submit_tag '確認', name: 'confirm', class: 'btn btn-success' %>
+  <%= button_tag name: 'return', class: 'btn' do %>
+    <i class="icon-arrow-left"></i> 戻る
+  <% end %>
 <% end %>
+
