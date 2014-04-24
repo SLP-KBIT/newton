@@ -34,8 +34,9 @@ class HistoryController < ApplicationController
   end
 
   def lend_confirm
-    if params[:return] == '戻る'
+    if params[:return]
       redirect_to item_path and return
+      # redirect_to :back and return
     end
     @item_ids = []
     @history_amounts = []
@@ -50,10 +51,17 @@ class HistoryController < ApplicationController
 
   def lend_create
     # STDERR.puts params.inspect
-    if params[:return] == '戻る'
-      redirect_to item_path and return
-    end
     @item = params[:item]
+    if params[:return]
+      page = {}
+      pages = {}
+      @item.keys.each do |item_id|
+        page[item_id] = item_id
+      end
+      pages['page'] = page
+      redirect_to history_lend_add_path(pages) and return
+    end
+
     @item.each do|key, value|
       item = Item.where(id: key).first
       detail = params[:reason][item.id.to_s]
