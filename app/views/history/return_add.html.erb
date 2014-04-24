@@ -2,7 +2,7 @@
 
 <h3>紛失や故障は管理者に連絡してください。<br>
 その後、管理者に従ってください</h3>
-<%= form_tag(:action => 'return_confirm', :method => 'post') do %>
+<%= form_tag(history_return_confirm_path, {method: :get}) do %>
 <%#= form_tag(:action => 'return_add', :method => 'post') do %>
   <% @histories.each_with_index do |history,i| %>
   <table class="table table-bordered">
@@ -31,5 +31,8 @@
     <br><br>
   </h5>
   <% end %>
-<%= submit_tag '確認', name: '確認', class: 'btn btn-primary' %>
+  <%= submit_tag '確認', name: '確認', class: 'btn btn-primary' %>
+  <%= button_tag name: 'return', class: 'btn' do %>
+    <i class="icon-arrow-left"></i> 戻る
+  <% end %>
 <% end %>
