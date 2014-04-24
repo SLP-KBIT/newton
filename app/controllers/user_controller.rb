@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 class UserController < ApplicationController
+  before_action :permittion_check, if: :user_controller?,    only: [:index, :add, :create, :show, :exchange]
+
   def index
-    render file: "#{Rails.root}/public/404.html", status: 404 unless permitted_user?
     @users = User.all
   end
 
   def add
-    render file: "#{Rails.root}/public/404.html", status: 404 unless permitted_user?
     @user = User.new
   end
 
   def create
-    render file: "#{Rails.root}/public/404.html", status: 404 unless permitted_user?
     @user = User.new(params.require(:user).permit(:name, :account, :admin_flag, :category, :lendable, :e_mail, :password, :password_confirmation))
     @result = @user.save
     redirect_to user_path and return if @result
@@ -19,7 +18,6 @@ class UserController < ApplicationController
   end
 
   def show
-    render file: "#{Rails.root}/public/404.html", status: 404 unless permitted_user?
     @user = User.find(params[:id])
   end
 
@@ -31,7 +29,6 @@ class UserController < ApplicationController
   end
 
   def exchange
-    render file: "#{Rails.root}/public/404.html", status: 404 unless permitted_user?
     if params[:page].nil? != true
       params[:page].each do |key, value|
         @user = User.where(id: key).first

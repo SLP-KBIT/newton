@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :login_check, unless: :login_controller?
-  before_action :permittion_check, if: :user_controller?,    only: [:index, :add, :create, :show, :exchange]
-  before_action :permittion_check, if: :item_controller?,    only: [:add, :create, :edit, :update]
-  before_action :permittion_check, if: :history_controller?, only: [:index, :show]
+  # before_action :permittion_check, if: :user_controller?,    only: [:index, :add, :create, :show, :exchange]
+  # before_action :permittion_check, if: :item_controller?,    only: [:add, :create, :edit, :update]
+  # before_action :permittion_check, if: :history_controller?, only: [:index, :show]
   before_action :current_user
 
   def current_user

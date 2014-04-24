@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class HistoryController < ApplicationController
+  before_action :permittion_check, if: :history_controller?, only: [:index, :show]
+
   def index
     @histories = History.all.order('created_at DESC')
   end
