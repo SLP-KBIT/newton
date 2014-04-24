@@ -60,7 +60,7 @@
                 <li><%= link_to "メッセージ", message_path %></li>
               <% end %>
               <% if current_user %>
-                <li><%= link_to "アカウント編集", {:controller => "user", :action => "edit", :id => current_user.id}  %></li>
+                <li><%= link_to "アカウント編集", user_modify_path  %></li>
                 <li><%= link_to "ログアウト" , {:controller => "login", :action => "destroy"} %></li>
               <% end %>
             </ul>

@@ -71,4 +71,8 @@ class UserController < ApplicationController
     @histories = History.where(id: @history_ids)
     @items = Item.where(id: @lending_item_ids)
   end
+
+  def modify
+    @user = User.where(id: current_user.id).first
+  end
 end
