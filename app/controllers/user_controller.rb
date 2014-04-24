@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class UserController < ApplicationController
+  before_action :permittion_check, only: [:index, :add, :create, :show, :exchange]
+
   def index
     @users = User.all
   end

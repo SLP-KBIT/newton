@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class ItemController < ApplicationController
+  before_action :permittion_check, only: [:add, :create, :edit, :update]
+
   def index
     @items = Item.all
     # @items = Item.where(trashed: false)
