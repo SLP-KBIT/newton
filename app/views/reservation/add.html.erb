@@ -20,7 +20,10 @@
         <tr>
           <td><%= item.name  %></td>
           <td><%= select :item, item.id, @array2[i] %></td>
-          <td><%= date_field :start_date, item.id %></td>
+          <td>
+            <%= text_field :start_date, item.id, id: :datepicker %>
+          </td>
+
           <td><%= item.lending_period %></td>
           <td><%= item.category_text %></td>
           <td><%= item.place %></td>
