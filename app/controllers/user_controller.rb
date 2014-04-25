@@ -3,7 +3,7 @@ class UserController < ApplicationController
   before_action :permittion_check, only: [:index, :add, :create, :show, :exchange]
 
   def index
-    @users = User.all
+    @users = User.all.order(:id)
   end
 
   def add

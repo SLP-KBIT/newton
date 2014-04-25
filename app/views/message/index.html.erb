@@ -12,13 +12,13 @@
   </thead>
   <tbody>
     <% @messages.each do |message| %>
-      <tr>
-        <td><%= message.subject %></td>
-        <td><%= message.contents %></td>
-        <td><%= message.from %></td>
-        <td><%= message.read_flag %></td>
-        <td><%= message.user_id %></td>
-      </tr>
+    <tr>
+      <td><%= message.subject %></td>
+      <td><%= message.contents %></td>
+      <td><%= message.from %></td>
+      <td><%= message.read_flag %></td>
+      <td><%= message.user.name %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
