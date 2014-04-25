@@ -1,0 +1,22 @@
+<h1>予約 一覧</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>物品名</th>
+      <th>借りたい日(予約日)</th>
+      <th>予約者</th>
+      <th>予約受付日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservehistories.each do |reservehistory| %>
+      <tr>
+        <td><%= link_to reservehistory.item.name, action: :show, id: reservehistory.id %></td>
+        <td><%= reservehistory.start_date %></td>
+        <td><%= reservehistory.user.name %></td>
+        <td><%= reservehistory.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

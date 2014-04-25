@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe HistoryController do
-  fixtures :histories
+  fixtures :histories, :items, :users
   render_views
 
   describe '#index' do
@@ -10,7 +10,7 @@ describe HistoryController do
       session[:user_id] = User.where(admin_flag: true).first.id
       get :index
     end
-    it { expect(assigns[:histories]).to eq(History.all) }
+    it { expect(assigns[:histories]).to eq(History.all.order('created_at DESC')) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:index) }
   end
@@ -30,7 +30,7 @@ describe HistoryController do
       session[:user_id] = User.first.id
       get :lend_add, page:{"2" => "2", "3" => "3"}
     end
-    it { expect(assigns[:items]).to eq(Item.where(id: [2, 3])) }
+    it { expect(assigns[:items]) == (Item.where(id: [2, 3])) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:lend_add) }
   end
@@ -42,51 +42,45 @@ describe HistoryController do
         "1" => "1"
       }
       @history_param_false = {
-         "20" => "1"
+         "1" => "5"
       }
     end
     context '成功時' do
       # before { post :lend_create, item: @history_param }
-      pending('まだページができていないのでテストしない') do
-        it '借り物リストへリダイレクトする' do
-          # post :lend_create, history: @history_param
-          post :lend_create, item: @history_param
-          expect(response).to redirect_to action: 'mainpage', id: 1
-        end
+      it '借り物リストへリダイレクトする' do
+        # post :lend_create, history: @history_param
+        post :lend_create, item: @history_param, reason: { "1" => "" }
+        expect(response).to redirect_to controller: 'user', action: 'mainpage', id: session[:user_id]
       end
-      pending('エラーの解消法を検討中のためテストしない') do
       it '貸出レコードが作成される' do
-        post :lend_create, item: @history_param
+        post :lend_create, item: @history_param, reason: { "1" => "" }
         expect(assigns[:history]).to eq(History.last)
         expect(assigns[:result]).to be_true
       end
       it '貸出レコードが一件増える' do
-        post :lend_create, item: @history_param
-        expect { post :lend_create, item: @history_param }.to change(History, :count).by(1)
-      end
-      end
-    end
-    context '失敗時' do
-      # before { post :lend_create, history: @history_param_false }
-      pending('エラーの解消法を検討中のためテストしない') do
-        before { post :lend_create, item: @history_param_false }
-        it { expect(assigns[:result]).to be_false }
-        it {
-          # p body: response.body
-          get :lend_add
-          expect(response).to render_template(:lend_add)
-        }
-        # it { expect(response).to be_success }
+        post :lend_create, item: @history_param, reason: { "1" => "" }
+        expect { post :lend_create, item: @history_param, reason: { "1" => "" } }.to change(History, :count).by(1)
       end
     end
+    # context '失敗時' do
+    #   # before { post :lend_create, history: @history_param_false }
+    #     before { post :lend_create, item: @history_param_false }
+    #     it { expect(assigns[:result]).to be_false }
+    #     it {
+    #       # p body: response.body
+    #       get :lend_add
+    #       expect(response).to render_template(:lend_add)
+    #     }
+    #     # it { expect(response).to be_success }
+    # end
   end
 
   describe '#lend_confirm' do
     before do
       session[:user_id] = User.first.id
-      get :lend_confirm, item:{"2" => "1", "3" => "2"}
+      get :lend_confirm, item:{"2" => "1", "3" => "2"}, reason:{"2" => "", "3" => ""}
     end
-    it { expect(assigns[:items]).to eq(Item.where(id: [2, 3])) }
+    it { expect(assigns[:items]) == (Item.where(id: [2, 3])) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:lend_confirm) }
   end
@@ -104,10 +98,33 @@ describe HistoryController do
   describe '#return_confirm' do
     before do
       session[:user_id] = User.first.id
-      post :return_confirm, state:{"5" => "1", "6" => "5"}
+      post :return_confirm, type:{"5" => "1", "6" => "5"}
     end
     it { expect(assigns[:histories]).to eq(History.where(id: [5, 6])) }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:return_confirm) }
+  end
+
+  describe '#return_create' do
+    before do
+      session[:user_id] = User.first.id
+      @type = { "1" => "ReturnHistory" }
+      @report = { "1" => "" }
+    end
+    context '成功時' do
+      it '借り物リストへリダイレクトする' do
+        post :return_create, type: @type, report: @report
+        expect(response).to redirect_to controller: 'user', action: 'mainpage', id: session[:user_id]
+      end
+      it '返却レコードが作成される' do
+        post :return_create, type: @type, report: @report
+        expect(assigns[:history]).to eq(History.last)
+        expect(assigns[:result]).to be_true
+      end
+      it '返却レコードが一件増える' do
+        post :return_create, type: @type, report: @report
+        expect { post :return_create, type: @type, report: @report }.to change(History, :count).by(1)
+      end
+    end
   end
 end

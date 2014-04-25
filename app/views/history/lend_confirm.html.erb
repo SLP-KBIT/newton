@@ -6,28 +6,38 @@
 </p>
 
 <%= form_tag('/history/lend/create', method: :post) do %>
-  <table class="table table-bordered">
-    <thead>
-      <th>物品名</th>
-      <th>個数</th>
-      <th>最大貸出期間</th>
-      <th>カテゴリ</th>
-      <th>保管場所</th>
-      <th>付属品</th>
-    </thead>
-    <tbody>
-      <% @items.each_with_index do |item, i| %>
+  <% @items.each_with_index do |item, i| %>
+    <%= hidden_field :reason, "#{item.id}", value: @reason[item.id.to_s] %>
+    <table class="table table-bordered">
+      <thead>
+        <th>物品名</th>
+        <th>個数</th>
+        <th>最大貸出期間</th>
+        <th>カテゴリ</th>
+        <th>保管場所</th>
+        <th>付属品</th>
+      </thead>
+      <tbody>
         <tr>
           <td><%= item.name  %></td>
           <td><%= @item[item.id.to_s] %></td>
-          <td><%= item.lending_period %></td>
-          <td><%= item.category %></td>
+          <td><%= item.lending_period %>日</td>
+          <td><%= item.category_text %></td>
           <td><%= item.place %></td>
           <td><%= item.attachments %></td>
 	  <%= hidden_field_tag "item[#{item.id.to_s}]", @item[item.id.to_s] %>
 	</tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= submit_tag '借りる', name1: '借りる', class: 'btn' %>
+      </tbody>
+    </table>
+    <h5> ◯ 貸出理由 <br>
+      <%= @reason[item.id.to_s] %>
+      <br><br>
+    </h5>
+  <% end %>
+  <%= button_tag type: "submit", name: 'lend', class: "btn btn-success" do %>
+    <i class="icon-share"></i> 借りる
+  <% end %>
+  <%= button_tag name: 'return', class: 'btn' do %>
+    <i class="icon-arrow-left"></i> 戻る
+  <% end %>
 <% end %>

@@ -1,10 +1,14 @@
 <h1>物品 一覧</h1>
 
 <% if permitted_user? %>
-  <%= button_to '新規作成', item_create_path, method: :get, class: 'btn' %>
+  <%= link_to item_create_path, method: :get, class: 'btn btn-primary' do %>
+    <i class="icon-plus icon-white"></i> 新規作成
+  <% end %>
 <% end %>
+<br>
+<br>
 
-<%= form_tag(history_lend_add_path, method: :post) do %>
+<%= form_tag(history_lend_add_path, {method: :get}) do %>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -16,12 +20,18 @@
         <th>個数</th>
         <th>破棄</th>
         <th>付属品</th>
+        <th>画像</th>
       </tr>
     </thead>
     <tbody>
       <% @items.each do |item| %>
         <tr>
-          <td><%= check_box 'page', item.id, {}, item.id %></td>
+          <td>
+            <%= check_box 'page', item.id, {}, item.id %>
+            <% if item.amount == 0 %>
+              <span class="label label-important">貸出不可</span>
+            <% end %>
+          </td>
           <td><%= link_to item.name, action: :show, id: item.id %></td>
           <td><%= item.lending_period %>日</td>
           <td><%= item.category_text %></td>
@@ -29,10 +39,23 @@
           <td><%= item.amount %></td>
           <td><%= item.trashed_text %></td>
           <td><%= item.attachments %></td>
+          <td>
+            <% if item.image_exist? %>
+              <%= link_to '開く', item.image.url, target: [:_blank] %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
   <!-- <%= submit_tag '破棄', name1: '破棄', class: 'btn' %> -->
-  <%= submit_tag '借りる', name1: '借りる', class: 'btn' %>
+
+  <%= button_tag type: "submit", name: 'lend', class: "btn btn-success" do %>
+    <i class="icon-share"></i> 借りる
+  <% end %>
+
+  <%= button_tag type: "submit", name: 'reserve', class: "btn btn-warning" do %>
+    <i class="icon-list"></i> 予約
+  <% end %>
+
 <% end %>

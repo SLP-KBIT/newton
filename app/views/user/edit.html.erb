@@ -17,26 +17,28 @@
     </div>
   </div>
 
-  <div class='control-group'>
-    <%= f.label :管理者 , {class: 'control-label'} %>
-    <div class='controls'>
-      <%= f.check_box :admin_flag %>
+  <% if permitted_user? %>
+    <div class='control-group'>
+      <%= f.label :管理者 , {class: 'control-label'} %>
+      <div class='controls'>
+        <%= f.check_box :admin_flag %>
+      </div>
     </div>
-  </div>
 
-  <div class='control-group'>
-    <%= f.label :区分 , {class: 'control-label'} %>
-    <div class='controls'>
-      <%= f.select :category, ['サークル生', '学内者'] %>
+    <div class='control-group'>
+      <%= f.label :区分 , {class: 'control-label'} %>
+      <div class='controls'>
+        <%= f.select :category, ['サークル生', '学内者'] %>
+      </div>
     </div>
-  </div>
 
-  <div class='control-group'>
-    <%= f.label :貸出有効 , {class: 'control-label'} %>
-    <div class='controls'>
-      <%= f.check_box :lendable %>
+    <div class='control-group'>
+      <%= f.label :貸出有効 , {class: 'control-label'} %>
+      <div class='controls'>
+        <%= f.check_box :lendable %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class='control-group'>
     <%= f.label :メール , {class: 'control-label'} %>
@@ -61,7 +63,9 @@
 
   <div class='actions'>
     <div class='controls'>
-      <%= f.submit '更新', class: 'btn' %>
+      <%= button_tag type: "f.submit" , class: 'btn btn-primary' do %>
+        <i class="icon-repeat"></i> 更新 
+      <% end %>
     </div>
   </div>
 

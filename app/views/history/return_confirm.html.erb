@@ -4,33 +4,41 @@
 その後、管理者に従ってください</h3>
 <%#= form_tag(:action => 'return_confirm', :method => 'post') do %>
 <%= form_tag(:action => 'return_create', :method => 'post') do %>
-  <% @histories.each_with_index do |history,i| %>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-	<th>物品名</th>
-	<th>個数</th>
-	<th>場所</th>
-	<th>状態</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-	<td><%= history.item.name %></td>
-	<td><%= history.item.amount %></td>
-	<td><%= history.item.place %></td>
-	<td><%= History.status_text(@status[history.id.to_s].to_i) %></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5> ◯ 付属品 <br>
-    <%= history.item.attachments %>
-  </h5>
-  <h5> ◯ 不具合報告 <br>
-   <%= @report[history.id.to_s] %>
-    <br><br>
-  </h5>
+  <% @histories.each do |history| %>
+    <%= hidden_field :type, "#{history.id}", value: @type[history.id.to_s] %>
+    <%= hidden_field :report, "#{history.id}", value: @report[history.id.to_s] %>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+	  <th>物品名</th>
+	  <th>個数</th>
+	  <th>場所</th>
+	  <th>状態</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+	  <td><%= history.item.name %></td>
+	  <td><%= history.amount %></td>
+	  <td><%= history.item.place %></td>
+	  <td><%= History.type_text(@type[history.id.to_s]) %></td>
+        </tr>
+      </tbody>
+    </table>
+    <h5> ◯ 付属品 <br>
+      <%= history.item.attachments %>
+    </h5>
+    <h5> ◯ 不具合報告 <br>
+      <%= @report[history.id.to_s] %>
+      <br><br>
+    </h5>
   <% end %>
 
-<%= submit_tag '返却', name: '返却', class: 'btn' %>
+  <%= button_tag type: "submit", name: 'reserve', class: "btn btn-primary" do %>
+    <i class="icon-inbox"></i> 返却
+  <% end %>
+  <%= button_tag name: 'return', class: 'btn' do %>
+    <i class="icon-arrow-left"></i> 戻る
+  <% end %>
 <% end %>

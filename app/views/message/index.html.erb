@@ -12,14 +12,16 @@
   </thead>
   <tbody>
     <% @messages.each do |message| %>
-      <tr>
-        <td><%= message.subject %></td>
-        <td><%= message.contents %></td>
-        <td><%= message.from %></td>
-        <td><%= message.read_flag %></td>
-        <td><%= message.user_id %></td>
-      </tr>
+    <tr>
+      <td><%= message.subject %></td>
+      <td><%= message.contents %></td>
+      <td><%= message.from %></td>
+      <td><%= message.read_flag %></td>
+      <td><%= message.user.name %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-<%= button_to '追加', message_add_path, method: :get, class: 'btn' %>
+<%= link_to message_add_path, method: :get, class: "btn btn-primary" do %>
+  <i class="icon-plus"></i> 追加
+<% end %>

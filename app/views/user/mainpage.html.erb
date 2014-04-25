@@ -1,7 +1,7 @@
 <h1>借り物リスト</h1>
 
 
-<%= form_tag(history_return_add_path, method: :post) do %>
+<%= form_tag(history_return_add_path, method: :get) do %>
 
   <table class="table table-bordered">
     <thead>
@@ -17,11 +17,13 @@
         <tr>
           <td><%= check_box 'page', i, {}, history.id %></td>
           <td><%= link_to history.item.name, action: :show, id: history.item.id %></td>
-          <td><%= history.item.amount %></td>
-          <td><%= history.get_return_date %></td>
+          <td><%= history.amount %></td>
+          <td><%= history.return_date %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <%= submit_tag '返却', name1: '返却', class: 'btn' %>
+  <%= button_tag type: "submit", name: 'reserve', class: "btn btn-primary" do %>
+    <i class="icon-inbox"></i> 返却
+  <% end %>
 <% end %>

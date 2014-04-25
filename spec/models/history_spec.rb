@@ -3,67 +3,67 @@
 #
 # Table name: histories
 #
-#  id             :integer          not null, primary key
-#  user_id        :integer
-#  item_id        :integer
-#  status         :integer
-#  amount         :integer
-#  failure_detail :text
-#  detail_id      :integer
-#  created_at     :datetime
-#  updated_at     :datetime
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  item_id    :integer
+#  amount     :integer
+#  detail     :text
+#  created_at :datetime
+#  updated_at :datetime
+#  type       :string(255)
+#  start_date :datetime
 #
 
 require 'spec_helper'
 
 describe History do
-  describe 'status_text'
-  context 'status = 0のとき' do
+  describe 'type_text'
+  context 'type = LendHistory のとき' do
     it do
-      history = History.create(status: 0)
-      expect(history.status_text).to eq("貸出")
+      history = LendHistory.create()
+      expect(history.type_text).to eq("貸出")
     end
   end
-  context 'status = 1のとき' do
+  context 'type = ReturnHistory のとき' do
     it do
-      history = History.create(status: 1)
-      expect(history.status_text).to eq("返却")
+      history = ReturnHistory.create()
+      expect(history.type_text).to eq("返却")
     end
   end
-  context 'status = 2のとき' do
+  context 'type = ReserveHistory のとき' do
     it do
-      history = History.create(status: 2)
-      expect(history.status_text).to eq("予約")
+      history = ReserveHistory.create()
+      expect(history.type_text).to eq("予約")
     end
   end
-  context 'status = 3のとき' do
+  context 'type = CancelHistory のとき' do
     it do
-      history = History.create(status: 3)
-      expect(history.status_text).to eq("予約取消")
+      history = CancelHistory.create()
+      expect(history.type_text).to eq("予約取消")
     end
   end
-  context 'status = 4のとき' do
+  context 'type = DestroyHistory のとき' do
     it do
-      history = History.create(status: 4)
-      expect(history.status_text).to eq("破棄")
+      history = DestroyHistory.create()
+      expect(history.type_text).to eq("破棄")
     end
   end
-  context 'status = 5のとき' do
+  context 'type = LoseHistory のとき' do
     it do
-      history = History.create(status: 5)
-      expect(history.status_text).to eq("紛失")
+      history = LoseHistory.create()
+      expect(history.type_text).to eq("紛失")
     end
   end
-  context 'status = 6のとき' do
+  context 'type = BreakHistory のとき' do
     it do
-      history = History.create(status: 6)
-      expect(history.status_text).to eq("故障")
+      history = BreakHistory.create()
+      expect(history.type_text).to eq("故障")
     end
   end
-  context 'status = 7のとき' do
+  context 'type = RestoreHistory のとき' do
     it do
-      history = History.create(status: 7)
-      expect(history.status_text).to eq("復旧")
+      history = RestoreHistory.create()
+      expect(history.type_text).to eq("復旧")
     end
   end
 end

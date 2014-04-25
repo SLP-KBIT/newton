@@ -54,15 +54,25 @@
   </div>
 
   <div class='control-group'>
-    <%= f.label :画像パス , {class: 'control-label'} %>
+    <%= f.label :画像 , {class: 'control-label'} %>
     <div class='controls'>
-      <%= f.text_field :picture_path %>
+      <%= f.file_field :image, style: 'display: none;' %>
+      <input type='text' id='selected_file' readonly='readonly'></input>
+      <a class='btn btn-info' onclick="$('#item_image').click();"><i class="icon-folder-open"></i>ファイル選択</a>
     </div>
   </div>
 
   <div class='actions'>
     <div class='controls'>
-      <%= f.submit '更新', class: 'btn' %>
+      <%= button_tag type: "f.submit" , class: 'btn btn-primary' do%>
+          <i class="icon-ok-sign"></i> 更新
+      <% end %>
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $('#item_image').change(function() {
+    $('#selected_file').val($(this).val());
+  });
+</script>

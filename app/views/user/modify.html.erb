@@ -1,0 +1,49 @@
+<h1>ユーザ 編集</h1>
+
+<%= form_for @user, html: { class: 'form-horizontal' }, url: { action: :update } do |f| %>
+  <%= f.hidden_field :id %>
+
+  <div class='control-group'>
+    <%= f.label :名前 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :アカウント名 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :account %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :メール , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.text_field :e_mail %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :パスワード , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.password_field :password %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :パスワード再入力 , {class: 'control-label'} %>
+    <div class='controls'>
+      <%= f.password_field :password_confirmation %>
+    </div>
+  </div>
+
+  <div class='actions'>
+    <div class='controls'>
+      <%= button_tag type: "f.submit" , class: 'btn btn-primary' do %>
+        <i class="icon-repeat"></i> 更新 
+      <% end %>
+    </div>
+  </div>
+
+<% end %>

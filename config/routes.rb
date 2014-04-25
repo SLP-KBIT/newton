@@ -11,8 +11,9 @@ Sample::Application.routes.draw do
   post  '/user/create'           => 'user#create'
   patch '/user/update'           => 'user#update'
   get   '/user/exchange'         => 'user#exchange'
+  get   '/user/modify'       => 'user#modify'
   get   '/user/update/:id'       => 'user#edit'
-  get   '/user/mainpage/:id'     => 'user#mainpage'
+  get   '/user/mainpage/:id'     => 'user#mainpage', as: 'user/mainpage'
   get   '/user/:id'              => 'user#show'
 
   get   '/item'                  => 'item#index'
@@ -24,20 +25,28 @@ Sample::Application.routes.draw do
 
   get   '/history'               => 'history#index'
   get   '/history/:id'           => 'history#show'
-  post  '/history/lend/add'      => 'history#lend_add'
-  post  '/history/lend/confirm'  => 'history#lend_confirm'
+  # post  '/history/lend/add'      => 'history#lend_add'
+  # post  '/history/lend/confirm'  => 'history#lend_confirm'
   post  '/history/lend/create'   => 'history#lend_create'
-  post  '/history/return/add'    => 'history#return_add'
-  post  '/history/return/confirm'=> 'history#return_confirm'
+  # post  '/history/return/add'    => 'history#return_add'
+  # post  '/history/return/confirm'=> 'history#return_confirm'
   post  '/history/return/create' => 'history#return_create'
   get   '/history/returned'      => 'history#reserve'
   post  '/history/returned'      => 'history#reserved'
+  get   '/history/lend/add'      => 'history#lend_add'
+  get   '/history/lend/confirm'  => 'history#lend_confirm'
+  get   '/history/return/add'    => 'history#return_add'
+  get   '/history/return/confirm'=> 'history#return_confirm'
 
   get   '/message'               => 'message#index'
   get   '/message/add'           => 'message#add'
   get   '/message/:id'           => 'message#show'
   post  '/message/create'        => 'message#create'
 
+  get   '/reservation'           => 'reservation#index'
+  get   '/reservation/create'    => 'reservation#add'
+  post  '/reservation/create'    => 'reservation#create'
+  get   '/reservation/:id'       => 'reservation#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

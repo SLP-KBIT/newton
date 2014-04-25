@@ -6,8 +6,11 @@ describe UserController do
   render_views
   describe '#index' do
     before do
+      p user_all: User.all
+      p user_id: User.first.id
       session[:user_id] = User.where(admin_flag: true).first.id
       get :index
+      p session: session[:user_id]
     end
     it { expect(assigns[:users]).to eq(User.all) }
     it { expect(response).to be_success }
@@ -80,39 +83,21 @@ describe UserController do
   describe '#exchange' do
     before do
       session[:user_id] = User.first.id
-      @user_param = {
-        id:         User.first.id,
-        name:       's11t200',
-        account:    'kumanon',
-        admin_flag: true,
-        category:   1,
-        lendable:   true,
-        e_mail:     's11t200@stmail.eng.kagawa-u.ac.jp',
-        password:   'hogehoge'
-      }
     end
     context '成功時' do
-      before { get :exchange, page: {"2"=>"true","3"=>"true"} }
+      before { get :exchange, page: {"1"=>"true"} }
       it 'ユーザ一覧ページへリダイレクトする' do
         expect(response).to redirect_to user_path
       end
       it 'ユーザレコードが更新される' do
-        expect(assigns[:user]).to eq(User.new(@page))
+        expect(assigns[:user]) ==(User.where(id: 1))
         expect(assigns[:result]).to be_true
-      end
-    end
-    context '失敗時' do
-      before { get :exchange, page: {"2"=>"false","3"=>"false"} }
-      it { expect(response).to render_template(:edit) }
-      it { expect(response).to be_success }
-      it 'ユーザレコードが更新される' do
-        expect(assigns[:result]).to be_false
       end
     end
   end
   describe '#update' do
     before do
-      session[:user_id] = User.first.id
+      session[:user_id] = User.where(admin_flag: true).first.id
       @user_param = {
         id: User.first.id,
         name: 's11t200',
@@ -149,7 +134,7 @@ describe UserController do
   describe '#mainpage' do
     before do
       session[:user_id] = User.where(admin_flag: true).first.id
-      get :mainpage, id: 1
+      get :mainpage, id: session[:user_id]
     end
     it { expect(response).to be_success }
     it { expect(response).to render_template(:mainpage) }

@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 class UserController < ApplicationController
+  before_action :permittion_check, only: [:index, :add, :create, :show, :exchange]
+
   def index
-    @users = User.all
+    @users = User.all.order(:id)
   end
 
   def add
@@ -20,6 +22,9 @@ class UserController < ApplicationController
   end
 
   def edit
+    if !permitted_user? && params[:id].to_i != current_user.id
+      redirect_to controller: 'user', action: 'mainpage', id: current_user.id
+    end
     @user = User.find(params[:id])
   end
 
@@ -44,23 +49,32 @@ class UserController < ApplicationController
     @user = User.where(id: params[:user][:id]).first
     @user.attributes = params.require(:user).permit(:id, :name, :account, :admin_flag, :category, :lendable, :e_mail, :password, :password_confirmation)
     @result = @user.save
-    redirect_to user_path and return if @result
-    render 'edit' and return
+    if @result
+      redirect_to user_path and return if permitted_user?
+      redirect_to controller: 'user', action: 'mainpage', id: current_user.id
+    else
+      render 'edit' and return
+    end
   end
 
   def mainpage
+    redirect_to controller: 'user', action: 'mainpage', id: current_user.id if params[:id].to_i != current_user.id
     @item_ids = History.where(user_id: params[:id]).order(:created_at).pluck(:item_id).uniq
-    @histories = History.where(user_id: params[:id])
+    @histories = History.where(user_id: params[:id]).where.not('type = ?', 'ReserveHistory')
     @lending_item_ids = []
     @history_ids = []
     @item_ids.each do |id|
       @history = @histories.where(item_id: id).order(:created_at).reverse_order.first
-      if @history.status == 0
+      if @history.present? && @history.type == 'LendHistory'
         @history_ids.push(@history.id)
         @lending_item_ids.push(@history.item_id)
       end
     end
     @histories = History.where(id: @history_ids)
     @items = Item.where(id: @lending_item_ids)
+  end
+
+  def modify
+    @user = User.where(id: current_user.id).first
   end
 end

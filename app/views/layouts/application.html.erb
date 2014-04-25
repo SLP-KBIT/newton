@@ -50,8 +50,9 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <% if current_user %>
-                <li><%= link_to "メインページ", {:controller => "user", :action => "mainpage", :id => "1"}  %></li>
+                <li><%= link_to "メインページ", {:controller => "user", :action => "mainpage", :id => current_user.id}  %></li>
                 <li><%= link_to "物品", item_path %></li>
+                <li><%= link_to "予約", reservation_path %></li>
               <% end %>
               <% if current_user && permitted_user? %>
                 <li><%= link_to "ユーザ", user_path %></li>
@@ -59,6 +60,7 @@
                 <li><%= link_to "メッセージ", message_path %></li>
               <% end %>
               <% if current_user %>
+                <li><%= link_to "アカウント編集", user_modify_path  %></li>
                 <li><%= link_to "ログアウト" , {:controller => "login", :action => "destroy"} %></li>
               <% end %>
             </ul>

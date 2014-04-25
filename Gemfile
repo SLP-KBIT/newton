@@ -21,6 +21,7 @@ gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'bootstrap-datepicker-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -52,6 +53,8 @@ gem 'pry-rails'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 
+gem 'carrierwave'
+
 gem 'annotate', group: :development
 
 group :development, :test do
@@ -64,7 +67,6 @@ group :development, :test do
   gem 'turnip'
   gem 'capybara'
   gem 'poltergeist'
-
 end
 
 group :deployment do

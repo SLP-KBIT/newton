@@ -4,9 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :login_check, unless: :login_controller?
-  before_action :permittion_check, if: :user_controller?,    only: [:index, :add, :create, :show, :exchange]
-  before_action :permittion_check, if: :item_controller?,    only: [:add, :create, :edit, :update]
-  before_action :permittion_check, if: :history_controller?, only: [:index, :show]
   before_action :current_user
 
   def current_user
@@ -15,7 +12,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def permitted_user?
-    user = User.where(id: current_user).first
+    user = User.where(id: current_user.id).first
     user.admin_flag
   end
   helper_method :permitted_user?
@@ -36,17 +33,5 @@ class ApplicationController < ActionController::Base
 
   def login_controller?
     controller_name == 'login'
-  end
-
-  def user_controller?
-    controller_name == 'user'
-  end
-
-  def item_controller?
-    controller_name == 'item'
-  end
-
-  def history_controller?
-    controller_name == 'history'
   end
 end

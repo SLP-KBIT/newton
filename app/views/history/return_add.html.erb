@@ -2,7 +2,7 @@
 
 <h3>紛失や故障は管理者に連絡してください。<br>
 その後、管理者に従ってください</h3>
-<%= form_tag(:action => 'return_confirm', :method => 'post') do %>
+<%= form_tag(history_return_confirm_path, {method: :get}) do %>
 <%#= form_tag(:action => 'return_add', :method => 'post') do %>
   <% @histories.each_with_index do |history,i| %>
   <table class="table table-bordered">
@@ -17,9 +17,9 @@
     <tbody>
       <tr>
 	<td><%= history.item.name %></td>
-	<td><%= history.item.amount %></td>
+	<td><%= history.amount %></td>
 	<td><%= history.item.place %></td>
-	<td><%= select :state, "#{history.id}", history.get_status_info %></td>
+	<td><%= select :type, "#{history.id}", history.type_info %></td>
       </tr>
     </tbody>
   </table>
@@ -27,9 +27,12 @@
     <%= history.item.attachments %>
   </h5>
   <h5> ◯ 不具合報告 <br>
-    <%= text_area :report, "#{history.id}", :size => "60×10" %>
+    <%= text_area :report, "#{history.id}", :size => "60×10", placeholder: '例） バッテリーがへばっています' %>
     <br><br>
   </h5>
   <% end %>
-<%= submit_tag '返却', name: '返却', class: 'btn' %>
+  <%= submit_tag '確認', name: '確認', class: 'btn btn-primary' %>
+  <%= button_tag name: 'return', class: 'btn' do %>
+    <i class="icon-arrow-left"></i> 戻る
+  <% end %>
 <% end %>
