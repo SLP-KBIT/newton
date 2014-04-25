@@ -5,7 +5,7 @@
 借りる物品の情報を確認のうえ、「借りる」ボタンを押してください
 </p>
 
-<%= form_tag( history_lend_confirm_path, method: :post) do %>
+<%= form_tag( history_lend_create_path, method: :post) do %>
   <% @items.each_with_index do |item, i| %>
     <%= hidden_field :reason, "#{item.id}", value: @reason[item.id.to_s] %>
     <table class="table table-bordered">
