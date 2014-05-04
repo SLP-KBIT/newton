@@ -11,9 +11,9 @@
     </tr>
   </thead>
   <tbody>
-    <% @messages.each do |message| %>
+    <% @messages.sort.each do |message| %>
     <tr>
-      <td><%= message.subject %></td>
+      <td><%= link_to message.subject, action: :show, id: message.id %></td>
       <td><%= message.contents %></td>
       <td><%= message.from %></td>
       <td><%= message.read_flag %></td>

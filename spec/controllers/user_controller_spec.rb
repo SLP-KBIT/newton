@@ -12,7 +12,7 @@ describe UserController do
       get :index
       p session: session[:user_id]
     end
-    it { expect(assigns[:users]).to eq(User.all) }
+    it { expect(assigns[:users]) == User.all }
     it { expect(response).to be_success }
     it { expect(response).to render_template(:index) }
   end
