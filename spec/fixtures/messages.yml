@@ -18,4 +18,4 @@ sample:
   contents: '4月1日2時からメンテナンスを始めます'
   from: 'システム'
   read_flag: true
-  user_id: 4
+  user_id: 1

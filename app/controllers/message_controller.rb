@@ -35,6 +35,6 @@ class MessageController < ApplicationController
     @edit_message = Message.where(id: params[:id]).first
     @edit_message.read_flag = true
     @result = @edit_message.save
-    #redirect_to message_path and return unless @result
+    # redirect_to message_path and return unless @result
   end
 end
