@@ -49,8 +49,38 @@ describe ItemController do
         expect { post :create, item: @item_param }.to change(Item, :count).by(1)
       end
     end
-    context '失敗時' do
+    context '失敗時(カテゴリの値がおかしい時)' do
       before { post :create, item: @item_param.merge(category: 3) }
+      it { expect(response).to render_template(:add) }
+      it { expect(response).to be_success }
+      it { expect(assigns[:result]).to be_false }
+    end
+    context '失敗時(nameがからの時)' do
+      before { post :create, item: @item_param.merge(name: nil) }
+      it { expect(response).to render_template(:add) }
+      it { expect(response).to be_success }
+      it { expect(assigns[:result]).to be_false }
+    end
+    context '失敗時(lending_periodがからの時)' do
+      before { post :create, item: @item_param.merge(lending_period: nil) }
+      it { expect(response).to render_template(:add) }
+      it { expect(response).to be_success }
+      it { expect(assigns[:result]).to be_false }
+    end
+    context '失敗時(amountがからの時)' do
+      before { post :create, item: @item_param.merge(amount: nil) }
+      it { expect(response).to render_template(:add) }
+      it { expect(response).to be_success }
+      it { expect(assigns[:result]).to be_false }
+    end
+    context '失敗時(lending_periodが数値ではない時)' do
+      before { post :create, item: @item_param.merge(lending_period: "aiue") }
+      it { expect(response).to render_template(:add) }
+      it { expect(response).to be_success }
+      it { expect(assigns[:result]).to be_false }
+    end
+    context '失敗時(amountが数値ではない時)' do
+      before { post :create, item: @item_param.merge(amount: "abc") }
       it { expect(response).to render_template(:add) }
       it { expect(response).to be_success }
       it { expect(assigns[:result]).to be_false }
