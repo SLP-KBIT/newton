@@ -22,7 +22,7 @@ class Item < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   def category_text
-    category_texts[category]
+    self.class.category_text.key(category)
   end
 
   def trashed_text
@@ -35,11 +35,11 @@ class Item < ActiveRecord::Base
     File.exist? image.path
   end
 
-  private
-
-  def category_texts
-    ['その他', 'PC', 'デジカメ']
+  def self.category_text
+    { 'その他' => 0, 'PC' => 1, 'カメラ' => 2 }
   end
+
+  private
 
   def trashed_texts
     return '有' if trashed
