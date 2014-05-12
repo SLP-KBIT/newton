@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # == Schema Information
 #
 # Table name: items
@@ -28,7 +29,7 @@ describe Item do
     context 'category = 2のとき' do
       it {
         item = Item.create(category: 2)
-        expect(item.category_text).to eq("デジカメ") 
+        expect(item.category_text).to eq("カメラ") 
       }
     end
   end
