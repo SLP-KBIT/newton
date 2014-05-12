@@ -19,6 +19,8 @@
 class Item < ActiveRecord::Base
   has_many :histories
   validates :category, inclusion: { in: [0, 1, 2], message: '選択してください' }
+  validates :name, :lending_period, :amount, presence: { message: '入力してください' }
+  validates :lending_period, :amount, numericality: { only_integer: true, message: '数値を入力してください' }
   mount_uploader :image, ImageUploader
 
   def category_text
