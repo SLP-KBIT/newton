@@ -120,9 +120,59 @@ describe ItemController do
         expect(assigns[:result]).to be_true
       end
     end
-    context '失敗時' do
+    context '失敗時(カテゴリの値がおかしい時)' do
       before do
         patch :update, item: @item_param.merge(category: 3)
+      end
+      it { expect(response).to render_template :edit }
+      it { expect(response).to be_success }
+      it 'アイテムレコードの更新が失敗する' do
+        expect(assigns[:result]).to be_false
+      end
+    end
+    context '失敗時(nameがからの時)' do
+      before do
+        patch :update, item: @item_param.merge(name: nil)
+      end
+      it { expect(response).to render_template :edit }
+      it { expect(response).to be_success }
+      it 'アイテムレコードの更新が失敗する' do
+        expect(assigns[:result]).to be_false
+      end
+    end
+    context '失敗時(lending_periodがからの時)' do
+      before do
+        patch :update, item: @item_param.merge(lending_period: nil)
+      end
+      it { expect(response).to render_template :edit }
+      it { expect(response).to be_success }
+      it 'アイテムレコードの更新が失敗する' do
+        expect(assigns[:result]).to be_false
+      end
+    end
+    context '失敗時(amountがからの時)' do
+      before do
+        patch :update, item: @item_param.merge(amount: nil)
+      end
+      it { expect(response).to render_template :edit }
+      it { expect(response).to be_success }
+      it 'アイテムレコードの更新が失敗する' do
+        expect(assigns[:result]).to be_false
+      end
+    end
+    context '失敗時(lending_periodが数値ではない時)' do
+      before do
+        patch :update, item: @item_param.merge(lending_period: "aaa")
+      end
+      it { expect(response).to render_template :edit }
+      it { expect(response).to be_success }
+      it 'アイテムレコードの更新が失敗する' do
+        expect(assigns[:result]).to be_false
+      end
+    end
+    context '失敗時(amountが数値ではない時)' do
+      before do
+        patch :update, item: @item_param.merge(amount: "aaa")
       end
       it { expect(response).to render_template :edit }
       it { expect(response).to be_success }
