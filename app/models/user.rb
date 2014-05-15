@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 # -*- coding: utf-8 -*-
 # == Schema Information
@@ -22,6 +23,8 @@ class User < ActiveRecord::Base
   has_many :histories
   has_many :messages
 
+  validates :name, :account, presence: { message: '入力してください' }
+  validates :password, presence: { message: '入力してください', on: :create }
   validates :category, inclusion: { in: [0, 1], message: '選択してください' }
 
   scope :id_is, -> (id) { where(id: id) }
