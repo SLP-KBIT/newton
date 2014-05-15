@@ -32,4 +32,18 @@ describe User do
       }
     end
   end
+  describe 'バリデーションのテスト' do
+    fixtures :users
+    before(:each) do
+      @user = users(:admin)
+    end
+    it "nameが空の時、エラーが発生すること" do
+      @user.name = ""
+      @user.should_not be_valid
+    end
+    it "accountが空の時、エラーが発生すること" do
+      @user.account = ""
+      @user.should_not be_valid
+    end
+  end
 end

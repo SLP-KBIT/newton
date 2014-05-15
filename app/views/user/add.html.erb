@@ -6,6 +6,11 @@
     <%= f.label :名前 , {class: 'control-label'} %>
     <div class='controls'>
       <%= f.text_field :name, placeholder: '例） 香川 太郎' %>
+      <div class='text-error'>
+        <% if @user.errors.any? %>
+          <%= @user.errors.messages[:name][0] %>
+        <% end %>
+      </div>
     </div>
   </div>
 
@@ -13,6 +18,11 @@
     <%= f.label :アカウント名 , {class: 'control-label'} %>
     <div class='controls'>
       <%= f.text_field :account, placeholder: '例） kagawa' %>
+      <div class='text-error'>
+        <% if @user.errors.any? %>
+          <%= @user.errors.messages[:account][0] %>
+        <% end %>
+      </div>
     </div>
   </div>
 
@@ -48,6 +58,11 @@
     <%= f.label :パスワード , {class: 'control-label'} %>
     <div class='controls'>
       <%= f.password_field :password %>
+      <div class='text-error'>
+        <% if @user.errors.any? %>
+          <%= @user.errors.messages[:password][0] %>
+        <% end %>
+      </div>
     </div>
   </div>
 
