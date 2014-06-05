@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: d637e0967dc66e9824345009ad74fbfdb1e4349f
+  specs:
+    jquery-datatables-rails (1.12.2)
+      jquery-rails
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -297,6 +305,7 @@ DEPENDENCIES
   guard-rspec
   guard-spork
   jbuilder (~> 1.2)
+  jquery-datatables-rails!
   jquery-rails
   less-rails
   pg
