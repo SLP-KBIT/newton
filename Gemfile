@@ -53,6 +53,8 @@ gem 'pry-rails'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+
 gem 'carrierwave'
 
 gem 'annotate', group: :development
