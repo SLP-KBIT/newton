@@ -7,5 +7,7 @@ env:
 before_script:
   - cp config/database.yml.travis config/database.yml
 script:
-  - bundle exec rake db:create db:migrate db:seed
+  - bundle exec rake db:drop db:create db:migrate db:seed
   - bundle exec rake spec
+notifications:
+  email: false
