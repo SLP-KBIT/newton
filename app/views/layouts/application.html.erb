@@ -50,7 +50,7 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <% if current_user %>
-                <li><%= link_to "メインページ", {:controller => "user", :action => "mainpage", :id => current_user.id}, 'data-no-turbolink' => '1' %></li>
+                <li><%= link_to "メインページ", user_mainpage_path(current_user.id), 'data-no-turbolink' => '1' %></li>
                 <li><%= link_to "物品", item_path, 'data-no-turbolink' => '1' %></li>
                 <li><%= link_to "予約", reservation_path, 'data-no-turbolink' => '1' %></li>
               <% end %>
@@ -61,7 +61,7 @@
               <% end %>
               <% if current_user %>
                 <li><%= link_to "アカウント編集", user_modify_path  %></li>
-                <li><%= link_to "ログアウト" , {:controller => "login", :action => "destroy"} %></li>
+                <li><%= link_to "ログアウト" , destroy_user_session_path, method: :delete %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->

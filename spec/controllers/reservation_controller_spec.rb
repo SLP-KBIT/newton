@@ -6,7 +6,7 @@ describe ReservationController do
   render_views
   describe '#index' do
     before do
-      session[:user_id] = User.first.id
+      sign_in User.where(admin_flag: false).first
       get :index
     end
     it { expect(assigns[:reservehistories]).to eq(ReserveHistory.all) }
@@ -15,7 +15,7 @@ describe ReservationController do
   end
   describe '#show' do
     before do
-      session[:user_id] = User.where(admin_flag: true).first.id
+      sign_in User.where(admin_flag: true).first
       get :show, id: 2
     end
     it { expect(assigns[:reservehistory]).to be_a_kind_of(ReserveHistory) }
@@ -24,7 +24,7 @@ describe ReservationController do
   end
   describe '#add' do
     before do
-      session[:user_id] = User.first.id
+      sign_in User.where(admin_flag: false).first
       get :add, {"2" => "2", "3" => "3"}
     end
     it { expect(assigns[:items]).to eq(Item.where(id: [2, 3])) }
@@ -33,7 +33,7 @@ describe ReservationController do
   end
   describe '#create' do
     before do
-      session[:user_id] = User.first.id
+      sign_in User.where(admin_flag: false).first
       @history_param = {
         item:{"1" => "1"},
         start_date:{"1" => "2015-05-21"}

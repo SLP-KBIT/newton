@@ -2,11 +2,11 @@
 require 'spec_helper'
 
 describe MessageController do
-  fixtures :messages
+  fixtures :messages, :users
   render_views
   describe '#index' do
     before do
-      session[:user_id] = User.first.id
+      sign_in User.where(admin_flag: false).first
       get :index
     end
     it { expect(assigns[:messages]).to eq(Message.all) }
@@ -15,7 +15,7 @@ describe MessageController do
   end
   describe '#add' do
     before do
-      session[:user_id] = User.first.id
+      sign_in User.where(admin_flag: false).first
       get :add
     end
     it { expect(assigns[:messages]).to be_a_kind_of(Message) }
@@ -30,7 +30,7 @@ describe MessageController do
       },
       page: {"1" => "true"}
     end
-    before { session[:user_id] = User.where(admin_flag: true).first.id }
+    before { sign_in User.where(admin_flag: true).first }
     context '成功時' do
       let(:category) { 1 }
       it 'メッセージページへリダイレクトされる' do
@@ -46,5 +46,5 @@ describe MessageController do
         expect { request }.to change(Message, :count).by(1)
       end
     end
-  end 
+  end
 end

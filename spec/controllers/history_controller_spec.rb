@@ -7,7 +7,7 @@ describe HistoryController do
 
   describe '#index' do
     before do
-      session[:user_id] = User.where(admin_flag: true).first.id
+      sign_in User.where(admin_flag: true).first
       get :index
     end
     it { expect(assigns[:histories]).to eq(History.all.order('created_at DESC')) }
@@ -17,7 +17,7 @@ describe HistoryController do
 
   describe '#show' do
     before do
-      session[:user_id] = User.where(admin_flag: true).first.id
+      sign_in User.where(admin_flag: true).first
       get :show, id: 1
     end
     it { expect(assigns[:history]).to be_a_kind_of(History) }
@@ -27,7 +27,7 @@ describe HistoryController do
 
   describe '#lend_add' do
     before do
-      session[:user_id] = User.first.id
+      sign_in User.where(admin_flag: false).first
       get :lend_add, page:{"2" => "2", "3" => "3"}
     end
     it { expect(assigns[:items]) == (Item.where(id: [2, 3])) }
@@ -37,7 +37,8 @@ describe HistoryController do
 
   describe '#lend_create' do
     before do
-      session[:user_id] = User.first.id
+      @user = User.where(admin_flag: false).first
+      sign_in @user
       @history_param = {
         "1" => "1"
       }
@@ -50,7 +51,7 @@ describe HistoryController do
       it '借り物リストへリダイレクトする' do
         # post :lend_create, history: @history_param
         post :lend_create, item: @history_param, reason: { "1" => "" }
-        expect(response).to redirect_to controller: 'user', action: 'mainpage', id: session[:user_id]
+        expect(response).to redirect_to controller: 'user', action: 'mainpage', id: @user.id
       end
       it '貸出レコードが作成される' do
         post :lend_create, item: @history_param, reason: { "1" => "" }
@@ -77,7 +78,7 @@ describe HistoryController do
 
   describe '#lend_confirm' do
     before do
-      session[:user_id] = User.first.id
+      sign_in User.where(admin_flag: false).first
       get :lend_confirm, item:{"2" => "1", "3" => "2"}, reason:{"2" => "", "3" => ""}
     end
     it { expect(assigns[:items]) == (Item.where(id: [2, 3])) }
@@ -87,7 +88,7 @@ describe HistoryController do
 
   describe '#return_add' do
     before do
-      session[:user_id] = User.first.id
+      sign_in User.where(admin_flag: false).first
       post :return_add, page:{"0" => "5", "1" => "6"}
     end
     it { expect(assigns[:histories]).to eq(History.where(id: [5, 6])) }
@@ -97,7 +98,7 @@ describe HistoryController do
 
   describe '#return_confirm' do
     before do
-      session[:user_id] = User.first.id
+      sign_in User.where(admin_flag: false).first
       post :return_confirm, type:{"5" => "1", "6" => "5"}
     end
     it { expect(assigns[:histories]).to eq(History.where(id: [5, 6])) }
@@ -107,14 +108,15 @@ describe HistoryController do
 
   describe '#return_create' do
     before do
-      session[:user_id] = User.first.id
+      @user = User.where(admin_flag: false).first
+      sign_in @user
       @type = { "1" => "ReturnHistory" }
       @report = { "1" => "" }
     end
     context '成功時' do
       it '借り物リストへリダイレクトする' do
         post :return_create, type: @type, report: @report
-        expect(response).to redirect_to controller: 'user', action: 'mainpage', id: session[:user_id]
+        expect(response).to redirect_to controller: 'user', action: 'mainpage', id: @user.id
       end
       it '返却レコードが作成される' do
         post :return_create, type: @type, report: @report

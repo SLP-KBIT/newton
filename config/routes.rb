@@ -2,16 +2,13 @@ Sample::Application.routes.draw do
 
   root to:                          'login#new'
 
-  get   '/login'                 => 'login#new'
-  post  '/login'                 => 'login#login'
-  get  '/destroy'                => 'login#destroy'
-
+  devise_for :users
   get   '/user'                  => 'user#index'
   get   '/user/create'           => 'user#add'
   post  '/user/create'           => 'user#create'
   patch '/user/update'           => 'user#update'
   get   '/user/exchange'         => 'user#exchange'
-  get   '/user/modify'       => 'user#modify'
+  get   '/user/modify'           => 'user#modify'
   get   '/user/update/:id'       => 'user#edit'
   get   '/user/mainpage/:id'     => 'user#mainpage', as: 'user/mainpage'
   get   '/user/:id'              => 'user#show'

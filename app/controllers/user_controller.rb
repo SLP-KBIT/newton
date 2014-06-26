@@ -11,7 +11,7 @@ class UserController < ApplicationController
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:name, :account, :admin_flag, :category, :lendable, :e_mail, :password, :password_confirmation))
+    @user = User.new(params.require(:user).permit(:name, :uid, :admin_flag, :category, :lendable, :e_mail, :password, :password_confirmation))
     @result = @user.save
     redirect_to user_path and return if @result
     render 'add' and return
@@ -47,7 +47,7 @@ class UserController < ApplicationController
 
   def update
     @user = User.where(id: params[:user][:id]).first
-    @user.attributes = params.require(:user).permit(:id, :name, :account, :admin_flag, :category, :lendable, :e_mail, :password, :password_confirmation)
+    @user.attributes = params.require(:user).permit(:id, :name, :uid, :admin_flag, :category, :lendable, :e_mail, :password, :password_confirmation)
     @result = @user.save
     if @result
       redirect_to user_path and return if permitted_user?
