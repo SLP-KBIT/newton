@@ -7,7 +7,7 @@
 #
 #  id              :integer          not null, primary key
 #  name            :string(255)
-#  account         :string(255)
+#  uid             :string(255)
 #  admin_flag      :boolean
 #  category        :integer
 #  lendable        :boolean
@@ -18,12 +18,15 @@
 #
 
 class User < ActiveRecord::Base
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable
+         # :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   has_many :histories
   has_many :messages
 
-  validates :name, :account, presence: { message: '入力してください' }
+  validates :name, :uid, presence: { message: '入力してください' }
   validates :password, presence: { message: '入力してください', on: :create }
   validates :category, inclusion: { in: [0, 1], message: '選択してください' }
 

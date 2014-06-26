@@ -4,7 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  name            :string(255)
-#  account         :string(255)
+#  uid         :string(255)
 #  admin_flag      :boolean
 #  category        :integer
 #  lendable        :boolean
@@ -14,33 +14,33 @@
 #  updated_at      :datetime
 #
 
-# <User id: nil, name: nil, account: nil, admin_flag: nil, category: nil, lendable: nil, e_mail: nil, password: nil, created_at: nil, updated_at: nil>
+# <User id: nil, name: nil, uid: nil, admin_flag: nil, category: nil, lendable: nil, e_mail: nil, password: nil, created_at: nil, updated_at: nil>
 admin:
   id: 1
   name: admin ADMIN
-  account: admin
+  uid: admin
   admin_flag: true
   category: 1
   lendable: true
   e_mail: admin@example.com
-  password_digest: $2a$10$5V/4.3tHU/f.QK3tAIZFfu3jlAGRyDp1ru0hbXnlkCEYxTrMGL2aO
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
 user1:
   id: 2
   name: user1 USER1
-  account: user1
-  admin_flag: true
+  uid: user1
+  admin_flag: false
   category: 1
   lendable: true
   e_mail: user1@example.com
-  password_digest: $2a$10$5V/4.3tHU/f.QK3tAIZFfu3jlAGRyDp1ru0hbXnlkCEYxTrMGL2aO
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
 user2:
   id: 3
   name: user2 USER2
-  account: user2
-  admin_flag: true
+  uid: user2
+  admin_flag: false
   category: 1
   lendable: true
   e_mail: user2@example.com
-  password_digest: $2a$10$5V/4.3tHU/f.QK3tAIZFfu3jlAGRyDp1ru0hbXnlkCEYxTrMGL2aO
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>

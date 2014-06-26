@@ -5,7 +5,7 @@
 #
 #  id              :integer          not null, primary key
 #  name            :string(255)
-#  account         :string(255)
+#  uid         :string(255)
 #  admin_flag      :boolean
 #  category        :integer
 #  lendable        :boolean
@@ -41,8 +41,8 @@ describe User do
       @user.name = ""
       @user.should_not be_valid
     end
-    it "accountが空の時、エラーが発生すること" do
-      @user.account = ""
+    it "uidが空の時、エラーが発生すること" do
+      @user.uid = ""
       @user.should_not be_valid
     end
   end

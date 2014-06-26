@@ -6,11 +6,11 @@ describe UserController do
   render_views
   describe '#index' do
     before do
-      p user_all: User.all
-      p user_id: User.first.id
-      session[:user_id] = User.where(admin_flag: true).first.id
+      # p user_all: User.all
+      # p user_id: User.first.id
+      sign_in User.where(admin_flag: true).first
       get :index
-      p session: session[:user_id]
+      # p session: session[:user_id]
     end
     it { expect(assigns[:users]) == User.all }
     it { expect(response).to be_success }
@@ -18,7 +18,7 @@ describe UserController do
   end
   describe '#add' do
     before do
-      session[:user_id] = User.where(admin_flag: true).first.id
+      sign_in User.where(admin_flag: true).first
       get :add
     end
     it { expect(assigns[:user]).to be_a_kind_of(User) }
@@ -29,7 +29,7 @@ describe UserController do
     let(:request) do
       post :create, user: {
         name: 's11t200',
-        account: 'kumanon',
+        uid: 'kumanon',
         admin_flag: true,
         category: category,
         lendable: true,
@@ -38,7 +38,7 @@ describe UserController do
         password_confirmation: 'hogehoge'
       }
     end
-    before { session[:user_id] = User.where(admin_flag: true).first.id }
+    before { sign_in User.where(admin_flag: true).first }
     context '成功時' do
       let(:category) { 1 }
       it 'ユーザ一覧ページへリダイレクトする' do
@@ -64,7 +64,7 @@ describe UserController do
   end
   describe '#show' do
     before do
-      session[:user_id] = User.where(admin_flag: true).first.id
+      sign_in User.where(admin_flag: true).first
       get :show, id: 1
     end
     it { expect(assigns[:user]).to be_a_kind_of(User) }
@@ -73,8 +73,9 @@ describe UserController do
   end
   describe '#edit' do
     before do
-      session[:user_id] = User.first.id
-      get :edit, id: User.first.id
+      user = User.where(admin_flag: false).first
+      sign_in user
+      get :edit, id: user.id
     end
     it { expect(assigns[:user]).to be_a_kind_of(User) }
     it { expect(response).to be_success }
@@ -82,7 +83,8 @@ describe UserController do
   end
   describe '#exchange' do
     before do
-      session[:user_id] = User.first.id
+      @user = User.where(admin_flag: true).first
+      sign_in @user
     end
     context '成功時' do
       before { get :exchange, page: {"1"=>"true"} }
@@ -90,18 +92,18 @@ describe UserController do
         expect(response).to redirect_to user_path
       end
       it 'ユーザレコードが更新される' do
-        expect(assigns[:user]) ==(User.where(id: 1))
+        expect(assigns[:user]) == @user
         expect(assigns[:result]).to be_true
       end
     end
   end
   describe '#update' do
     before do
-      session[:user_id] = User.where(admin_flag: true).first.id
+      sign_in User.where(admin_flag: true).first
       @user_param = {
         id: User.first.id,
         name: 's11t200',
-        account: 'kumanon',
+        uid: 'kumanon',
         admin_flag: true,
         category: 1,
         lendable: true,
@@ -133,8 +135,9 @@ describe UserController do
   end
   describe '#mainpage' do
     before do
-      session[:user_id] = User.where(admin_flag: true).first.id
-      get :mainpage, id: session[:user_id]
+      user = User.where(admin_flag: true).first
+      sign_in user
+      get :mainpage, id: user.id
     end
     it { expect(response).to be_success }
     it { expect(response).to render_template(:mainpage) }

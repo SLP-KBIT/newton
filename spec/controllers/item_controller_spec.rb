@@ -2,11 +2,11 @@
 require 'spec_helper'
 
 describe ItemController do
-  fixtures :items
+  fixtures :items, :users
   render_views
   describe '#index' do
     before do
-      session[:user_id] = User.first.id
+      sign_in User.where(admin_flag: false).first
       get :index
     end
     it { expect(assigns[:items]).to eq(Item.all) }
@@ -16,7 +16,7 @@ describe ItemController do
   end
   describe '#add' do
     before do
-      session[:user_id] = User.where(admin_flag: true).first.id
+      sign_in User.where(admin_flag: true).first
       get :add
     end
     it { expect(assigns[:item]).to be_a_kind_of(Item) }
@@ -25,7 +25,7 @@ describe ItemController do
   end
   describe '#create' do
     before do
-      session[:user_id] = User.where(admin_flag: true).first.id
+      sign_in User.where(admin_flag: true).first
       @item_param = {
         name:           'ルンバ',
         attachments:    '充電器',
@@ -88,7 +88,7 @@ describe ItemController do
   end
   describe '#show' do
     before do
-      session[:user_id] = User.first.id
+      sign_in User.where(admin_flag: false).first
       get :show, id: 1
     end
     it { expect(assigns[:item]).to be_a_kind_of(Item) }
@@ -97,7 +97,7 @@ describe ItemController do
   end
   describe '#update' do
     before do
-      session[:user_id] = User.where(admin_flag: true).first.id
+      sign_in User.where(admin_flag: true).first
       session[:item_id] = Item.first.id
       @item_param = {
         id:             Item.first.id,
@@ -184,7 +184,7 @@ describe ItemController do
 
   describe '#edit' do
     before do
-      session['user_id'] = User.where(admin_flag: true).first.id
+      sign_in User.where(admin_flag: true).first
       get :edit, id: 1
     end
     it { expect(assigns[:item]).to be_a_kind_of(Item) }

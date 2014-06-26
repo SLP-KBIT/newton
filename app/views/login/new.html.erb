@@ -11,11 +11,11 @@
     <div class="span6">
       <div class="row-fluid">
         <h4> ログイン </h4>
-        <%= form_for(:user, html: { class: 'form-horizontal' }, url: { action: :login }) do |f| %>
+        <%= form_for(:user, html: { class: 'form-horizontal' }, url: { controller: 'devise/sessions', action: 'new' }) do |f| %>
           <div class='control-group'>
             <%= f.label :アカウント, { class: 'control-label' } %>
             <div class='controls'>
-              <%= f.text_field :account %>
+              <%= f.text_field :uid %>
             </div>
           </div>
           <div class='control-group'>

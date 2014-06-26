@@ -17,10 +17,10 @@
   <div class='control-group'>
     <%= f.label :アカウント名 , {class: 'control-label'} %>
     <div class='controls'>
-      <%= f.text_field :account, placeholder: '例） kagawa' %>
+      <%= f.text_field :uid, placeholder: '例） kagawa' %>
       <div class='text-error'>
         <% if @user.errors.any? %>
-          <%= @user.errors.messages[:account][0] %>
+          <%= @user.errors.messages[:uid][0] %>
         <% end %>
       </div>
     </div>
