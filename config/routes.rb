@@ -45,6 +45,9 @@ Sample::Application.routes.draw do
   post  '/reservation/create'    => 'reservation#create'
   get   '/reservation/:id'       => 'reservation#show'
 
+  mount API                      => '/api'
+#  mount API                      => '/history'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -59,6 +59,8 @@ gem 'carrierwave'
 
 gem 'devise'
 
+gem 'grape'
+
 gem 'annotate', group: :development
 
 group :development, :test do
