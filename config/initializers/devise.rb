@@ -6,6 +6,19 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # config.secret_key = 'aba6c659cf13a1664147e0010892d3876cb15553532c4df0d9b043948351860fb5f135b0522c49352b63ce5e3410bbe17e1d8a954c3f77541cf95fc0eea4d929'
 
+<<<<<<< HEAD
+=======
+  # ==> LDAP Configuration
+  config.ldap_logger = true
+  config.ldap_create_user = true
+  config.ldap_update_password = true
+  config.ldap_config = "#{Rails.root}/config/ldap.yml"
+  config.ldap_check_group_membership = false
+  config.ldap_check_attributes = false
+  config.ldap_use_admin_to_bind = true
+  config.ldap_ad_group_check = false
+  
+>>>>>>> 47c0e20... 作業途中
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
