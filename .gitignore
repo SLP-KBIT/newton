@@ -25,5 +25,6 @@
 
 # for indivisual db setting
 config/database.yml
+config/ldap.yml
 
 public/images

@@ -58,6 +58,7 @@ gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-ra
 gem 'carrierwave'
 
 gem 'devise'
+gem 'devise_ldap_authenticatable'
 
 gem 'annotate', group: :development
 

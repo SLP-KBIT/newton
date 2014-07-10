@@ -20,7 +20,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable
+  devise :ldap_authenticatable # :database_authenticatable
          # :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   has_many :histories
@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   validates :category, inclusion: { in: [0, 1], message: '選択してください' }
 
   scope :id_is, -> (id) { where(id: id) }
+
+  before_create :set_defaults
 
   def category_text
     category_texts[category]
@@ -47,6 +49,12 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def set_defaults
+    self.admin_flag = false
+    self.lendable = true
+    self.category = 0
+  end
 
   def category_texts
     ['サークル生', '学内者']
