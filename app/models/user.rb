@@ -26,9 +26,9 @@ class User < ActiveRecord::Base
   has_many :histories
   has_many :messages
 
-  validates :name, :uid, presence: { message: '入力してください' }
-  validates :password, presence: { message: '入力してください', on: :create }
-  validates :category, inclusion: { in: [0, 1], message: '選択してください' }
+  # validates :name, :uid, presence: { message: '入力してください' }
+  # validates :password, presence: { message: '入力してください', on: :create }
+  # validates :category, inclusion: { in: [0, 1], message: '選択してください' }
 
   scope :id_is, -> (id) { where(id: id) }
 
@@ -51,9 +51,10 @@ class User < ActiveRecord::Base
   private
 
   def set_defaults
+    self.name = self.uid
     self.admin_flag = false
-    self.lendable = true
     self.category = 0
+    self.lendable = true
   end
 
   def category_texts
