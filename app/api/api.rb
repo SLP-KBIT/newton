@@ -11,7 +11,7 @@ class API < Grape::API
 
     get do
       user = User.where( uid: params[:uid] ).first
-      return { result: 1 } if user.nil?
+      return { result: 'unknown user' } if user.nil?
 
       item_ids = user.histories.order( :created_at ).pluck( :item_id ).uniq
       histories = user.histories.where.not('type = ?', 'ReserveHistory')
@@ -33,7 +33,7 @@ class API < Grape::API
       {
         items: items,
         url: "http://#{request.host_with_port}/user/mainpage/#{user.id}",
-        result: 0
+        result: 'success'
       }
     end
   end
